@@ -7,25 +7,27 @@ import AdBannerThree from "./AdBannerThree"
 import OverlayPost from "./OverlayPost"
 import WeeklyPost from "./WeeklyPost"
 import Newsletter from "./Newsletter"
+import UpcomingEvents from "./UpcomingEvents"
 import HeaderThree from "@/layouts/headers/HeaderThree"
 import { NewsArticle } from "@/services"
 
 interface HomeThreeProps {
    featuredArticles?: NewsArticle[]
+   featuredLatest?: NewsArticle[]
    loading?: boolean
    error?: string | null
+   upcomingEvents?: NewsArticle[]
 }
 
-const HomeThree = ({ featuredArticles = [], loading = false, error = null }: HomeThreeProps) => {
+const HomeThree = ({ featuredArticles = [], featuredLatest = [], upcomingEvents = [] }: HomeThreeProps) => {
    return (
       <>
          <HeaderThree />
          <main className="fix">
-            {error && <div className="alert alert-danger p-3 m-3">Error: {error}</div>}
-            {loading && <div className="alert alert-info p-3 m-3">Loading articles...</div>}
-            {!loading && !error && <Banner featuredArticles={featuredArticles} />}
-            <AdBanner />
-            <EditorPost />
+            <UpcomingEvents upcomingEvents={upcomingEvents} />
+            <Banner featuredArticles={featuredArticles} />
+            {/*<AdBanner />*/}
+            <EditorPost featuredLatest={featuredLatest} />
             <TrandingPost />
             <AdBannerThree />
             <OverlayPost />

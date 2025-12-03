@@ -3,10 +3,12 @@
 import { useEffect, useState } from 'react';
 import HomeThree from '@/components/homes/home-three';
 import Wrapper from '@/layouts/Wrapper';
-import { fetchFeaturedArticles, NewsArticle } from '@/services';
+import { fetchFeaturedArticles, fetchLatestArticles, fetchUpcomingEvents, NewsArticle } from '@/services';
 
 const HomePage = () => {
   const [featuredArticles, setFeaturedArticles] = useState<NewsArticle[]>([]);
+  const [featuredLatest, setFeaturedLatest] = useState<NewsArticle[]>([]);
+  const [upcomingEvents, setUpcomingEvents] = useState<NewsArticle[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -16,6 +18,10 @@ const HomePage = () => {
         setLoading(true);
         const articles = await fetchFeaturedArticles();
         setFeaturedArticles(articles);
+        const latestArticles = await fetchLatestArticles();
+        setFeaturedLatest(latestArticles);
+        const upcomingEvents = await fetchUpcomingEvents();
+        setUpcomingEvents(upcomingEvents); 
       } catch (err) {
         console.error('Error fetching articles:', err);
         setError(err instanceof Error ? err.message : 'Failed to load articles');
@@ -29,7 +35,7 @@ const HomePage = () => {
 
   return (
     <Wrapper>
-      <HomeThree featuredArticles={featuredArticles} loading={loading} error={error} />
+      <HomeThree featuredArticles={featuredArticles} featuredLatest={featuredLatest} upcomingEvents={upcomingEvents} loading={loading} error={error} />
     </Wrapper>
   );
 };

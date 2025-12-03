@@ -5,7 +5,7 @@ import BlogComment from "./BlogComment"
 import BlogForm from "@/components/forms/BlogForm"
 import BlogSidebar from "../common-blog/BlogSidebar"
 
-const BlogDetailsArea = ({ style, single_blog }: any) => {
+const BlogDetailsArea = ({ style, featuredArticleDetail }: any) => {
    return (
       <section className="blog-details-area pt-60 pb-60">
          <div className="container">
@@ -13,7 +13,7 @@ const BlogDetailsArea = ({ style, single_blog }: any) => {
                <div className="row justify-content-center">
                   <div className={`col-70 ${style ? "order-0 order-xl-2" : ""}`}>
                      <div className="blog-details-wrap">
-                        <BlogDetailsContent single_blog={single_blog} />
+                        <BlogDetailsContent featuredArticleDetail={featuredArticleDetail} />
                         <BlogAvatar />
                         <BlogPrevNext />
                         <BlogComment />

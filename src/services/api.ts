@@ -7,44 +7,52 @@ import axios, {
 const baseURL =
   process.env.NEXT_PUBLIC_API_BASE_URL || 'https://api.example.com';
 
-// Ortak default header'lar
-const defaultHeaders: Record<string, string> = {
-  'Content-Type': 'application/json',
-};
-
-// Sadece server-side için Referer ekleyelim (curl'da işe yarayan değerle aynı mantık)
-if (typeof window === 'undefined') {
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000/';
-  defaultHeaders['Referer'] = appUrl;
-}
-
 const instance: AxiosInstance = axios.create({
   baseURL,
-  headers: defaultHeaders,
   withCredentials: false,
 });
 
-// Request interceptor: auth token + SSR'de Referer
+// Request interceptor: auth token + SSR'de Referer/Origin
 instance.interceptors.request.use(
   (config) => {
-    try {
-      if (typeof window !== 'undefined') {
-        // Client-side: localStorage'dan token ekle
+    // headers yoksa boş bir obje ver, tipiyle uğraşma
+    if (!config.headers) {
+      config.headers = {} as any;
+    }
+
+    // Bundan sonrası için headers'ı gevşek tipte kullanıyoruz
+    const headers = config.headers as any;
+
+    // Ortak Content-Type
+    if (!headers['Content-Type']) {
+      headers['Content-Type'] = 'application/json';
+    }
+
+    if (typeof window !== 'undefined') {
+      // ---- CLIENT SIDE ----
+      try {
         const token = localStorage.getItem('token');
         if (token) {
-          config.headers.Authorization = `Bearer ${token}`;
+          headers['Authorization'] = `Bearer ${token}`;
         }
-      } else {
-        // Server-side: Referer header'ını garantiye al
-        const appUrl =
-          process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000/';
-
-        if (!config.headers.Referer) {
-          config.headers.Referer = appUrl;
-        }
+      } catch {
+        // storage hatalarını yut
       }
-    } catch {
-      // storage hatalarını yut
+    } else {
+      // ---- SERVER SIDE (SSR / API routes) ----
+      const appUrl =
+        process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+
+      // Devnot API'nin istediği header'lar:
+      if (!headers['Referer']) {
+        headers['Referer'] = `${appUrl}/`;
+      }
+      if (!headers['Origin']) {
+        headers['Origin'] = appUrl;
+      }
+      if (!headers['Accept']) {
+        headers['Accept'] = 'application/json, text/plain, */*';
+      }
     }
 
     return config;

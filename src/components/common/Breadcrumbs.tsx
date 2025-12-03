@@ -16,7 +16,6 @@ const Breadcrumbs = ({ page, style }: StyleType) => {
                                 <ol className="breadcrumb">
                                     <li className="breadcrumb-item"><Link href="/">Home</Link></li>
                                     <li className={`breadcrumb-item ${style?"":"active"}`} aria-current="page">{page}</li>
-                                    {style && <li className="breadcrumb-item active" aria-current="page">Smashing Podcast Episode 58 With Debbie What Is CX Design?</li>}
                                 </ol>
                             </nav>
                         </div>

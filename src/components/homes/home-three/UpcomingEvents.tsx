@@ -1,0 +1,134 @@
+"use client"
+
+import Link from "next/link"
+import Image from "next/image";
+import Slider from "react-slick"; 
+import React, { useRef } from "react"; 
+
+// Tek varsayılan resim import'u
+import bannerThumb_1 from "@/assets/img/blog/cr_banner_post01.jpg"
+
+// Gelen Etkinlik verisinin yapısı
+interface EventData {
+    id: number;
+    title: string;
+    slug: string;
+    description: string;
+    date: string; 
+    location: string;
+    website: string;
+    imageUrl: string | null; 
+    eventTypeId: number;
+    isActive: boolean;
+    createdAt: string;
+    updatedAt: string | null;
+    eventType: {
+        id: number;
+        name: string; 
+        isActive: boolean;
+    };
+}
+
+// Bileşene gelen prop yapısı
+interface UpcomingEventsProps {
+    upcomingEvents?: EventData[];
+}
+
+// SLIDER AYARLARI
+const setting = {
+   infinite: true,
+   speed: 1000,
+   slidesToShow: 3, 
+   slidesToScroll: 1,
+   dots: false,
+   arrows: false,
+   autoplay: true, // Her saniye kayma
+   autoplaySpeed: 2000, // 2.5 saniye
+   centerMode: false, // Boşluk için kapatıldı
+   responsive: [
+      { breakpoint: 1200, settings: { slidesToShow: 2, slidesToScroll: 1, infinite: true, } },
+      { breakpoint: 992, settings: { slidesToShow: 2, slidesToScroll: 1 } },
+      { breakpoint: 767, settings: { slidesToShow: 2, slidesToScroll: 1, arrows: false, } },
+      { breakpoint: 575, settings: { slidesToShow: 1, slidesToScroll: 1, arrows: false, } },
+   ]
+}
+
+// Servisten gelen veriyi, bileşenin beklediği formata dönüştüren yardımcı fonksiyon
+const mapEventToBannerItem = (event: EventData) => {
+    
+    const date = new Date(event.date);
+    const dateOptions: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = date.toLocaleDateString('tr-TR', dateOptions); 
+    
+   // const thumbPath = event.imageUrl || bannerThumb_1; // Tek varsayılan resim
+    const thumbPath = bannerThumb_1; // Tek varsayılan resim
+    const tag = event.eventType.name;
+    const time = "60 Mins"; 
+
+    return {
+        id: event.id,
+        title: event.title, 
+        thumb: thumbPath, 
+        tag: tag,
+        date: formattedDate,
+        time: time,
+        slug: event.slug,
+        authorName: "Admin", 
+    };
+};
+
+
+const UpcomingEvents = ({ upcomingEvents = [] }: UpcomingEventsProps) => {
+
+    const sliderRef = useRef<Slider | null>(null);
+    const mappedData = upcomingEvents.map(mapEventToBannerItem);
+
+    return (
+        <section className="banner-post-area-four pb-30 mt-80">
+            <div className="container">     
+                {/* Slider İçeriği */}
+                <div className="upcoming-events-wrap"> 
+                    {mappedData.length > 0 ? (
+                        // Boşluk ayarı için benzersiz sınıf eklendi: events-slider-with-gap
+                        <Slider {...setting} ref={sliderRef} className="row banner-post-active events-slider-with-gap">
+                            {mappedData.map((item) => (
+                                <div key={item.id}> 
+                                    <div className="banner-post-four">
+                                        <div className="banner-post-thumb-four">
+                                            <Link href={`/events/${item.slug}`}>
+                                                <Image 
+                                                    src={item.thumb} 
+                                                    alt={item.title} 
+                                                    width={370} 
+                                                    height={250} 
+                                                    style={{ objectFit: 'cover' }}
+                                                />
+                                            </Link>
+                                        </div>
+                                        <div className="banner-post-content-four">
+                                            <Link href="/blog" className="post-tag">{item.tag}</Link>
+                                            <h2 className="post-title bold-underline">
+                                                <Link href={`/events/${item.slug}`}>{item.title}</Link>
+                                            </h2>
+                                            <div className="blog-post-meta white-blog-meta">
+                                                <ul className="list-wrap">
+                                                    <li><i className="flaticon-user"></i>by<a href="/author">{item.authorName}</a></li>
+                                                    <li><i className="flaticon-calendar"></i>{item.date}</li>
+                                                    <li><i className="flaticon-history"></i>{item.time}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </Slider>
+                    ) : (
+                        <p className="text-center pt-30">Yaklaşan etkinlik bulunmamaktadır.</p>
+                    )}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default UpcomingEvents;

@@ -6610,3 +6610,16 @@ label {
     color: red;
     margin-top: 10px;
 }
+
+
+/* SADECE UpcomingEvents slider'ını etkileyen özel CSS kuralları */
+
+/* 1. Her kartın sağına ve soluna 8px boşluk (toplam 16px) ekler. */
+.events-slider-with-gap .slick-slide {
+    padding: 0 8px !important; 
+}
+
+/* 2. Slider'ın kapsayıcısına negatif margin ekleyerek boşlukları container dışına iter ve tasarımı düzgün hizalar. */
+.events-slider-with-gap .slick-list {
+    margin: 0 -8px !important; 
+}

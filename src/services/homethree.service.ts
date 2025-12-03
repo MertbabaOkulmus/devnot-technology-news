@@ -65,11 +65,25 @@ export const fetchHomeThreeRecent = async (limit = 5): Promise<NewsArticle[]> =>
   return get<NewsArticle[]>(`/home-three/recent?limit=${limit}`);
 };
 
+export const fetchUpcomingEvents = async (): Promise<NewsArticle[]> => {
+  return get<NewsArticle[]>('/Event/upcoming');
+};
+
+export const fetchEventSlug = async (slug: string): Promise<NewsArticle> => {
+  return get<NewsArticle>(`/Event/slug/${slug}`);
+};
+
+export const fetchArticleSlug = async (slug: string): Promise<NewsArticle> => {
+  return get<NewsArticle>(`/Article/${slug}`);
+};
+
 const HomeThreeService = {
   fetchFeaturedArticles,
   fetchCategories,
   fetchLatestArticles,
   fetchHomeThreeRecent,
+  fetchUpcomingEvents,
+  fetchEventSlug,
 };
 
 export default HomeThreeService;

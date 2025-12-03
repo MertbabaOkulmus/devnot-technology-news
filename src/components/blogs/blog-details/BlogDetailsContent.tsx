@@ -4,112 +4,205 @@ import Link from "next/link"
 import { useState } from "react"
 import VideoPopup from "@/modals/VideoPopup"
 
+// Varsayılan resimler
 import blogThumb_1 from "@/assets/img/blog/blog_details01.jpg"
+// İç içerik resimleri (Dinamik veri yoksa statik kalır)
 import blogThumb_2 from "@/assets/img/blog/blog_details02.jpg"
 import blogThumb_3 from "@/assets/img/blog/blog_details03.jpg"
 
-const BlogDetailsContent = ({ single_blog }: any) => {
-
-   const [isVideoOpen, setIsVideoOpen] = useState(false);
-
-   return (
-      <>
-         <div className="blog-details-content">
-            <div className="blog-details-content-top">
-               <Link href="/blog" className="post-tag">{single_blog?.tag ? single_blog.tag : "Appitizer"}</Link>
-               <h2 className="title">{single_blog?.title ? single_blog.title : "Emerging Global Trends in Leather and Fashion Nicely Photo Area Shooting With Hand Classic Style"}</h2>
-               <div className="bd-content-inner">
-                  <div className="blog-post-meta">
-                     <ul className="list-wrap">
-                        <li><i className="flaticon-user"></i>by<Link href="/author">Admin</Link></li>
-                        <li><i className="flaticon-calendar"></i>27 August, 2024</li>
-                        <li><i className="flaticon-chat"></i><Link href="/blog-details">05 Comments</Link></li>
-                        <li><i className="flaticon-history"></i>20 Mins</li>
-                     </ul>
-                  </div>
-                  <div className="blog-details-social">
-                     <ul className="list-wrap">
-                        <li><Link href="#"><i className="fab fa-facebook-f"></i></Link></li>
-                        <li><Link href="#"><i className="fab fa-twitter"></i></Link></li>
-                        <li><Link href="#"><i className="fab fa-instagram"></i></Link></li>
-                        <li><Link href="#"><i className="fab fa-linkedin-in"></i></Link></li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-            <div className="blog-details-thumb">
-               {single_blog?.thumb ? <Image src={single_blog.thumb} alt="image" /> : <Image src={blogThumb_1} alt="image" />}
-            </div>
-            <p className="first-info">Browned butter and brown sugar caramelly oodness crispy edgesthick and soft centers andey melty little puddles of
-               chocolate y first favorite.dolor sit amet, consectetuer adipiscing elitter Aenean commodo ligula eget dolor Aenean
-               massa.</p>
-            <p>Growned butter and brown sugar caramelly oodness crispy edgesthick and soft centers andey meltpuddles of chocolate y first favorite.dolor sit amet, consectetuer adipiscing elitter Aenean commodo ligula eget doloawr Aenean massa.m Ipsum has been the industry’s standard dummy.</p>
-            <blockquote>
-               <p>Grursus mal suada faci lisis orem ipsum dola onsectetur elittery Vestey  bulum the ipsumm ipsum that dolocons rsus mal suada and there fadolorit to the consectetur elite. </p>
-               <cite>Thomas A. Edison</cite>
-            </blockquote>
-            <p>Growned butter and brown sugar caramelly oodness crispy edgesthick and soft centers andey meltpuddles offer chocolate y first favorite.dolor sit amet, consectetuer adipiscing elitter Aenean commodo ligula egette doloawr Aenean massa.m Ipsum has been the industry’s standard dummy.should never complain, complaining is a weak emotion, you got life, we breathing, we blessed. Surround yourself with angels.</p>
-            <div className="blog-details-inner">
-               <div className="row align-items-center">
-                  <div className="col-md-6">
-                     <div className="blog-details-inner-img">
-                        <Image src={blogThumb_2} alt="" />
-                     </div>
-                  </div>
-                  <div className="col-md-6">
-                     <div className="blog-details-inner-content">
-                        <h3 className="title-two">Customer Engagement Marketing New Strategy for the Economy</h3>
-                        <p>Pellentesque iaculis gravida nulla ac hendrerit Vestiabulum faucibus neque at lacus tristique eu ultrices area ipsum mollis Praesent pharetra semper purusPellentesque iaculis gravida nulla ac hendrerit.</p>
-                        <ul className="list-wrap">
-                           <li><i className="fas fa-check"></i>Gutenberg Integration</li>
-                           <li><i className="fas fa-check"></i>Gutenberg Integration</li>
-                           <li><i className="fas fa-check"></i>Gutenberg Integration</li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <p>Growned butter and brown sugar caramelly oodness crispy edgesthick and soft centers andey meltpuddles offer chocolate y first favorite.dolor sit amet, consectetuer adipiscing elitter Aenean commodo ligula egette doloawr Aenean massa.m Ipsum has been the industry’s standard dummy.should never complain, complaining is a weak emotion, you got life, we breathing, we blessed. Surround yourself with angels.</p>
-            <div className="blog-details-video">
-               <Image src={blogThumb_3} alt="" />
-               <a style={{ cursor: "pointer" }} onClick={() => setIsVideoOpen(true)} className="paly-btn popup-video"><i className="fas fa-play"></i></a>
-            </div>
-            <p>Growned butter and brown sugar caramelly oodness crispy edgesthick and soft centers andey meltpuddles offer chocolate y first favorite.dolor sit amet, consectetuer adipiscing elitter Aenean commodo ligula egette doloawr Aenean massa.m Ipsum has been the industry’s standard dummy.should never complain, complaining is a weak emotion, you got life, we breathing, we blessed. Surround yourself with angels.</p>
-            <div className="blog-details-bottom">
-               <div className="row align-items-center">
-                  <div className="col-lg-6">
-                     <div className="post-tags">
-                        <h5 className="title">Tags:</h5>
-                        <ul className="list-wrap">
-                           <li><Link href="/blog">Art & Design</Link></li>
-                           <li><Link href="/blog">Video</Link></li>
-                        </ul>
-                     </div>
-                  </div>
-                  <div className="col-lg-6">
-                     <div className="post-share">
-                        <h5 className="title">Share:</h5>
-                        <ul className="list-wrap">
-                           <li><Link href="#"><i className="fab fa-facebook-f"></i></Link></li>
-                           <li><Link href="#"><i className="fab fa-twitter"></i></Link></li>
-                           <li><Link href="#"><i className="fab fa-instagram"></i></Link></li>
-                           <li><Link href="#"><i className="fab fa-linkedin-in"></i></Link></li>
-                           <li><Link href="#"><i className="fab fa-youtube"></i></Link></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         {/* video modal start */}
-         <VideoPopup
-            isOpen={isVideoOpen}
-            onClose={() => setIsVideoOpen(false)}
-            videoId="Ml4XCF-JS0k"
-         />
-         {/* video modal end */}
-      </>
-   )
+// Gelen featuredArticleDetail verisinin yapısı için arayüz (tüm yapıyı kapsayacak şekilde)
+interface ArticleDetail {
+    id: number;
+    title: string;
+    slug: string;
+    content: string; // HTML içeriği
+    summary: string | null;
+    publishedAt: string;
+    viewCount: number;
+    user: {
+        id: number;
+        name: string;
+        avatarUrl: string | null;
+    };
+    category: {
+        id: number;
+        name: string;
+    };
+    articleTags: Array<{
+        tag: {
+            name: string;
+            slug: string;
+        };
+    }>;
+    media: Array<{
+        url: string;
+    }>;
 }
 
-export default BlogDetailsContent
+interface BlogDetailsContentProps {
+    featuredArticleDetail: ArticleDetail;
+}
+
+// Tarih formatlama yardımcı fonksiyonu
+const formatPublishedDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('tr-TR', options);
+}
+
+const BlogDetailsContent = ({ featuredArticleDetail }: BlogDetailsContentProps) => {
+
+    const [isVideoOpen, setIsVideoOpen] = useState(false);
+    
+    // Veri kontrolü
+    if (!featuredArticleDetail) {
+        return <div>Makale detayı bulunamadı.</div>; 
+    }
+
+    const item = featuredArticleDetail;
+    const authorName = item.user?.name || "Admin";
+    const categoryName = item.category?.name || "Genel";
+    const publishedDate = formatPublishedDate(item.publishedAt);
+    const mainImage = item.media?.[0]?.url || blogThumb_1; 
+    const summaryText = item.summary || item.content.substring(0, 150) + '...'; // Özet yoksa içeriğin başını kullan
+
+    // Not: Yorum sayısı ve okuma süresi verinizde bulunmadığı için statik/tahmini bırakılmıştır.
+
+    return (
+        <>
+            <div className="blog-details-content">
+                <div className="blog-details-content-top">
+                    {/* Kategori Etiketi */}
+                    <Link href="/blog" className="post-tag">{categoryName}</Link>
+                    {/* Başlık */}
+                    <h2 className="title">{item.title}</h2>
+                    <div className="bd-content-inner">
+                        <div className="blog-post-meta">
+                            <ul className="list-wrap">
+                                {/* Yazar Adı */}
+                                <li><i className="flaticon-user"></i>by<Link href="/author">{authorName}</Link></li>
+                                {/* Yayın Tarihi */}
+                                <li><i className="flaticon-calendar"></i>{publishedDate}</li>
+                                {/* Yorumlar (Statik bırakıldı, veri yok) */}
+                                <li><i className="flaticon-chat"></i><Link href="/blog-details">05 Comments</Link></li>
+                                {/* Okuma Süresi (Statik bırakıldı, veri yok) */}
+                                <li><i className="flaticon-history"></i>20 Mins</li>
+                            </ul>
+                        </div>
+                        <div className="blog-details-social">
+                            {/* Sosyal Medya ikonları (Statik bırakıldı) */}
+                            <ul className="list-wrap">
+                                <li><Link href="#"><i className="fab fa-facebook-f"></i></Link></li>
+                                <li><Link href="#"><i className="fab fa-twitter"></i></Link></li>
+                                <li><Link href="#"><i className="fab fa-instagram"></i></Link></li>
+                                <li><Link href="#"><i className="fab fa-linkedin-in"></i></Link></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Ana Resim */}
+                <div className="blog-details-thumb">
+                    <Image 
+                        src={mainImage} 
+                        alt={item.title} 
+                        // Resim dinamik URL veya statik import objesi olabilir
+                        // Next.js Image için varsayılan boyutları kullanın
+                        width={850} 
+                        height={500} 
+                        priority 
+                        style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                    />
+                </div>
+
+                {/* Özet/Giriş Paragrafı (Eski kodun ilk paragrafına karşılık) */}
+                {item.summary && <p className="first-info">{item.summary}</p>}
+
+                {/* === ANA İÇERİK (HTML Injection) === */}
+                {/* DİKKAT: Content alanı HTML içerdiği için dangerouslySetInnerHTML kullanmak ZORUNLUDUR. */}
+                <div 
+                    className="blog-main-content" 
+                    dangerouslySetInnerHTML={{ __html: item.content }} 
+                />
+                {/* Not: Orijinal HTML yapınızda bulunan <blockquote>, .blog-details-inner, .blog-details-video 
+                     gibi elemanlar, content stringi içinde gelmediği için burada otomatik olarak görünmeyecektir.
+                     Eğer bu elemanların görünmesini istiyorsanız, content stringine HTML olarak eklenmeleri gerekir.
+                     Şimdilik statik olan bu bölümleri, içeriğin dinamikliği bozulmasın diye kaldırıyorum.
+                     Ancak tasarımda o alanların kaybolmaması için, alt yapıyı koruyarak bir yorum satırı ekliyorum.
+                */}
+                
+                {/* --- STATİK/EK İÇERİK BÖLÜMLERİ (Örnek Tasarımda vardı, veri gelmiyor) --- */}
+                {/* <p>Statik metin 1</p> */}
+                {/* <blockquote>...</blockquote> */}
+                
+                <div className="blog-details-inner">
+                     {/* İçerik içi dinamik resim ve metin olmadığından, bu bölümü statik bırakıyorum veya kaldırıyorum */}
+                  <div className="row align-items-center">
+                     <div className="col-md-6">
+                        <div className="blog-details-inner-img">
+                           {/* Bu resim veri modelinizde yok, statik kalacak */}
+                           <Image src={blogThumb_2} alt="" /> 
+                        </div>
+                     </div>
+                     <div className="col-md-6">
+                        <div className="blog-details-inner-content">
+                           <h3 className="title-two">Ek Detay Başlığı</h3>
+                           <p>Bu metin ve liste dinamik içerikte gelmediği için statik bırakıldı.</p>
+                           <ul className="list-wrap">
+                              <li><i className="fas fa-check"></i>Dinamik Yapı Kontrolü</li>
+                              <li><i className="fas fa-check"></i>Tasarım Bütünlüğü</li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               
+               {/* <div className="blog-details-video">
+                  <Image src={blogThumb_3} alt="" />
+                  <a style={{ cursor: "pointer" }} onClick={() => setIsVideoOpen(true)} className="paly-btn popup-video"><i className="fas fa-play"></i></a>
+               </div> */}
+               {/* --- STATİK/EK İÇERİK BÖLÜMLERİ SONU --- */}
+
+
+                <div className="blog-details-bottom">
+                    <div className="row align-items-center">
+                        <div className="col-lg-6">
+                            <div className="post-tags">
+                                <h5 className="title">Tags:</h5>
+                                {/* Dinamik Etiketler */}
+                                <ul className="list-wrap">
+                                    {item.articleTags?.map((articleTag, index) => (
+                                        <li key={index}>
+                                            <Link href={`/blog/tag/${articleTag.tag.slug}`}>{articleTag.tag.name}</Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="post-share">
+                                <h5 className="title">Share:</h5>
+                                {/* Sosyal Medya Paylaşımı (Statik bırakıldı) */}
+                                <ul className="list-wrap">
+                                    <li><Link href="#"><i className="fab fa-facebook-f"></i></Link></li>
+                                    <li><Link href="#"><i className="fab fa-twitter"></i></Link></li>
+                                    <li><Link href="#"><i className="fab fa-instagram"></i></Link></li>
+                                    <li><Link href="#"><i className="fab fa-linkedin-in"></i></Link></li>
+                                    <li><Link href="#"><i className="fab fa-youtube"></i></Link></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* Video Modal (Statik bırakıldı) */}
+            <VideoPopup
+                isOpen={isVideoOpen}
+                onClose={() => setIsVideoOpen(false)}
+                videoId="Ml4XCF-JS0k"
+            />
+        </>
+    );
+};
+
+export default BlogDetailsContent;

@@ -1,45 +1,116 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
+ import bannerThumb_1 from "@/assets/img/blog/t_banner_post01.jpg"
 import { NewsArticle } from "@/services"
 
-interface BannerProps {
-   featuredArticles?: NewsArticle[]
+// Hata veren satır KALDIRILDI: import { Intl } from "next/dist/compiled/intl-messageformat";
+
+// === Arayüz Tanımlamaları ===
+
+// Servisten gelen makale yapısı
+/*export interface Article {
+   id: number;
+   title: string;
+   slug: string;
+   publishedAt: string;
+   user: {
+      name: string | null;
+   };
+   category: {
+      name: string;
+   };
+   articleTags?: Array<{
+      tag: { name: string }
+   }>;
+   media?: Array<{
+      url: string
+   }>;
 }
 
-const Banner = ({ featuredArticles = [] }: BannerProps) => {
-   const mainArticle = featuredArticles[0];
-   const sideArticles = featuredArticles.slice(1, 4);
+// Bileşene gelen prop yapısı
+interface BannerProps {
+   featuredArticles: Article[];
+}*/
+
+// === Yardımcı Fonksiyon ===
+
+// 'article' parametresine tür ataması yapıldı (Article)
+const mapArticleToBannerItem = (article: NewsArticle) => {
+
+   // Tarih formatlama opsiyonları 
+   // Tipi artık Node.js'in veya tarayıcının GLOBAL 'Intl' nesnesinden alınmıştır.
+   const dateOptions: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+   };
+
+   const date = new Date(article.publishedAt);
+   const formattedDate = date.toLocaleDateString('tr-TR', dateOptions).replace(/\.$/, '');
+
+   // Varsayım: Makale objesinde medya bilgisi mevcut.
+   const thumbUrl = article.media?.[0]?.url || bannerThumb_1;
+
+   // Etiket (Tag): Kategori adı veya ilk etiket adı
+   const tag = article.category?.name || article.articleTags?.[0]?.tag?.name || "Gündem";
+
+   return {
+      id: article.id,
+      title: article.title,
+      thumb: thumbUrl,
+      tag: tag,
+      date: formattedDate,
+      time: "5 min read",
+      slug: article.slug,
+      authorName: article.user.name || "Admin",
+   };
+};
+
+// === Bileşen ===
+
+// Bileşen prop'larına tür ataması yapıldı
+
+
+const Banner = ({ featuredArticles = [] }: { featuredArticles?: NewsArticle[] }) => {
+
+   const mappedData = featuredArticles.map(mapArticleToBannerItem);
+
+   const bigPost = mappedData.slice(0, 1)[0];
+   const smallPosts = mappedData.slice(1, 4);
 
    return (
       <section className="banner-post-area-two pt-50 pb-30">
          <div className="container">
             <div className="banner-post-inner">
                <div className="row">
+                  {/* Sol Taraf - Büyük Resim (Col-70) */}
                   <div className="col-70">
-                     {mainArticle && (
-                        <div className="banner-post-two big-post">
+                     {bigPost && (
+                        <div key={bigPost.id} className="banner-post-two big-post">
                            <div className="banner-post-thumb-two">
-                              <Link href={`/blog-details/${mainArticle.slug}`}>
-                                 <Image 
-                                    src={mainArticle.media?.[0]?.url || '/placeholder.jpg'} 
-                                    alt={mainArticle.title}
-                                    width={500}
-                                    height={300}
+                              <Link href={`/blog/${bigPost.slug}`}>
+                                 <Image
+                                    src={bigPost.thumb}
+                                    alt={bigPost.title}
+                                    width={750}
+                                    height={500}
+                                    priority
                                  />
                               </Link>
                            </div>
                            <div className="banner-post-content-two">
-                              <Link href={`/blog?category=${mainArticle.category.slug}`} className="post-tag">
-                                 {mainArticle.category.name}
-                              </Link>
+                              <Link href="/blog" className="post-tag">{bigPost.tag}</Link>
                               <h2 className="post-title bold-underline">
-                                 <Link href={`/blog-details/${mainArticle.slug}`}>{mainArticle.title}</Link>
+                                 <Link href={`/blog/${bigPost.slug}`}>{bigPost.title}</Link>
                               </h2>
                               <div className="blog-post-meta white-blog-meta">
                                  <ul className="list-wrap">
-                                    <li><i className="flaticon-user"></i>by<Link href={`/author/${mainArticle.user.id}`}>{mainArticle.user.name}</Link></li>
-                                    <li><i className="flaticon-calendar"></i>{new Date(mainArticle.publishedAt).toLocaleDateString()}</li>
-                                    <li><i className="flaticon-history"></i>{mainArticle.viewCount} views</li>
+                                    <li>
+                                       <i className="flaticon-user"></i>
+                                       by<Link href="/author">{bigPost.authorName}</Link>
+                                    </li>
+                                    <li><i className="flaticon-calendar"></i>{bigPost.date}</li>
+                                    <li><i className="flaticon-history"></i>{bigPost.time}</li>
                                  </ul>
                               </div>
                            </div>
@@ -47,29 +118,28 @@ const Banner = ({ featuredArticles = [] }: BannerProps) => {
                      )}
                   </div>
 
+                  {/* Sağ Taraf - Küçük Resimler (Col-30) */}
                   <div className="col-30">
-                     {sideArticles.map((item) => (
+                     {smallPosts.map((item) => (
                         <div key={item.id} className="banner-post-two small-post">
                            <div className="banner-post-thumb-two">
-                              <Link href={`/blog-details/${item.slug}`}>
-                                 <Image 
-                                    src={item.media?.[0]?.url || '/placeholder.jpg'} 
+                              <Link href={`/blog/${item.slug}`}>
+                                 <Image
+                                    src={item.thumb}
                                     alt={item.title}
-                                    width={250}
-                                    height={150}
+                                    width={300}
+                                    height={200}
                                  />
                               </Link>
                            </div>
                            <div className="banner-post-content-two">
-                              <Link href={`/blog?category=${item.category.slug}`} className="post-tag">
-                                 {item.category.name}
-                              </Link>
+                              <Link href="/blog" className="post-tag">{item.tag}</Link>
                               <h2 className="post-title">
-                                 <Link href={`/blog-details/${item.slug}`}>{item.title}</Link>
+                                 <Link href={`/blog/${item.slug}`}>{item.title}</Link>
                               </h2>
                               <div className="blog-post-meta white-blog-meta">
                                  <ul className="list-wrap">
-                                    <li><i className="flaticon-calendar"></i>{new Date(item.publishedAt).toLocaleDateString()}</li>
+                                    <li><i className="flaticon-calendar"></i>{item.date}</li>
                                  </ul>
                               </div>
                            </div>
@@ -80,7 +150,7 @@ const Banner = ({ featuredArticles = [] }: BannerProps) => {
             </div>
          </div>
       </section>
-   )
-}
+   );
+};
 
-export default Banner
+export default Banner;
