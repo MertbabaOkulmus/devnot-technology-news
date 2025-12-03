@@ -4,8 +4,9 @@ import BlogPrevNext from "./BlogPrevNext"
 import BlogComment from "./BlogComment"
 import BlogForm from "@/components/forms/BlogForm"
 import BlogSidebar from "../common-blog/BlogSidebar"
+import EventDetailsContent from "./EventDetailsContent"
 
-const BlogDetailsArea = ({ style, featuredArticleDetail }: any) => {
+const BlogDetailsArea = ({ style, isEventPage = false, featuredArticleDetail = {}, featuredEventDetail = {} }: any) => {
    return (
       <section className="blog-details-area pt-60 pb-60">
          <div className="container">
@@ -13,7 +14,11 @@ const BlogDetailsArea = ({ style, featuredArticleDetail }: any) => {
                <div className="row justify-content-center">
                   <div className={`col-70 ${style ? "order-0 order-xl-2" : ""}`}>
                      <div className="blog-details-wrap">
-                        <BlogDetailsContent featuredArticleDetail={featuredArticleDetail} />
+                        {isEventPage ?
+                           <EventDetailsContent featuredEventDetail={featuredEventDetail} />
+                           :
+                           <BlogDetailsContent featuredArticleDetail={featuredArticleDetail} />
+                        }
                         <BlogAvatar />
                         <BlogPrevNext />
                         <BlogComment />

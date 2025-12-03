@@ -6,7 +6,7 @@ import Breadcrumbs from "@/components/common/Breadcrumbs";
 import Wrapper from "@/layouts/Wrapper";
 import FooterOne from "@/layouts/footers/FooterOne";
 import HeaderOne from "@/layouts/headers/HeaderOne";
-import { fetchArticleSlug, NewsArticle } from '@/services';
+import { fetchEventSlug, NewsArticle } from '@/services';
 import { useEffect, useState } from "react";
 
 // Props tipi async olmadığı için Promise kaldırıldı
@@ -19,16 +19,16 @@ type Props = {
 export default function Page({ params }: Props) {
    
    // Durum değişkenleri burada tanımlanır
-   const [featuredArticleDetail, setFeaturedArticleDetail] = useState<NewsArticle | null>(null);
+   const [featuredEventDetail, setFeaturedEventDetail] = useState<NewsArticle | null>(null);
    const [loading, setLoading] = useState(true);
 
    // `params` objesinden id'yi alın
    const { id } = params;
-   const blogId = id[0];
+   const eventId = id[0];
    
    // Blog verisini sadece Client tarafında yüklemek için useEffect kullanılır.
    useEffect(() => {
-     if (!blogId) {
+     if (!eventId) {
         setLoading(false);
         return; // ID yoksa işlemi durdur
      }
@@ -38,17 +38,17 @@ export default function Page({ params }: Props) {
          setLoading(true);
          
          // Veriyi servisten çekme
-         const articleData = await fetchArticleSlug(blogId);
+         const eventData = await fetchEventSlug(eventId);
          
-         if (!articleData) {
-             console.log('Makale bulunamadı.');
+         if (!eventData) {
+             console.log('Etkinlik bulunamadı.');
              notFound(); // Next.js'in notFound fonksiyonunu çağırabilirsiniz
          }
          
-         setFeaturedArticleDetail(articleData);
+         setFeaturedEventDetail(eventData);
        }
          catch (err) {
-             console.error('Hata: Makale verisi çekilemedi:', err);
+             console.error('Hata: Etkinlik verisi çekilemedi:', err);
              // Hata durumunda da yüklemeyi sonlandır
          }
          finally {
@@ -57,18 +57,18 @@ export default function Page({ params }: Props) {
        };
        loadArticleData();
        
-   // Bağımlılık dizisine blogId eklendi ki sadece ilk render'da çalışsın (veya ID değişirse)
-   }, [blogId]); 
+   // Bağımlılık dizisine eventId eklendi ki sadece ilk render'da çalışsın (veya ID değişirse)
+   }, [eventId]); 
    
    // Yükleniyor veya veri yoksa gösterilecekler
    if (loading) {
        return <Wrapper><p style={{textAlign: 'center', padding: '100px'}}>Yükleniyor...</p></Wrapper>;
    }
    
-   // Makale bulunamazsa veya featuredArticle null ise
-   if (!featuredArticleDetail) {
+   // Etkinlik bulunamazsa veya featuredEventDetail null ise
+   if (!featuredEventDetail) {
        // Bu kısma notFound() yerine özel bir 404 bileşeni de koyabilirsiniz
-       return <Wrapper><p style={{textAlign: 'center', padding: '100px'}}>Makale bulunamadı.</p></Wrapper>;
+       return <Wrapper><p style={{textAlign: 'center', padding: '100px'}}>Etkinlik bulunamadı.</p></Wrapper>;
    }
    
    return (
@@ -76,8 +76,8 @@ export default function Page({ params }: Props) {
          <>
             <HeaderOne />
             <main className="fix">
-               <Breadcrumbs page={featuredArticleDetail.title} style={true} />
-               <BlogDetailsArea style={false} isEventPage={false} featuredArticleDetail={featuredArticleDetail}/>
+               <Breadcrumbs page={featuredEventDetail.title} style={true} />
+               <BlogDetailsArea style={false} isEventPage={true} featuredEventDetail={featuredEventDetail} />
             </main>
             <FooterOne style={false} style_2={true} />
          </>
