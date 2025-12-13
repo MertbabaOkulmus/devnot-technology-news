@@ -97,3 +97,14 @@ i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
 .flaticon-next:before {
     content: "\f11a";
 }
+
+.flaticon-location {
+  width: 24px;
+  height: 24px;
+  margin-right: -6px;
+  vertical-align: middle;
+  fill: currentColor;      /* yazı rengiyle aynı olsun */
+  flex-shrink: 0;
+}
+
+

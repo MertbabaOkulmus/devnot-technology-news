@@ -19,7 +19,6 @@ const HeaderThree = () => {
       <>
          <header className="header-style-three">
             <div id="header-fixed-height" className={sticky ? "active-height" : ""}></div>
-            <HeaderTopThree />
 
             <div id="sticky-header" className={`menu-area menu-style-three ${sticky ? "sticky-menu" : ""}`}>
                <div className="container">
@@ -35,20 +34,6 @@ const HeaderThree = () => {
                               </div>
                               <div className="navbar-wrap main-menu d-none d-lg-flex">
                                  <NavMenu />
-                              </div>
-                              <div className="header-action d-none d-md-block">
-                                 <ul className="list-wrap">
-                                    <li className="header-wishlist">
-                                       <Link href="#"><i className="flaticon-heart"></i><span>0</span></Link>
-                                    </li>
-                                    <li className="header-cart">
-                                       <Link href="#"><i className="flaticon-basket"></i><span>0</span></Link>
-                                       <strong>$0.00</strong>
-                                    </li>
-                                    <li className="header-sine-in">
-                                       <Link href="/contact"><i className="flaticon-user"></i>Sign In</Link>
-                                    </li>
-                                 </ul>
                               </div>
                               <div onClick={() => setMobileMenu(true)} className="mobile-nav-toggler"><i className="fas fa-bars"></i></div>
                            </nav>

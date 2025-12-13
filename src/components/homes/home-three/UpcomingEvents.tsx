@@ -99,7 +99,7 @@ const UpcomingEvents = ({ upcomingEvents = [] }: UpcomingEventsProps) => {
                                                 <Image 
                                                     src={item.thumb} 
                                                     alt={item.title} 
-                                                    width={370} 
+                                                    width={300} 
                                                     height={250} 
                                                     style={{ objectFit: 'cover' }}
                                                 />

@@ -10,15 +10,6 @@ const BlogSidebar = () => {
    return (
       <div className="col-30">
          <div className="sidebar-wrap">
-            <div className="sidebar-widget">
-               <div className="sidebar-search">
-                  <form onSubmit={(e) => e.preventDefault()}>
-                     <input type="text" placeholder="Search . . ." />
-                     <button type="submit"><i className="flaticon-search"></i></button>
-                  </form>
-               </div>
-            </div>
-
             <div className="sidebar-widget sidebar-widget-two">
                <Category />
             </div>
@@ -76,25 +67,6 @@ const BlogSidebar = () => {
                            </ul>
                         </div>
                      </div>
-                  </div>
-               </div>
-            </div>
-            <div className="sidebar-widget sidebar-widget-two">
-               <div className="sidebar-newsletter">
-                  <div className="icon"><i className="flaticon-envelope"></i></div>
-                  <h4 className="title">Daily Newsletter</h4>
-                  <p>Get all the top stories from Blogs to keep track.</p>
-                  <div className="sidebar-newsletter-form-two">
-                     <form onSubmit={(e) => e.preventDefault()}>
-                        <div className="form-grp">
-                           <input type="text" placeholder="Enter your e-mail" />
-                           <button type="submit" className="btn">Subscribe Now</button>
-                        </div>
-                        <div className="form-check">
-                           <input type="checkbox" className="form-check-input" id="checkbox" />
-                           <label htmlFor="checkbox">I agree to the terms & conditions</label>
-                        </div>
-                     </form>
                   </div>
                </div>
             </div>

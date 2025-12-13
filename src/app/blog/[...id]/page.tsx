@@ -5,9 +5,9 @@ import BlogDetailsArea from "@/components/blogs/blog-details/BlogDetailsArea";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import Wrapper from "@/layouts/Wrapper";
 import FooterOne from "@/layouts/footers/FooterOne";
-import HeaderOne from "@/layouts/headers/HeaderOne";
 import { fetchArticleSlug, NewsArticle } from '@/services';
 import { useEffect, useState } from "react";
+import HeaderThree from "@/layouts/headers/HeaderThree";
 
 // Props tipi async olmadığı için Promise kaldırıldı
 type Props = {
@@ -74,7 +74,7 @@ export default function Page({ params }: Props) {
    return (
       <Wrapper>
          <>
-            <HeaderOne />
+            <HeaderThree />
             <main className="fix">
                <Breadcrumbs page={featuredArticleDetail.title} style={true} />
                <BlogDetailsArea style={false} isEventPage={false} featuredArticleDetail={featuredArticleDetail}/>

@@ -1,18 +1,33 @@
+"use client"
 import Breadcrumbs from '@/components/common/Breadcrumbs'
 import FooterOne from '@/layouts/footers/FooterOne'
-import HeaderOne from '@/layouts/headers/HeaderOne'
-import React from 'react'
+import HeaderThree from "@/layouts/headers/HeaderThree"
+import React, { useState, useEffect } from 'react'
 import BlogArea from '../blog/BlogArea'
-import FooterNews from '@/components/common/FooterNews'
+import { fetchUpcomingEvents, NewsArticle } from '@/services/homethree.service'
 
 const BlogTwo = () => {
+     const [upcomingEvents, setUpcomingEvents] = useState<NewsArticle[]>([]);
+
+     useEffect(() => {
+       const loadArticles = async () => {
+         try {
+           const upcomingEvents = await fetchUpcomingEvents();
+           setUpcomingEvents(upcomingEvents); 
+         } catch (err) {
+           console.error('Error fetching articles:', err);
+         }
+       };
+   
+       loadArticles();
+     }, []);
    return (
       <>
-         <HeaderOne />
+         <HeaderThree />
          <main className='fix'>
-            <Breadcrumbs page="blogs" style={false} />
-            <BlogArea style={true} />
-            <FooterNews />
+            <Breadcrumbs page="Etkinlikler" style={false} />
+            <BlogArea blogs={upcomingEvents} style={true} />
+            {/* <FooterNews /> */}
          </main>
          <FooterOne style={false} style_2={true} />
       </>

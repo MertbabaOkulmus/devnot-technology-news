@@ -79,7 +79,7 @@ const Banner = ({ featuredArticles = [] }: { featuredArticles?: NewsArticle[] })
    const smallPosts = mappedData.slice(1, 4);
 
    return (
-      <section className="banner-post-area-two pt-50 pb-30">
+      <section className="banner-post-area-two pt-20 pb-30">
          <div className="container">
             <div className="banner-post-inner">
                <div className="row">

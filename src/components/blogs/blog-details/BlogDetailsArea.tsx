@@ -1,8 +1,5 @@
 import BlogDetailsContent from "./BlogDetailsContent"
-import BlogAvatar from "./BlogAvatar"
 import BlogPrevNext from "./BlogPrevNext"
-import BlogComment from "./BlogComment"
-import BlogForm from "@/components/forms/BlogForm"
 import BlogSidebar from "../common-blog/BlogSidebar"
 import EventDetailsContent from "./EventDetailsContent"
 
@@ -19,10 +16,10 @@ const BlogDetailsArea = ({ style, isEventPage = false, featuredArticleDetail = {
                            :
                            <BlogDetailsContent featuredArticleDetail={featuredArticleDetail} />
                         }
-                        <BlogAvatar />
+                       {/* <BlogAvatar /> */}
                         <BlogPrevNext />
-                        <BlogComment />
-                        <BlogForm />
+                        {/* <BlogComment /> 
+                        <BlogForm />*/}
                      </div>
                   </div>
                   <BlogSidebar />

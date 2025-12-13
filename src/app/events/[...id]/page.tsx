@@ -5,7 +5,7 @@ import BlogDetailsArea from "@/components/blogs/blog-details/BlogDetailsArea";
 import Breadcrumbs from "@/components/common/Breadcrumbs";
 import Wrapper from "@/layouts/Wrapper";
 import FooterOne from "@/layouts/footers/FooterOne";
-import HeaderOne from "@/layouts/headers/HeaderOne";
+import HeaderThree from "@/layouts/headers/HeaderThree";
 import { fetchEventSlug, NewsArticle } from '@/services';
 import { useEffect, useState } from "react";
 
@@ -74,7 +74,7 @@ export default function Page({ params }: Props) {
    return (
       <Wrapper>
          <>
-            <HeaderOne />
+           <HeaderThree />
             <main className="fix">
                <Breadcrumbs page={featuredEventDetail.title} style={true} />
                <BlogDetailsArea style={false} isEventPage={true} featuredEventDetail={featuredEventDetail} />

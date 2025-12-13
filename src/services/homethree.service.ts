@@ -14,7 +14,7 @@ type User = {
   articles: any[];
 };
 
-type Category = {
+export type Category = {
   id: number;
   name: string;
   slug: string;
@@ -39,6 +39,10 @@ export type NewsArticle = {
   publishedAt: string;
   createdAt: string;
   updatedAt: string | null;
+  date: string | null;
+  description: any | null;
+  location: string | null;
+  isActive?: boolean;
   user: User;
   category: Category;
   articleTags: any[];

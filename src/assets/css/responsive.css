@@ -56,12 +56,15 @@
     font-size: 24px;
 }
 .banner-post-content-four {
-    left: 20px;
-    right: 20px;
-    bottom: 35px;
+    bottom: 0px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 .banner-post-thumb-four img {
-    height: 390px;
+    height: 250px;
 }
 .contact-map {
     height: 450px;
@@ -660,7 +663,7 @@
     width: 100%;
 }
 .banner-post-thumb-four img {
-    height: 370px;
+    height: 250px;
 }
 .politics-post-wrap .row .col-69 {
     width: 100%;

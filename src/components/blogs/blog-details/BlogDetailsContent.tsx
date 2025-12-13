@@ -8,7 +8,6 @@ import VideoPopup from "@/modals/VideoPopup"
 import blogThumb_1 from "@/assets/img/blog/blog_details01.jpg"
 // İç içerik resimleri (Dinamik veri yoksa statik kalır)
 import blogThumb_2 from "@/assets/img/blog/blog_details02.jpg"
-import blogThumb_3 from "@/assets/img/blog/blog_details03.jpg"
 
 // Gelen featuredArticleDetail verisinin yapısı için arayüz (tüm yapıyı kapsayacak şekilde)
 interface ArticleDetail {
@@ -173,7 +172,7 @@ const BlogDetailsContent = ({ featuredArticleDetail }: BlogDetailsContentProps) 
                                 <ul className="list-wrap">
                                     {item.articleTags?.map((articleTag, index) => (
                                         <li key={index}>
-                                            <Link href={`/blog/tag/${articleTag.tag.slug}`}>{articleTag.tag.name}</Link>
+                                            <Link href={`#`}>{articleTag.tag.name}</Link>
                                         </li>
                                     ))}
                                 </ul>
