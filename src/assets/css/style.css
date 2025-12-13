@@ -6617,17 +6617,18 @@ label {
 
 /* SADECE UpcomingEvents slider'ını etkileyen özel CSS kuralları */
 
-/* 1. Her kartın sağına ve soluna 8px boşluk (toplam 16px) ekler. */
-.events-slider-with-gap .slick-slide {
-    padding: 0 8px !important; 
+/* Sadece sizin bu slider'ınızı hedefliyoruz */
+.events-slider-with-gap .slick-list {
+    margin: 0; 
 }
 
-/* 2. Slider'ın kapsayıcısına negatif margin ekleyerek boşlukları container dışına iter ve tasarımı düzgün hizalar. */
-.events-slider-with-gap .slick-list {
-    margin: 0 -8px !important; 
+.events-slider-with-gap .slick-slide {
+    padding: 0; 
 }
 
 
 .banner-post-four{
     width: 300px !important;
+   margin-left: 0;
+    margin-right: 0;
 }

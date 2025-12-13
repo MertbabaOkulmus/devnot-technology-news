@@ -2,8 +2,9 @@
 
 import Link from "next/link"
 import Image from "next/image";
-import Slider from "react-slick"; 
-import React, { useRef } from "react"; 
+import Slider from "react-slick";
+import React, { useRef } from "react";
+import "@/assets/css/upcoming-events.css"
 
 // Tek varsayılan resim import'u
 import bannerThumb_1 from "@/assets/img/blog/cr_banner_post01.jpg"
@@ -14,17 +15,17 @@ interface EventData {
     title: string;
     slug: string;
     description: string;
-    date: string; 
+    date: string;
     location: string;
     website: string;
-    imageUrl: string | null; 
+    imageUrl: string | null;
     eventTypeId: number;
     isActive: boolean;
     createdAt: string;
     updatedAt: string | null;
     eventType: {
         id: number;
-        name: string; 
+        name: string;
         isActive: boolean;
     };
 }
@@ -36,44 +37,66 @@ interface UpcomingEventsProps {
 
 // SLIDER AYARLARI
 const setting = {
-   infinite: true,
-   speed: 1000,
-   slidesToShow: 3, 
-   slidesToScroll: 1,
-   dots: false,
-   arrows: false,
-   autoplay: true, // Her saniye kayma
-   autoplaySpeed: 2000, // 2.5 saniye
-   centerMode: false, // Boşluk için kapatıldı
-   responsive: [
-      { breakpoint: 1200, settings: { slidesToShow: 2, slidesToScroll: 1, infinite: true, } },
-      { breakpoint: 992, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 767, settings: { slidesToShow: 2, slidesToScroll: 1, arrows: false, } },
-      { breakpoint: 575, settings: { slidesToShow: 1, slidesToScroll: 1, arrows: false, } },
-   ]
+    infinite: true,
+    speed: 800,
+    slidesToShow: 4, // Normal 3 kart
+    slidesToScroll: 1,
+    dots: false,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    centerMode: false,
+    cssEase: 'linear',
+    pauseOnHover: true,
+    swipeToSlide: true,
+    responsive: [
+        { 
+            breakpoint: 1200, 
+            settings: { 
+                slidesToShow: 2, 
+                slidesToScroll: 1, 
+                infinite: true,
+            } 
+        },
+        { 
+            breakpoint: 992, 
+            settings: { 
+                slidesToShow: 2, 
+                slidesToScroll: 1,
+                infinite: true,
+            } 
+        },
+        { 
+            breakpoint: 767, 
+            settings: { 
+                slidesToShow: 1, 
+                slidesToScroll: 1, 
+                arrows: false,
+                infinite: true,
+            } 
+        },
+    ]
 }
 
-// Servisten gelen veriyi, bileşenin beklediği formata dönüştüren yardımcı fonksiyon
 const mapEventToBannerItem = (event: EventData) => {
-    
+
     const date = new Date(event.date);
     const dateOptions: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = date.toLocaleDateString('tr-TR', dateOptions); 
-    
-   // const thumbPath = event.imageUrl || bannerThumb_1; // Tek varsayılan resim
+    const formattedDate = date.toLocaleDateString('tr-TR', dateOptions);
+
     const thumbPath = bannerThumb_1; // Tek varsayılan resim
     const tag = event.eventType.name;
-    const time = "60 Mins"; 
+    const time = "60 Mins";
 
     return {
         id: event.id,
-        title: event.title, 
-        thumb: thumbPath, 
+        title: event.title,
+        thumb: thumbPath,
         tag: tag,
         date: formattedDate,
         time: time,
         slug: event.slug,
-        authorName: "Admin", 
+        authorName: "Admin",
     };
 };
 
@@ -85,22 +108,22 @@ const UpcomingEvents = ({ upcomingEvents = [] }: UpcomingEventsProps) => {
 
     return (
         <section className="banner-post-area-four pb-30 mt-80">
-            <div className="container">     
+            <div className="container">
                 {/* Slider İçeriği */}
-                <div className="upcoming-events-wrap"> 
+                <div className="upcoming-events-wrap">
                     {mappedData.length > 0 ? (
                         // Boşluk ayarı için benzersiz sınıf eklendi: events-slider-with-gap
                         <Slider {...setting} ref={sliderRef} className="row banner-post-active events-slider-with-gap">
                             {mappedData.map((item) => (
-                                <div key={item.id}> 
+                                <div key={item.id}>
                                     <div className="banner-post-four">
                                         <div className="banner-post-thumb-four">
                                             <Link href={`/events/${item.slug}`}>
-                                                <Image 
-                                                    src={item.thumb} 
-                                                    alt={item.title} 
-                                                    width={300} 
-                                                    height={250} 
+                                                <Image
+                                                    src={item.thumb}
+                                                    alt={item.title}
+                                                    width={300}
+                                                    height={250}
                                                     style={{ objectFit: 'cover' }}
                                                 />
                                             </Link>
