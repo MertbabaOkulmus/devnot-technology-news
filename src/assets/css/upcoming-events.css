@@ -12,6 +12,16 @@
   align-items: stretch;
 }
 
+/* Slider geçiş düzeltmeleri */
+.events-slider-with-gap .slick-slide {
+  opacity: 1 !important;
+  transition: opacity 0.3s ease;
+}
+
+.events-slider-with-gap .slick-cloned {
+  opacity: 1 !important;
+}
+
 /* Container taşmayı önle */
 .banner-post-area-four {
   overflow: hidden;

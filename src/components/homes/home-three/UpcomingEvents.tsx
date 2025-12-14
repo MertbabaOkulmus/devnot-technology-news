@@ -39,16 +39,18 @@ interface UpcomingEventsProps {
 const setting = {
     infinite: true,
     speed: 800,
-    slidesToShow: 4, // Normal 3 kart
+    slidesToShow: 3,
     slidesToScroll: 1,
     dots: false,
     arrows: false,
     autoplay: true,
     autoplaySpeed: 3000,
     centerMode: false,
-    cssEase: 'linear',
+    cssEase: 'ease-in-out',
     pauseOnHover: true,
     swipeToSlide: true,
+    waitForAnimate: false,
+    lazyLoad: 'ondemand' as const, // 'as const' ekle
     responsive: [
         { 
             breakpoint: 1200, 
