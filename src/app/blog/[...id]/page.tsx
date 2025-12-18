@@ -76,7 +76,7 @@ export default function Page({ params }: Props) {
          <>
             <HeaderThree />
             <main className="fix">
-               <Breadcrumbs page={featuredArticleDetail.title} style={true} />
+              {/* <Breadcrumbs page={featuredArticleDetail.title} style={true} /> */}
                <BlogDetailsArea style={false} isEventPage={false} featuredArticleDetail={featuredArticleDetail}/>
             </main>
             <FooterOne style={false} style_2={true} />

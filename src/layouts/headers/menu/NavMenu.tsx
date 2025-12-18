@@ -22,20 +22,6 @@ interface MenuItem {
 
 const menu_data: MenuItem[] = [
     {
-        id: 1,
-        has_dropdown: true,
-        title: "Home",
-        link: "#",
-        sub_menus: [
-            { link: "/", title: "Home 01 - Default", mega_dropdown: false, },
-            { link: "/home-two", title: "Home 02 - Gaming", mega_dropdown: false, },
-            { link: "/home-three", title: "Home 03 - Technology", mega_dropdown: false, },
-            { link: "/home-four", title: "Home 04 - Travel", mega_dropdown: false, },
-            { link: "/home-five", title: "Home 05 - Crypto", mega_dropdown: false, },
-            { link: "/home-six", title: "Home 06 - Newspaper", mega_dropdown: false, },
-        ],
-    },
-    {
         id: 2,
         has_dropdown: false,
         title: "Etkinlikler",
@@ -50,30 +36,6 @@ const menu_data: MenuItem[] = [
             // **STATİK ALT MENÜLER BURADAN KALDIRILDI**
             // Dinamik kategoriler yüklendikten sonra bu menü altı dolacaktır.
         ],
-    },
-    {
-        id: 4,
-        has_dropdown: true,
-        title: "Features",
-        link: "#",
-        sub_menus: [
-            {
-                link: "#",
-                title: "Single Post Layout",
-                mega_dropdown: true,
-                mega_menus: [
-                    { link: "/blog-details", title: "Single post 01" },
-                    { link: "/blog-details-two", title: "Single post 02", },
-                ],
-            },
-            { link: "/author", title: "Author Details", mega_dropdown: false, },
-        ],
-    },
-    {
-        id: 5,
-        has_dropdown: false,
-        title: "Contact",
-        link: "/contact",
     },
 ];
 

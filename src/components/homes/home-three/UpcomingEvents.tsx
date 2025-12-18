@@ -43,40 +43,14 @@ const setting = {
     slidesToScroll: 1,
     dots: false,
     arrows: false,
-    autoplay: true,
-    autoplaySpeed: 3000,
+    autoplay: false,         
     centerMode: false,
     cssEase: 'ease-in-out',
     pauseOnHover: true,
-    swipeToSlide: true,
+    swipeToSlide: true,  
     waitForAnimate: false,
-    lazyLoad: 'ondemand' as const, // 'as const' ekle
+    lazyLoad: 'ondemand' as const,
     responsive: [
-        { 
-            breakpoint: 1200, 
-            settings: { 
-                slidesToShow: 2, 
-                slidesToScroll: 1, 
-                infinite: true,
-            } 
-        },
-        { 
-            breakpoint: 992, 
-            settings: { 
-                slidesToShow: 2, 
-                slidesToScroll: 1,
-                infinite: true,
-            } 
-        },
-        { 
-            breakpoint: 767, 
-            settings: { 
-                slidesToShow: 1, 
-                slidesToScroll: 1, 
-                arrows: false,
-                infinite: true,
-            } 
-        },
     ]
 }
 
@@ -88,7 +62,6 @@ const mapEventToBannerItem = (event: EventData) => {
 
     const thumbPath = bannerThumb_1; // Tek varsayılan resim
     const tag = event.eventType.name;
-    const time = "60 Mins";
 
     return {
         id: event.id,
@@ -96,9 +69,7 @@ const mapEventToBannerItem = (event: EventData) => {
         thumb: thumbPath,
         tag: tag,
         date: formattedDate,
-        time: time,
         slug: event.slug,
-        authorName: "Admin",
     };
 };
 
@@ -135,11 +106,9 @@ const UpcomingEvents = ({ upcomingEvents = [] }: UpcomingEventsProps) => {
                                             <h2 className="post-title bold-underline">
                                                 <Link href={`/events/${item.slug}`}>{item.title}</Link>
                                             </h2>
-                                            <div className="blog-post-meta white-blog-meta">
+                                            <div className="blog-post-meta">
                                                 <ul className="list-wrap">
-                                                    <li><i className="flaticon-user"></i>by<a href="/author">{item.authorName}</a></li>
                                                     <li><i className="flaticon-calendar"></i>{item.date}</li>
-                                                    <li><i className="flaticon-history"></i>{item.time}</li>
                                                 </ul>
                                             </div>
                                         </div>

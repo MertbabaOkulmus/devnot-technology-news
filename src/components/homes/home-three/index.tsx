@@ -28,11 +28,11 @@ const HomeThree = ({ featuredArticles = [], featuredLatest = [], upcomingEvents 
             <Banner featuredArticles={featuredArticles} />
             {/*<AdBanner />*/}
             <EditorPost featuredLatest={featuredLatest} />
-            <TrandingPost />
-            <AdBannerThree />
-            <OverlayPost />
-            <WeeklyPost />
-            <Newsletter />
+            {/*<TrandingPost />*/}
+           {/* <AdBannerThree />*/}
+           {/* <OverlayPost />*/}
+          {/*  <WeeklyPost />*/}
+          {/*   <Newsletter />*/}
          </main>
          <FooterOne style={false} style_2={true} />
       </>

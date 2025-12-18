@@ -60,7 +60,6 @@ const mapArticleToBannerItem = (article: NewsArticle) => {
       thumb: thumbUrl,
       tag: tag,
       date: formattedDate,
-      time: "5 min read",
       slug: article.slug,
       authorName: article.user.name || "Admin",
    };
@@ -110,7 +109,6 @@ const Banner = ({ featuredArticles = [] }: { featuredArticles?: NewsArticle[] })
                                        by<Link href="/author">{bigPost.authorName}</Link>
                                     </li>
                                     <li><i className="flaticon-calendar"></i>{bigPost.date}</li>
-                                    <li><i className="flaticon-history"></i>{bigPost.time}</li>
                                  </ul>
                               </div>
                            </div>

@@ -79,22 +79,10 @@ const BlogDetailsContent = ({ featuredArticleDetail }: BlogDetailsContentProps) 
                         <div className="blog-post-meta">
                             <ul className="list-wrap">
                                 {/* Yazar Adı */}
-                                <li><i className="flaticon-user"></i>by<Link href="/author">{authorName}</Link></li>
+                               
                                 {/* Yayın Tarihi */}
                                 <li><i className="flaticon-calendar"></i>{publishedDate}</li>
                                 {/* Yorumlar (Statik bırakıldı, veri yok) */}
-                                <li><i className="flaticon-chat"></i><Link href="/blog-details">05 Comments</Link></li>
-                                {/* Okuma Süresi (Statik bırakıldı, veri yok) */}
-                                <li><i className="flaticon-history"></i>20 Mins</li>
-                            </ul>
-                        </div>
-                        <div className="blog-details-social">
-                            {/* Sosyal Medya ikonları (Statik bırakıldı) */}
-                            <ul className="list-wrap">
-                                <li><Link href="#"><i className="fab fa-facebook-f"></i></Link></li>
-                                <li><Link href="#"><i className="fab fa-twitter"></i></Link></li>
-                                <li><Link href="#"><i className="fab fa-instagram"></i></Link></li>
-                                <li><Link href="#"><i className="fab fa-linkedin-in"></i></Link></li>
                             </ul>
                         </div>
                     </div>
@@ -175,19 +163,6 @@ const BlogDetailsContent = ({ featuredArticleDetail }: BlogDetailsContentProps) 
                                             <Link href={`#`}>{articleTag.tag.name}</Link>
                                         </li>
                                     ))}
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="col-lg-6">
-                            <div className="post-share">
-                                <h5 className="title">Share:</h5>
-                                {/* Sosyal Medya Paylaşımı (Statik bırakıldı) */}
-                                <ul className="list-wrap">
-                                    <li><Link href="#"><i className="fab fa-facebook-f"></i></Link></li>
-                                    <li><Link href="#"><i className="fab fa-twitter"></i></Link></li>
-                                    <li><Link href="#"><i className="fab fa-instagram"></i></Link></li>
-                                    <li><Link href="#"><i className="fab fa-linkedin-in"></i></Link></li>
-                                    <li><Link href="#"><i className="fab fa-youtube"></i></Link></li>
                                 </ul>
                             </div>
                         </div>

@@ -3,12 +3,9 @@ import Image from "next/image"
 import NavMenu from "./menu/NavMenu"
 import Link from "next/link"
 import UseSticky from "@/hooks/UseSticky"
-import HeaderTopThree from "./menu/HeaderTopThree"
 import MobileMenu from "./menu/MobileMenu"
 import { useState } from "react"
-
-import logo_1 from "@/assets/img/logo/w_logo.png";
-import logo_2 from "@/assets/img/logo/logo.png";
+import logo_2 from "@/assets/img/logo/devnot-logo.png";
 
 const HeaderThree = () => {
 
@@ -28,9 +25,6 @@ const HeaderThree = () => {
                            <nav className="menu-nav">
                               <div className="logo">
                                  <Link href="/"><Image src={logo_2} alt="" /></Link>
-                              </div>
-                              <div className="logo d-none">
-                                 <Link href="/"><Image src={logo_1} alt="" /></Link>
                               </div>
                               <div className="navbar-wrap main-menu d-none d-lg-flex">
                                  <NavMenu />

@@ -25,7 +25,7 @@ const BlogTwo = () => {
       <>
          <HeaderThree />
          <main className='fix'>
-            <Breadcrumbs page="Etkinlikler" style={false} />
+            {/* <Breadcrumbs page="Etkinlikler" style={false} /> */}
             <BlogArea blogs={upcomingEvents} style={true} />
             {/* <FooterNews /> */}
          </main>
