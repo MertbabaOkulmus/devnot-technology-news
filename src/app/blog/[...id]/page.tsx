@@ -2,7 +2,6 @@
 
 import { notFound } from "next/navigation";
 import BlogDetailsArea from "@/components/blogs/blog-details/BlogDetailsArea";
-import Breadcrumbs from "@/components/common/Breadcrumbs";
 import Wrapper from "@/layouts/Wrapper";
 import FooterOne from "@/layouts/footers/FooterOne";
 import { fetchArticleSlug, NewsArticle } from '@/services';

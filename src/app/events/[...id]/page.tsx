@@ -1,86 +1,64 @@
-'use client'; // <-- BU İFADE KALMALI
-
 import { notFound } from "next/navigation";
 import BlogDetailsArea from "@/components/blogs/blog-details/BlogDetailsArea";
-import Breadcrumbs from "@/components/common/Breadcrumbs";
 import Wrapper from "@/layouts/Wrapper";
 import FooterOne from "@/layouts/footers/FooterOne";
 import HeaderThree from "@/layouts/headers/HeaderThree";
-import { fetchEventSlug, NewsArticle } from '@/services';
-import { useEffect, useState } from "react";
+import { fetchEventSlug } from '@/services';
+import { Metadata } from "next";
 
-// Props tipi async olmadığı için Promise kaldırıldı
-type Props = {
-   // `params` prop'u artık doğrudan veriyi içeriyor
-   params: { id: string[] }; 
-};
-
-// Bileşen artık `async` OLMAMALI
-export default function Page({ params }: Props) {
-   
-   // Durum değişkenleri burada tanımlanır
-   const [featuredEventDetail, setFeaturedEventDetail] = useState<NewsArticle | null>(null);
-   const [loading, setLoading] = useState(true);
-
-   // `params` objesinden id'yi alın
+// 1. Dinamik SEO Ayarları (generateMetadata)
+// Bu fonksiyon sunucu tarafında çalışır ve arama motorları için title/description üretir.
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
    const { id } = params;
    const eventId = id[0];
-   
-   // Blog verisini sadece Client tarafında yüklemek için useEffect kullanılır.
-   useEffect(() => {
-     if (!eventId) {
-        setLoading(false);
-        return; // ID yoksa işlemi durdur
-     }
-     
-     const loadArticleData = async () => {
-       try {          
-         setLoading(true);
-         
-         // Veriyi servisten çekme
-         const eventData = await fetchEventSlug(eventId);
-         
-         if (!eventData) {
-             console.log('Etkinlik bulunamadı.');
-             notFound(); // Next.js'in notFound fonksiyonunu çağırabilirsiniz
-         }
-         
-         setFeaturedEventDetail(eventData);
-       }
-         catch (err) {
-             console.error('Hata: Etkinlik verisi çekilemedi:', err);
-             // Hata durumunda da yüklemeyi sonlandır
-         }
-         finally {
-             setLoading(false);
-         }
-       };
-       loadArticleData();
-       
-   // Bağımlılık dizisine eventId eklendi ki sadece ilk render'da çalışsın (veya ID değişirse)
-   }, [eventId]); 
-   
-   // Yükleniyor veya veri yoksa gösterilecekler
-   if (loading) {
-       return <Wrapper><p style={{textAlign: 'center', padding: '100px'}}>Yükleniyor...</p></Wrapper>;
+   const eventData = await fetchEventSlug(eventId);
+
+   if (!eventData) {
+      return {
+         title: "Etkinlik Bulunamadı",
+      };
    }
-   
-   // Etkinlik bulunamazsa veya featuredEventDetail null ise
+
+   return {
+      title: `${eventData.title} | Site Adınız`,
+      description: eventData.summary || `${eventData.title} hakkında detaylı bilgi.`, // Varsa özet, yoksa title kullanır
+      openGraph: {
+         title: eventData.title,
+         description: eventData.summary,
+         images: eventData.image ? [{ url: eventData.image }] : [],
+      },
+   };
+}
+
+type Props = {
+   params: { id: string[] };
+};
+
+// 2. Sayfa Bileşeni (Server Component)
+// 'use client' kaldırıldığı için artık 'async' kullanabiliriz.
+export default async function Page({ params }: Props) {
+   const { id } = params;
+   const eventId = id[0];
+
+   // Veriyi doğrudan sunucu tarafında çekiyoruz
+   const featuredEventDetail = await fetchEventSlug(eventId);
+
+   // Eğer veri yoksa Next.js'in otomatik 404 sayfasına yönlendirir
    if (!featuredEventDetail) {
-       // Bu kısma notFound() yerine özel bir 404 bileşeni de koyabilirsiniz
-       return <Wrapper><p style={{textAlign: 'center', padding: '100px'}}>Etkinlik bulunamadı.</p></Wrapper>;
+      notFound();
    }
-   
+
    return (
       <Wrapper>
-         <>
-           <HeaderThree />
-            <main className="fix">
-               {/*<Breadcrumbs page={featuredEventDetail.title} style={true} />*/}
-               <BlogDetailsArea style={false} isEventPage={true} featuredEventDetail={featuredEventDetail} />
-            </main>
-            <FooterOne style={false} style_2={true} />
-         </>
+         <HeaderThree />
+         <main className="fix">
+            <BlogDetailsArea 
+               style={false} 
+               isEventPage={true} 
+               featuredEventDetail={featuredEventDetail} 
+            />
+         </main>
+         <FooterOne style={false} style_2={true} />
       </Wrapper>
-   )
+   );
 }

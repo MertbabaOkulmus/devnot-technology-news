@@ -151,7 +151,7 @@ const BlogDetailsContent = ({ featuredArticleDetail }: BlogDetailsContentProps) 
                {/* --- STATİK/EK İÇERİK BÖLÜMLERİ SONU --- */}
 
 
-                <div className="blog-details-bottom">
+               {item.articleTags.length>0 && <div className="blog-details-bottom">
                     <div className="row align-items-center">
                         <div className="col-lg-6">
                             <div className="post-tags">
@@ -167,7 +167,7 @@ const BlogDetailsContent = ({ featuredArticleDetail }: BlogDetailsContentProps) 
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>}
             </div>
             {/* Video Modal (Statik bırakıldı) */}
             <VideoPopup

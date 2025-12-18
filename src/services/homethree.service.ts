@@ -81,6 +81,10 @@ export const fetchArticleSlug = async (slug: string): Promise<NewsArticle> => {
   return get<NewsArticle>(`/Article/${slug}`);
 };
 
+export const fetchArticleCategorySlug = async (slug: string): Promise<NewsArticle> => {
+  return get<NewsArticle>(`/Article/category/${slug}`);
+};
+
 const HomeThreeService = {
   fetchFeaturedArticles,
   fetchCategories,
@@ -88,6 +92,8 @@ const HomeThreeService = {
   fetchHomeThreeRecent,
   fetchUpcomingEvents,
   fetchEventSlug,
+  fetchArticleSlug,
+  fetchArticleCategorySlug
 };
 
 export default HomeThreeService;
