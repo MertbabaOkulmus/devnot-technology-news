@@ -34,12 +34,12 @@ interface EventDetailsContentProps {
 const formatPublishedDate = (dateString: string) => {
     const date = new Date(dateString);
     // Saat/Zamanı da göstermek için düzenledik
-    const options: Intl.DateTimeFormatOptions = { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric', 
-        hour: '2-digit', 
-        minute: '2-digit' 
+    const options: Intl.DateTimeFormatOptions = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
     };
     return date.toLocaleDateString('tr-TR', options);
 }
@@ -47,10 +47,10 @@ const formatPublishedDate = (dateString: string) => {
 const EventDetailsContent = ({ featuredEventDetail }: EventDetailsContentProps) => {
 
     const [isVideoOpen, setIsVideoOpen] = useState(false);
-    
+
     // Veri kontrolü
     if (!featuredEventDetail) {
-        return <div>Etkinlik detayı bulunamadı.</div>; 
+        return <div>Etkinlik detayı bulunamadı.</div>;
     }
 
     const item = featuredEventDetail;
@@ -58,7 +58,7 @@ const EventDetailsContent = ({ featuredEventDetail }: EventDetailsContentProps) 
     const eventDate = formatPublishedDate(item.date);
     // Gelen data'da imageUrl null, bu yüzden varsayılanı kullanacak
     //const mainImage = item.imageUrl || blogThumb_1; 
-    const mainImage =  blogThumb_1; 
+    const mainImage = blogThumb_1;
 
     // Not: Etkinlik verisinde yazar, yorum sayısı ve etiketler bulunmadığı için kaldırılmıştır/statik bırakılmıştır.
 
@@ -74,19 +74,11 @@ const EventDetailsContent = ({ featuredEventDetail }: EventDetailsContentProps) 
                         <div className="blog-post-meta">
                             <ul className="list-wrap">
                                 {/* Konum */}
-                                <li><i className="fas fa-map-marker-alt"></i>**{item.location}**</li>
+                                <li><i className="fas fa-map-marker-alt"></i>{item.location}</li>
                                 {/* Tarih ve Saat */}
                                 <li><i className="flaticon-calendar"></i>{eventDate}</li>
                                 {/* Web Sitesi Linki (Okuma Süresi yerine) */}
                                 <li><i className="fas fa-link"></i><Link href={item.website} target="_blank">Web Sitesi</Link></li>
-                            </ul>
-                        </div>
-                        <div className="blog-details-social">
-                            {/* Sosyal Medya ikonları (Statik bırakıldı) */}
-                            <ul className="list-wrap">
-                                <li><Link href="#"><i className="fab fa-facebook-f"></i></Link></li>
-                                <li><Link href="#"><i className="fab fa-twitter"></i></Link></li>
-                                <li><Link href="#"><i className="fab fa-linkedin-in"></i></Link></li>
                             </ul>
                         </div>
                     </div>
@@ -94,44 +86,36 @@ const EventDetailsContent = ({ featuredEventDetail }: EventDetailsContentProps) 
 
                 {/* Ana Resim */}
                 <div className="blog-details-thumb">
-                    <Image 
+                    <Image
                         // ImageUrl statik resim objesi veya dinamik string olabilir
-                        src={mainImage} 
-                        alt={item.title} 
-                        width={850} 
-                        height={500} 
-                        priority 
+                        src={mainImage}
+                        alt={item.title}
+                        width={850}
+                        height={500}
+                        priority
                         style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
                     />
                 </div>
 
                 {/* === ANA İÇERİK (HTML Injection) === */}
                 {/* Description alanı HTML içerdiği için dangerouslySetInnerHTML kullanıyoruz */}
-                <div 
-                    className="blog-main-content mt-4" 
-                    dangerouslySetInnerHTML={{ __html: item.description }} 
+                <div
+                    className="blog-main-content mt-4"
+                    dangerouslySetInnerHTML={{ __html: item.description }}
                 />
-                
+
                 {/* Ek Bilgiler ve Paylaşım Alanı */}
                 <div className="blog-details-bottom mt-5">
                     <div className="row align-items-center">
                         <div className="col-lg-6">
-                            <div className="post-tags">
-                                <h5 className="title">Yer & Tarih:</h5>
-                                <p className="mb-0">{item.location}</p>
-                                <p className="mb-0">{eventDate}</p>
-                            </div>
-                        </div>
-                        <div className="col-lg-6">
-                            <div className="post-share">
-                                <h5 className="title">Paylaş:</h5>
-                                {/* Sosyal Medya Paylaşımı (Statik bırakıldı) */}
-                                <ul className="list-wrap">
-                                    <li><Link href="#"><i className="fab fa-facebook-f"></i></Link></li>
-                                    <li><Link href="#"><i className="fab fa-twitter"></i></Link></li>
-                                    <li><Link href="#"><i className="fab fa-linkedin-in"></i></Link></li>
-                                </ul>
-                            </div>
+                                <div className="post-tags">
+                                    <h5 className="title">Mekan:</h5>
+                                    <p className="mb-0">{item.location}</p>
+                                </div>
+                                <div className="post-tags">
+                                    <h5 className="title">Tarih:</h5>
+                                    <p className="mb-0">{eventDate}</p>
+                                </div>
                         </div>
                     </div>
                 </div>

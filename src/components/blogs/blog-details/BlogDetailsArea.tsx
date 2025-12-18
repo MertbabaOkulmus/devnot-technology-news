@@ -16,8 +16,8 @@ const BlogDetailsArea = ({ style, isEventPage = false, featuredArticleDetail = {
                            :
                            <BlogDetailsContent featuredArticleDetail={featuredArticleDetail} />
                         }
-                       {/* <BlogAvatar /> */}
-                        <BlogPrevNext />
+                       {/* <BlogAvatar /> 
+                        <BlogPrevNext />*/}
                         {/* <BlogComment /> 
                         <BlogForm />*/}
                      </div>
