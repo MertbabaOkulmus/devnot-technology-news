@@ -38,7 +38,7 @@ const mapArticleToEditorItem = (article: NewsArticle) => {
     const date = new Date(article.publishedAt);
     const formattedDate = date.toLocaleDateString('tr-TR', dateOptions).replace(/\.$/, ''); 
     
-    const thumbPath = article.media?.[0]?.url || defaultEditorThumb;
+    const thumbPath = article.imageUrl || defaultEditorThumb;
     const tag = article.category?.name || article.articleTags?.[0]?.tag?.name || "Gündem";
     
     return {
@@ -60,7 +60,7 @@ const EditorPost = ({ featuredLatest = [] }: { featuredLatest?: NewsArticle[] })
    const handleNextClick = () => { if (sliderRef.current) { sliderRef.current.slickNext(); } };
 
    return (
-      <section className="editor-post-area pt-50">
+      <section className="editor-post-area pt-50 pb-40">
          <div className="container">
             {/* Başlık ve Navigasyon Bölümü (Aynı Kalıyor) */}
             <div className="row">

@@ -2,7 +2,7 @@ import footer_data from "@/data/FooterData"
 import Image from "next/image"
 import Link from "next/link"
 
-import footerLogo from "@/assets/img/logo/w_logo.png";
+import footerLogo from "@/assets/img/logo/devnot-logo.png";
 import bg_img from "@/assets/img/images/footer_shape.png"
 
 interface StyleType {

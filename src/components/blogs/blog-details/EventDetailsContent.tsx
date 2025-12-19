@@ -57,8 +57,7 @@ const EventDetailsContent = ({ featuredEventDetail }: EventDetailsContentProps) 
     const eventType = item.eventType?.name || "Etkinlik";
     const eventDate = formatPublishedDate(item.date);
     // Gelen data'da imageUrl null, bu yüzden varsayılanı kullanacak
-    //const mainImage = item.imageUrl || blogThumb_1; 
-    const mainImage = blogThumb_1;
+    const mainImage = item.imageUrl || blogThumb_1; 
 
     // Not: Etkinlik verisinde yazar, yorum sayısı ve etiketler bulunmadığı için kaldırılmıştır/statik bırakılmıştır.
 

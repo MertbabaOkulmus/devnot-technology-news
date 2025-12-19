@@ -47,17 +47,13 @@ const mapArticleToBannerItem = (article: NewsArticle) => {
 
    const date = new Date(article.publishedAt);
    const formattedDate = date.toLocaleDateString('tr-TR', dateOptions).replace(/\.$/, '');
-
-   // Varsayım: Makale objesinde medya bilgisi mevcut.
-   const thumbUrl = article.media?.[0]?.url || bannerThumb_1;
-
    // Etiket (Tag): Kategori adı veya ilk etiket adı
    const tag = article.category?.name || article.articleTags?.[0]?.tag?.name || "Gündem";
 
    return {
       id: article.id,
       title: article.title,
-      thumb: thumbUrl,
+      imageUrl: article.imageUrl,
       tag: tag,
       date: formattedDate,
       slug: article.slug,
@@ -78,7 +74,7 @@ const Banner = ({ featuredArticles = [] }: { featuredArticles?: NewsArticle[] })
    const smallPosts = mappedData.slice(1, 4);
 
    return (
-      <section className="banner-post-area-two pt-20 pb-30">
+      <section className="banner-post-area-two pb-30">
          <div className="container">
             <div className="banner-post-inner">
                <div className="row">
@@ -89,7 +85,7 @@ const Banner = ({ featuredArticles = [] }: { featuredArticles?: NewsArticle[] })
                            <div className="banner-post-thumb-two">
                               <Link href={`/blog/${bigPost.slug}`}>
                                  <Image
-                                    src={bigPost.thumb}
+                                    src={bigPost.imageUrl || bannerThumb_1}
                                     alt={bigPost.title}
                                     width={750}
                                     height={500}
@@ -104,11 +100,11 @@ const Banner = ({ featuredArticles = [] }: { featuredArticles?: NewsArticle[] })
                               </h2>
                               <div className="blog-post-meta white-blog-meta">
                                  <ul className="list-wrap">
+                                    <li><i className="flaticon-calendar"></i>{bigPost.date}</li>
                                     <li>
                                        <i className="flaticon-user"></i>
-                                       by<Link href="/author">{bigPost.authorName}</Link>
+                                       <>{bigPost.authorName}</>
                                     </li>
-                                    <li><i className="flaticon-calendar"></i>{bigPost.date}</li>
                                  </ul>
                               </div>
                            </div>
@@ -123,7 +119,7 @@ const Banner = ({ featuredArticles = [] }: { featuredArticles?: NewsArticle[] })
                            <div className="banner-post-thumb-two">
                               <Link href={`/blog/${item.slug}`}>
                                  <Image
-                                    src={item.thumb}
+                                    src={item.imageUrl || bannerThumb_1}
                                     alt={item.title}
                                     width={300}
                                     height={200}
@@ -138,6 +134,10 @@ const Banner = ({ featuredArticles = [] }: { featuredArticles?: NewsArticle[] })
                               <div className="blog-post-meta white-blog-meta">
                                  <ul className="list-wrap">
                                     <li><i className="flaticon-calendar"></i>{item.date}</li>
+                                     <li>
+                                       <i className="flaticon-user"></i>
+                                       <>{bigPost.authorName}</>
+                                    </li>
                                  </ul>
                               </div>
                            </div>

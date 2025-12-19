@@ -2,7 +2,7 @@ import footer_data from "@/data/FooterData"
 import Image from "next/image"
 import Link from "next/link"
 
-import footerLogo from "@/assets/img/logo/logo.png";
+import footerLogo from "@/assets/img/logo/devnot-logo.png";
 
 const FooterThree = () => {
 

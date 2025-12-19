@@ -33,9 +33,6 @@ interface ArticleDetail {
             slug: string;
         };
     }>;
-    media: Array<{
-        url: string;
-    }>;
 }
 
 interface BlogDetailsContentProps {
@@ -62,7 +59,7 @@ const BlogDetailsContent = ({ featuredArticleDetail }: BlogDetailsContentProps) 
     const authorName = item.user?.name || "Admin";
     const categoryName = item.category?.name || "Genel";
     const publishedDate = formatPublishedDate(item.publishedAt);
-    const mainImage = item.media?.[0]?.url || blogThumb_1; 
+    const mainImage = item.imageUrl || blogThumb_1; 
     const summaryText = item.summary || item.content.substring(0, 150) + '...'; // Özet yoksa içeriğin başını kullan
 
     // Not: Yorum sayısı ve okuma süresi verinizde bulunmadığı için statik/tahmini bırakılmıştır.
@@ -82,6 +79,7 @@ const BlogDetailsContent = ({ featuredArticleDetail }: BlogDetailsContentProps) 
                                
                                 {/* Yayın Tarihi */}
                                 <li><i className="flaticon-calendar"></i>{publishedDate}</li>
+                                <li><i className="flaticon-user"></i>{authorName}</li>
                                 {/* Yorumlar (Statik bırakıldı, veri yok) */}
                             </ul>
                         </div>
