@@ -47,6 +47,7 @@ export type NewsArticle = {
   category: Category;
   articleTags: any[];
   media: any[];
+  imageUrl: string;
 };
 
 /**

@@ -34,11 +34,11 @@
 /* Profesyonel Etkinlik Kartı - Animasyon Yok */
 .upcoming-events-wrap .banner-post-four {
   position: relative;
-  border-radius: 20px;
+  border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  height: 420px;
+  height: 180px;
   background: #1a1a2e;
 }
 
@@ -92,14 +92,12 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Etiket Badge */
 .upcoming-events-wrap .banner-post-content-four .post-tag {
-  position: absolute;
-  top: 24px;
-  left: 28px;
   display: inline-block;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #fff;

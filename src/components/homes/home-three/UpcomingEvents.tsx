@@ -59,14 +59,12 @@ const mapEventToBannerItem = (event: EventData) => {
     const date = new Date(event.date);
     const dateOptions: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
     const formattedDate = date.toLocaleDateString('tr-TR', dateOptions);
-
-    const thumbPath = bannerThumb_1; // Tek varsayılan resim
     const tag = event.eventType.name;
 
     return {
         id: event.id,
         title: event.title,
-        thumb: thumbPath,
+        thumb: event.imageUrl || bannerThumb_1,
         tag: tag,
         date: formattedDate,
         slug: event.slug,
@@ -80,7 +78,7 @@ const UpcomingEvents = ({ upcomingEvents = [] }: UpcomingEventsProps) => {
     const mappedData = upcomingEvents.map(mapEventToBannerItem);
 
     return (
-        <section className="banner-post-area-four pb-30 mt-80">
+        <section className="banner-post-area-four pb-30 mt-35">
             <div className="container">
                 {/* Slider İçeriği */}
                 <div className="upcoming-events-wrap">

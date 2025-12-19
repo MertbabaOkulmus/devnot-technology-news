@@ -213,7 +213,7 @@ p {
 	font-weight: var(--tg-body-font-weight);
 	line-height: var(--tg-body-line-height);
 	color: var(--tg-paragraph-color);
-    text-transform: capitalize;
+    
 	margin-bottom: 15px;
 }
 hr {
@@ -308,7 +308,6 @@ label {
     margin-bottom: 0;
     padding: 18px 45px;
     text-align: center;
-    text-transform: capitalize;
     touch-action: manipulation;
     transition: all 0.3s ease 0s;
     vertical-align: middle;
@@ -427,7 +426,6 @@ label {
     font-size: 13px;
     font-weight: 700;
     line-height: normal;
-    text-transform: capitalize;
 }
 .header-top-menu .list-wrap li a:hover {
     color: var(--tg-primary-color);
@@ -515,7 +513,6 @@ label {
 .navbar-wrap ul li a {
     font-size: 14px;
     font-weight: 700;
-    text-transform: capitalize;
     color: var(--tg-heading-font-color);
     padding: 40px 17px;
     display: flex;
@@ -699,7 +696,6 @@ label {
     line-height: 1.3;
     font-weight: 700;
     color: var(--tg-heading-font-color);
-    text-transform: capitalize;
     transition: all 0.3s ease;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
@@ -1298,7 +1294,6 @@ label {
     font-size: 14px;
     font-weight: 700;
     color: var(--tg-heading-font-color);
-    text-transform: capitalize;
     -webkit-transition: all 500ms ease;
     -o-transition: all 500ms ease;
     transition: all 500ms ease;
@@ -1308,7 +1303,6 @@ label {
 .mobile-menu .navigation li ul li > a {
     font-size: 14px;
     margin-left: 20px;
-    text-transform: capitalize;
 }
 .mobile-menu .navigation li ul li ul li a {
     margin-left: 40px;
@@ -2345,7 +2339,6 @@ label {
     color: var(--tg-secondary-color);
     font-family: var(--tg-heading-font-family);
     line-height: 1.4;
-    text-transform: capitalize;
     margin-bottom: 18px;
 }
 .about-content p {
@@ -2998,7 +2991,6 @@ label {
     background: var(--tg-teal);
     font-size: 14px;
     font-weight: 500;
-    text-transform: capitalize;
     color: var(--tg-secondary-color);
     gap: 10px;
     border-radius: 4px;
@@ -3170,8 +3162,7 @@ label {
     font-size: 20px;
     font-weight: 800;
     margin-bottom: 0;
-    color: var(--tg-white);
-    text-transform: capitalize;
+    color: var(--tg-white); 
     position: relative;
     padding: 8px 28px;
     z-index: 1;
@@ -5180,7 +5171,6 @@ label {
     font-family: var(--tg-heading-font-family);
     line-height: 1.4;
     margin-bottom: 6px;
-    text-transform: capitalize;
 }
 .blog-details-content blockquote cite {
     font-style: normal;
@@ -5784,7 +5774,6 @@ label {
     font-size: 15px;
     font-weight: 500;
     position: relative;
-    text-transform: capitalize;
 }
 .footer-link-wrap .list-wrap li a::before {
     content: "";
@@ -5904,7 +5893,6 @@ label {
 .footer-content-two p {
     margin-bottom: 45px;
     color: var(--tg-gray-two);
-    text-transform: capitalize;
 }
 .footer-social .list-wrap {
     display: flex;

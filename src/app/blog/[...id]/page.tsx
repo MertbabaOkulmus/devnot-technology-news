@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: articleData.summary || "Makale detayı ve içerik.", // Varsa özet, yoksa default
     openGraph: {
       title: articleData.title,
-      images: [articleData.image || ""], // Varsa makale görseli
+      images: [articleData.imageUrl || ""], // Varsa makale görseli
     },
   };
 }

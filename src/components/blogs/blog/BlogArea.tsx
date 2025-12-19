@@ -36,15 +36,6 @@ const BlogArea = ({ style, blogs }: StyleType) => {
       });
    };
 
-   // Görsel seçici: thumbnailImageUrl varsa onu kullan, yoksa media dizisine bak, o da yoksa placeholder
-   const getImageUrl = (item: any) => {
-      if (item.thumbnailImageUrl) return item.thumbnailImageUrl;
-      if (item.media && item.media.length > 0) {
-         return item.media[0]?.url || item.media[0]?.path;
-      }
-      return placeholder;
-   };
-
    return (
       <section className="blog-area pt-60 pb-60">
          <div className="container">
@@ -53,7 +44,7 @@ const BlogArea = ({ style, blogs }: StyleType) => {
                   <div className={style ? "col-70" : "col-70 order-0 order-xl-2"}>
                      <div className="weekly-post-item-wrap">
                         {currentItems.map((item) => {
-                           const imageUrl = getImageUrl(item);
+                           const imageUrl = item.imageUrl || placeholder;
                            // Dinamik Link: Eğer location varsa etkinliktir, yoksa haberdir (veya tip kontrolü)
                            const detailPath = item.location ? `/events/${item.slug}` : `/blog/${item.slug}`;
 

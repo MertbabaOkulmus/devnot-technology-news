@@ -1,5 +1,4 @@
 import BlogDetailsContent from "./BlogDetailsContent"
-import BlogPrevNext from "./BlogPrevNext"
 import BlogSidebar from "../common-blog/BlogSidebar"
 import EventDetailsContent from "./EventDetailsContent"
 
