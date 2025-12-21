@@ -4607,7 +4607,7 @@ label {
     margin-bottom: 20px;
 }
 .hot-post-thumb img {
-    height: 220px;
+    height: 120px;
     object-fit: cover;
     width: 100%;
 }

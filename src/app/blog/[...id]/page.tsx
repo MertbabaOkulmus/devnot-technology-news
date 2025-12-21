@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: articleData.title, // Servisten gelen başlık
+    title: articleData.title + " | Devnot", // Servisten gelen başlık
     description: articleData.summary || "Makale detayı ve içerik.", // Varsa özet, yoksa default
     openGraph: {
       title: articleData.title,

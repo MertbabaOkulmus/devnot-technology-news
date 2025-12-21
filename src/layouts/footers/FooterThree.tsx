@@ -29,7 +29,7 @@ const FooterThree = () => {
                               <div className="footer-link-wrap">
                                  <ul className="list-wrap">
                                     {item.footer_link.map((link, i) => (
-                                       <li key={i}><Link href={link.link}>{link.title}</Link></li>
+                                       <li key={i}><Link target="_blank"  href={link.link}>{link.title}</Link></li>
                                     ))}
                                  </ul>
                               </div>

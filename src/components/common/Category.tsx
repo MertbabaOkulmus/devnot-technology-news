@@ -22,7 +22,6 @@ const CategoryComponent = () => {
             const data: Category[] = await fetchCategories();
             setCategories(data);
          } catch (err) {
-            console.error("Kategoriler yüklenirken hata oluştu:", err);
             setError("Kategoriler yüklenemedi.");
          } finally {
             setLoading(false);

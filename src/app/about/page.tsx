@@ -1,15 +1,94 @@
-import About from "@/components/blogs/inner-pages/about";
-import Wrapper from "@/layouts/Wrapper";
+import Link from "next/link";
+import { Metadata } from "next";
+import HeaderThree from "@/layouts/headers/HeaderThree"
 
-export const metadata = {
-  title: "About Zaira - News Magazine React Next Js Template",
+// SEO için Metadata tanımlama (Server Component avantajı)
+export const metadata: Metadata = {
+  title: "Hakkımızda | Devnot - Yazılımcıların Bilgi Paylaşım Platformu",
+  description: "Devnot, Türkiye'deki yazılım ekosistemine yön veren, geliştiricilerin teknik yetkinliklerini artıran bağımsız bir yayın platformudur.",
+  openGraph: {
+    title: "Devnot Hakkında",
+    description: "Yazılım dünyasındaki güncel gelişmeleri ve teknik deneyimleri paylaşıyoruz.",
+  },
 };
-const index = () => {
-  return (
-    <Wrapper>
-      <About />
-    </Wrapper>
-  )
-}
 
-export default index
+const AboutPage = () => {
+  return (
+    <main>
+      <HeaderThree />
+
+      {/* Ana İçerik Alanı */}
+      <section className="about-details-area pt-100 pb-100">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-xl-8 col-lg-10">
+              <div className="about-content-wrap">
+
+                {/* Giriş Bölümü */}
+                <section className="about-section mb-60">
+                  <h2 className="mb-30" style={{ fontWeight: '700', borderLeft: '5px solid #007bff', paddingLeft: '20px' }}>
+                    Devnot Nedir?
+                  </h2>
+                  <p style={{ fontSize: '19px', lineHeight: '1.8', color: '#333' }}>
+                    <strong>Devnot</strong>, yazılım geliştirme süreçlerine odaklanan, güncel teknolojileri
+                    ve mühendislik pratiklerini odağına alan profesyonel bir içerik platformudur.
+                    Amacımız, bilginin paylaşılarak çoğaldığı bir ortamda Türkiye'deki yazılımcıların
+                    küresel standartlarda içeriklere erişmesini sağlamaktır.
+                  </p>
+                </section>
+
+                {/* Vizyon & Misyon Kartları */}
+                <div className="row mb-60">
+                  <div className="col-md-6 mb-20">
+                    <div className="p-4 h-100" style={{ backgroundColor: '#fff', border: '1px solid #e1e1e1', borderRadius: '15px' }}>
+                      <h4 className="fw-bold mb-3 text-primary">Misyonumuz</h4>
+                      <p style={{ color: '#555' }}>Teknik derinliği olan, doğrulanmış ve pratik değeri yüksek içeriklerle yazılım topluluğunun gelişimine öncülük etmek.</p>
+                    </div>
+                  </div>
+                  <div className="col-md-6 mb-20">
+                    <div className="p-4 h-100" style={{ backgroundColor: '#111', color: '#fff', borderRadius: '15px' }}>
+                      <h4 className="fw-bold mb-3 text-white">Vizyonumuz</h4>
+                      <p style={{ color: '#ccc' }}>Türkiye'nin yazılım alanındaki en güvenilir referans noktası ve en büyük bilgi paylaşım üssü olmak.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Tematik İçerik Alanı */}
+                <section className="content-features mb-60">
+                  <h3 className="mb-25 fw-bold">Neler Paylaşıyoruz?</h3>
+                  <div className="row">
+                    {[
+                      "Mimari Tasarımlar ve Design Patterns",
+                      "Yapay Zeka ve Veri Bilimi",
+                      "Backend ve Frontend Teknolojileri",
+                      "DevOps ve Bulut Bilişim Çözümleri",
+                      "Sektörel Haberler ve Etkinlikler",
+                      "Kariyer ve Mühendislik Yönetimi"
+                    ].map((item, idx) => (
+                      <div key={idx} className="col-md-6 mb-15 d-flex align-items-start">
+                        <span className="me-3" style={{ color: '#28a745', fontSize: '20px' }}>✓</span>
+                        <span style={{ fontSize: '16px', fontWeight: '500' }}>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                {/* İletişim / CTA Bölümü */}
+                <div className="about-cta text-center p-5 mt-40" style={{ background: 'linear-gradient(145deg, #f0f0f0, #ffffff)', borderRadius: '25px', border: '1px solid #eee' }}>
+                  <h2 className="mb-20">Topluluğun Bir Parçası Olun</h2>
+                  <p className="mb-35">Siz de teknik yazılarınızla topluluğa katkı sağlamak ister misiniz?</p>
+                  <Link href="/contact" className="btn btn-primary btn-lg" style={{ borderRadius: '50px', padding: '15px 40px', fontWeight: '600' }}>
+                    İletişime Geçin
+                  </Link>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+};
+
+export default AboutPage;

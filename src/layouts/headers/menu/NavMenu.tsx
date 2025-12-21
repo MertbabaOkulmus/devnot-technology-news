@@ -22,13 +22,13 @@ interface MenuItem {
 
 const menu_data: MenuItem[] = [
     {
-        id: 2,
+        id: 1,
         has_dropdown: false,
         title: "Etkinlikler",
         link: "/etkinlikler",
     },
     {
-        id: 3,
+        id: 2,
         has_dropdown: true,
         title: "Kategoriler",
         link: "#",
@@ -36,6 +36,18 @@ const menu_data: MenuItem[] = [
             // **STATİK ALT MENÜLER BURADAN KALDIRILDI**
             // Dinamik kategoriler yüklendikten sonra bu menü altı dolacaktır.
         ],
+    },
+        {
+        id: 3,
+        has_dropdown: false,
+        title: "Hakkımızda",
+        link: "/about",
+    },
+        {
+        id: 4,
+        has_dropdown: false,
+        title: "Sponsorluk",
+        link: "/advertising",
     },
 ];
 
