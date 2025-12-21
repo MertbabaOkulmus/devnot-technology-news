@@ -42,7 +42,7 @@ const CategoryComponent = () => {
       return (
          <>
             <div className="widget-title mb-30">
-               <h6 className="title">Hot Categories</h6>
+               <h6 className="title">Haber Kategorileri</h6>
                <div className="section-title-line"></div>
             </div>
             <div className="sidebar-categories">
@@ -61,7 +61,7 @@ const CategoryComponent = () => {
    if (error) {
       return (
          <div className="widget-title mb-30">
-            <h6 className="title">Hot Categories</h6>
+            <h6 className="title">Haber Kategorileri</h6>
             <div className="section-title-line"></div>
             <p className="text-danger mt-3">{error}</p>
          </div>
@@ -71,7 +71,7 @@ const CategoryComponent = () => {
    return (
       <>
          <div className="widget-title mb-30">
-            <h6 className="title">Hot Categories</h6>
+            <h6 className="title">Haber Kategorileri</h6>
             <div className="section-title-line"></div>
          </div>
          <div className="sidebar-categories">

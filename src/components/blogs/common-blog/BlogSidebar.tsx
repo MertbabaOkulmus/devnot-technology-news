@@ -16,7 +16,7 @@ const BlogSidebar = () => {
 
             <div className="sidebar-widget sidebar-widget-two">
                <div className="widget-title mb-25">
-                  <h2 className="title">Subscribe & Followers</h2>
+                  <h2 className="title">Bizi Takip Et</h2>
                   <div className="section-title-line"></div>
                </div>
                <div className="sidebar-social-wrap">
@@ -25,7 +25,7 @@ const BlogSidebar = () => {
             </div>
             <div className="sidebar-widget sidebar-widget-two">
                <div className="widget-title mb-30">
-                  <h6 className="title">Recent News</h6>
+                  <h6 className="title">Son Haberler</h6>
                   <div className="section-title-line"></div>
                </div>
                <div className="hot-post-wrap">

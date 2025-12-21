@@ -2,7 +2,7 @@ import footer_data from "@/data/FooterData"
 import Image from "next/image"
 import Link from "next/link"
 
-import footerLogo from "@/assets/img/logo/devnot-logo.png";
+import footerLogo from "@/assets/img/logo/devnot-logo-white.png";
 import bg_img from "@/assets/img/images/footer_shape.png"
 
 interface StyleType {
@@ -23,7 +23,7 @@ const FooterOne = ({ style, style_2 }: StyleType) => {
                               <Link href="/"><Image src={footerLogo} alt="" /></Link>
                            </div>
                            <div className="footer-content">
-                              <p>Browned butter and brown sugar caramelly goodness, crispy edges thick and soft centers and melty little puddles of chocolate.</p>
+                              <p></p>
                            </div>
                         </div>
                      </div>
@@ -59,7 +59,7 @@ const FooterOne = ({ style, style_2 }: StyleType) => {
                      </div>
                      <div className="col-md-6">
                         <div className="copyright-text">
-                           <p>© 2024 All Rights Reserved</p>
+                           <p>© 2025 All Rights Reserved</p>
                         </div>
                      </div>
                   </div>

@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
    }
 
    return {
-      title: `${eventData.title} | Site Adınız`,
+      title: `${eventData.title} | Devnot`,
       description: eventData.summary || `${eventData.title} hakkında detaylı bilgi.`, // Varsa özet, yoksa title kullanır
       openGraph: {
          title: eventData.title,

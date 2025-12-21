@@ -11,26 +11,37 @@ interface DataType {
 const footer_data: DataType[] = [
    {
       id: 1,
-      title: "Company",
+      title: "Devnot",
       class_name: "col-lg-2 col-md-5",
       footer_link: [
-         { link: "/about", title: "About Us" },
-         { link: "/contact", title: "The Test Kitchen" },
-         { link: "/contact", title: "Podcast" },
-         { link: "/contact", title: "Events" },
-         { link: "/contact", title: "Jobs" },
+         { link: "https://kommunity.com/devnot/", title: "Hakkında" },
+         { link: "linkedin.com/company/devnotcom/", title: "Yazarlar" },
+         { link: "https://x.com/devnot_", title: "Ekibimiz" },
+         { link: "https://www.instagram.com/devnot_com/", title: "Reklam & Sponsorluk" },
       ]
    },
    {
       id: 2,
-      title: "Get Help",
+      title: "Sosyal Medya",
       class_name: "col-lg-3 col-md-4",
       footer_link: [
-         { link: "/contact", title: "Contact & Faq" },
-         { link: "/contact", title: "Oders & Returns" },
-         { link: "/contact", title: "Gift Cards" },
-         { link: "/contact", title: "Register" },
-         { link: "/contact", title: "Catalog" },
+         { link: "https://kommunity.com/devnot/", title: "Kommunity" },
+         { link: "linkedin.com/company/devnotcom/", title: "Linkedin" },
+         { link: "https://x.com/devnot_", title: "Twitter" },
+         { link: "https://www.instagram.com/devnot_com/", title: "Instagram" },
+         { link: "https://www.youtube.com/c/DevnotTV", title: "Youtube" },
+      ]
+   },
+   {
+      id: 2,
+      title: "Etkinlikler",
+      class_name: "col-lg-3 col-md-4",
+      footer_link: [
+         { link: "https://summit.devnot.com", title: "Developer Summit" },
+         { link: "https://techleaders.devnot.com", title: "Tech Leaders Summit" },
+         { link: "https://dotnet.devnot.com", title: "Dotnet Konferansı" },
+         { link: "https://mobile.devnot.com", title: "Mobil Yazılım Konferansı" },
+         { link: "https://security.devnot.com", title: "Cyber Security Summit" },
       ]
    }
 ];

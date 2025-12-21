@@ -85,7 +85,7 @@ const LatestPost = () => {
                         </div>
                         <div className="sidebar-widget">
                            <div className="widget-title mb-25">
-                              <h2 className="title">Subscribe & Followers</h2>
+                              <h2 className="title">Bizi Takip Et</h2>
                               <div className="section-title-line"></div>
                            </div>
                            <div className="sidebar-social-wrap sidebar-social-two">

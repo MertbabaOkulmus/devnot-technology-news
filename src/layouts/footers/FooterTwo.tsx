@@ -16,7 +16,7 @@ const FooterTwo = () => {
                            <div className="fw-logo">
                               <Link href="/"><Image src={logo_1} alt="" /></Link>
                            </div>
-                           <p>Browned butter and brown sugar caramelly goodness <br /> crispy edgesthick and soft centers and <br /> melty little puddles</p>
+                           <p></p>
                            <div className="footer-social">
                               <ul className="list-wrap">
                                  <li><Link href="#"><i className="fab fa-facebook-f"></i>Facebook</Link></li>
@@ -37,7 +37,7 @@ const FooterTwo = () => {
                   <div className="row">
                      <div className="col-12">
                         <div className="copyright-text-two">
-                           <p>© 2024 All Rights Reserved</p>
+                           <p>© 2025 All Rights Reserved</p>
                         </div>
                      </div>
                   </div>

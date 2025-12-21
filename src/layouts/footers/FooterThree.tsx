@@ -2,7 +2,7 @@ import footer_data from "@/data/FooterData"
 import Image from "next/image"
 import Link from "next/link"
 
-import footerLogo from "@/assets/img/logo/devnot-logo.png";
+import footerLogo from "@/assets/img/logo/devnot-logo-white.png";
 
 const FooterThree = () => {
 
@@ -53,7 +53,7 @@ const FooterThree = () => {
                      </div>
                      <div className="col-md-6">
                         <div className="copyright-text">
-                           <p>© 2024 All Rights Reserved</p>
+                           <p>© 2025 All Rights Reserved</p>
                         </div>
                      </div>
                   </div>

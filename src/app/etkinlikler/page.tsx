@@ -6,7 +6,7 @@ import { Metadata } from "next";
 
 // Dinamik veya Statik Metadata
 export const metadata: Metadata = {
-  title: "Etkinlikler | Devnot News",
+  title: "Etkinlikler | Devnot",
   description: "Gelecek etkinlikler ve en güncel haberler listesi.",
 };
 

@@ -11,7 +11,7 @@ const TrandingSidebar = () => {
          <div className="sidebar-wrap">
             <div className="sidebar-widget sidebar-widget-two">
                <div className="widget-title mb-30">
-                  <h6 className="title">Subscribe & Followers</h6>
+                  <h6 className="title">Bizi Takip Et</h6>
                   <div className="section-title-line"></div>
                </div>
                <div className="sidebar-social-wrap">
