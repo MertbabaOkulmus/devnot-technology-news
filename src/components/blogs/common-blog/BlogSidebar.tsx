@@ -63,18 +63,18 @@ const BlogSidebar = () => {
                <div className="hot-post-wrap">
                   {loading && <p>Yükleniyor...</p>}
                   {error && <p>Haberler yüklenemedi.</p>}
-                  
+
                   {!loading && !error && featuredLatest.map((article) => (
                      <div className="hot-post-item" key={article.id}>
                         {/* Sadece ilk haberde görsel gösterilsin istersen veya hepsinde varsa gösterilsin: */}
                         {article.imageUrl && (
                            <div className="hot-post-thumb">
                               <Link href={`/blog/${article.slug}`}>
-                                 <Image 
-                                    src={article.imageUrl || sidebarThumb} 
-                                    alt={article.title} 
-                                    width={100} 
-                                    height={30} 
+                                 <Image
+                                    src={article.imageUrl || sidebarThumb}
+                                    alt={article.title}
+                                    width={100}
+                                    height={30}
                                     style={{ objectFit: 'cover' }}
                                  />
                               </Link>
@@ -91,7 +91,7 @@ const BlogSidebar = () => {
                               <ul className="list-wrap">
                                  <li><i className="flaticon-calendar"></i>{formatDate(article.publishedAt)}</li>
                                  {/* Veride okuma süresi yoksa görüntülenme sayısını koyabiliriz */}
-                                 <li><i className="flaticon-user"></i>{article.user.name}</li>
+                                 <Link href={`/author?id=${article.user.id}`}><li><i className="flaticon-user"></i>{article.user.name} </li></Link>
                               </ul>
                            </div>
                         </div>

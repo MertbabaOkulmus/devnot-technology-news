@@ -37,17 +37,29 @@ const menu_data: MenuItem[] = [
             // Dinamik kategoriler yüklendikten sonra bu menü altı dolacaktır.
         ],
     },
-        {
+    {
         id: 3,
         has_dropdown: false,
         title: "Hakkımızda",
         link: "/about",
     },
-        {
+    {
         id: 4,
         has_dropdown: false,
         title: "Sponsorluk",
         link: "/advertising",
+    },
+    {
+        id: 5,
+        has_dropdown: false,
+        title: "Takımımız",
+        link: "/team",
+    },
+    {
+        id: 6,
+        has_dropdown: false,
+        title: "Yazarlar",
+        link: "/authors",
     },
 ];
 

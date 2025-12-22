@@ -94,7 +94,7 @@ const BlogArea = ({ style, blogs }: StyleType) => {
                                           
                                           {/* Haberse yazar göster */}
                                           {item.user && (
-                                             <li><i className="flaticon-user"></i> {item.user.name}</li>
+                                             <Link href={`/author?id=${item.user.id}`}><li><i className="flaticon-user"></i> {item.user.name}</li></Link>
                                           )}
                                        </ul>
                                     </div>

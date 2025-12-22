@@ -79,7 +79,7 @@ const BlogDetailsContent = ({ featuredArticleDetail }: BlogDetailsContentProps) 
                                
                                 {/* Yayın Tarihi */}
                                 <li><i className="flaticon-calendar"></i>{publishedDate}</li>
-                                <li><i className="flaticon-user"></i>{authorName}</li>
+                                <Link href={`/author?id=${item.user.id}`}><li><i className="flaticon-user"></i>{authorName}</li></Link>
                                 {/* Yorumlar (Statik bırakıldı, veri yok) */}
                             </ul>
                         </div>
@@ -120,27 +120,6 @@ const BlogDetailsContent = ({ featuredArticleDetail }: BlogDetailsContentProps) 
                 {/* <p>Statik metin 1</p> */}
                 {/* <blockquote>...</blockquote> */}
                 
-                <div className="blog-details-inner">
-                     {/* İçerik içi dinamik resim ve metin olmadığından, bu bölümü statik bırakıyorum veya kaldırıyorum */}
-                  <div className="row align-items-center">
-                     <div className="col-md-6">
-                        <div className="blog-details-inner-img">
-                           {/* Bu resim veri modelinizde yok, statik kalacak */}
-                           <Image src={blogThumb_2} alt="" /> 
-                        </div>
-                     </div>
-                     <div className="col-md-6">
-                        <div className="blog-details-inner-content">
-                           <h3 className="title-two">Ek Detay Başlığı</h3>
-                           <p>Bu metin ve liste dinamik içerikte gelmediği için statik bırakıldı.</p>
-                           <ul className="list-wrap">
-                              <li><i className="fas fa-check"></i>Dinamik Yapı Kontrolü</li>
-                              <li><i className="fas fa-check"></i>Tasarım Bütünlüğü</li>
-                           </ul>
-                        </div>
-                     </div>
-                  </div>
-               </div>
                
                {/* <div className="blog-details-video">
                   <Image src={blogThumb_3} alt="" />

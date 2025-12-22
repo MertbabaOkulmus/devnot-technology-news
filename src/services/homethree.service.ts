@@ -86,6 +86,14 @@ export const fetchArticleCategorySlug = async (slug: string): Promise<NewsArticl
   return get<NewsArticle>(`/Article/category/${slug}`);
 };
 
+export const fetchAuthorList = async (): Promise<NewsArticle> => {
+  return get<NewsArticle>(`/Author/all`);
+};
+
+export const fetchAuthorDetail = async (id: number): Promise<NewsArticle> => {
+  return get<NewsArticle>(`/Author/get/${id}`);
+};
+
 const HomeThreeService = {
   fetchFeaturedArticles,
   fetchCategories,
@@ -94,7 +102,9 @@ const HomeThreeService = {
   fetchUpcomingEvents,
   fetchEventSlug,
   fetchArticleSlug,
-  fetchArticleCategorySlug
+  fetchArticleCategorySlug,
+  fetchAuthorDetail,
+  fetchAuthorList
 };
 
 export default HomeThreeService;

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
- import bannerThumb_1 from "@/assets/img/blog/t_banner_post01.jpg"
+import bannerThumb_1 from "@/assets/img/blog/t_banner_post01.jpg"
 import { NewsArticle } from "@/services"
 
 // Hata veren satır KALDIRILDI: import { Intl } from "next/dist/compiled/intl-messageformat";
@@ -101,10 +101,14 @@ const Banner = ({ featuredArticles = [] }: { featuredArticles?: NewsArticle[] })
                               <div className="blog-post-meta white-blog-meta">
                                  <ul className="list-wrap">
                                     <li><i className="flaticon-calendar"></i>{bigPost.date}</li>
-                                    <li>
-                                       <i className="flaticon-user"></i>
-                                       <>{bigPost.authorName}</>
-                                    </li>
+                                    <Link href={`/author?id=${bigPost.id}`}>
+                                       <li>
+
+                                          <i className="flaticon-user"></i>
+                                          <>{bigPost.authorName}</>
+
+                                       </li>
+                                    </Link>
                                  </ul>
                               </div>
                            </div>
@@ -134,10 +138,12 @@ const Banner = ({ featuredArticles = [] }: { featuredArticles?: NewsArticle[] })
                               <div className="blog-post-meta white-blog-meta">
                                  <ul className="list-wrap">
                                     <li><i className="flaticon-calendar"></i>{item.date}</li>
-                                     <li>
-                                       <i className="flaticon-user"></i>
-                                       <>{bigPost.authorName}</>
-                                    </li>
+                                    <Link href={`/author?id=${item.id}`}>
+                                       <li>
+                                          <i className="flaticon-user"></i>
+                                          <>{item.authorName}</>
+                                       </li>
+                                    </Link>
                                  </ul>
                               </div>
                            </div>
@@ -147,7 +153,7 @@ const Banner = ({ featuredArticles = [] }: { featuredArticles?: NewsArticle[] })
                </div>
             </div>
          </div>
-      </section>
+      </section >
    );
 };
 
