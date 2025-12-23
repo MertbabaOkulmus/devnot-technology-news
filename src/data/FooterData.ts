@@ -14,10 +14,10 @@ const footer_data: DataType[] = [
       title: "Devnot",
       class_name: "col-lg-2 col-md-5",
       footer_link: [
-         { link: "https://kommunity.com/devnot/", title: "Hakkında" },
-         { link: "linkedin.com/company/devnotcom/", title: "Yazarlar" },
-         { link: "https://x.com/devnot_", title: "Ekibimiz" },
-         { link: "https://www.instagram.com/devnot_com/", title: "Reklam & Sponsorluk" },
+         { link: "/about", title: "Hakkında" },
+         { link: "/authors", title: "Yazarlar" },
+         { link: "/team", title: "Organizasyon Ekibi" },
+         { link: "/advertising", title: "Reklam & Sponsorluk" },
       ]
    },
    {

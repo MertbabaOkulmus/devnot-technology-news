@@ -57,7 +57,7 @@ const AuthorsPage = async () => {
                   <div className="row mb-50">
                      <div className="col-lg-8">
                         <h1 className="fw-bold mb-2" style={{ fontSize: '36px', color: '#1a1a1a' }}>Yazarlar</h1>
-                        <p className="text-muted">Devnot topluluğuna değer katan içerik üreticilerimiz.</p>
+                        <p className="text-muted">Devnot'a değer katan içerik üreticilerimiz.</p>
                      </div>
                   </div>
 
@@ -99,7 +99,7 @@ const AuthorsPage = async () => {
                                           {author.name}
                                        </h3>
                                        <span className="d-block text-muted mb-3" style={{ fontSize: '14px' }}>
-                                          Devnot Yazarı
+                                          Yazar
                                        </span>
 
                                        {/* Aksiyon Butonu */}
@@ -140,8 +140,8 @@ const AuthorsPage = async () => {
                            <p className="mb-4" style={{ color: '#ccc', fontSize: '18px' }}>
                               Teknik bilgilerinizi paylaşarak Türkiye yazılım ekosistemine katkıda bulunun.
                            </p>
-                           <Link href="/contact" className="btn btn-light btn-lg px-5 fw-bold" style={{ borderRadius: '50px' }}>
-                              Hemen Başvur
+                           <Link href="mailto:bilgi@devnot.com" className="btn btn-light btn-lg px-5 fw-bold" style={{ borderRadius: '50px' }}>
+                              Başvur
                            </Link>
                         </div>
                      </div>

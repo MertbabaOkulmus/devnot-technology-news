@@ -67,7 +67,7 @@ const EditorPost = ({ featuredLatest = [] }: { featuredLatest?: NewsArticle[] })
                <div className="col-lg-12">
                   <div className="section-title-wrap mb-30">
                      <div className="section-title">
-                        <h2 className="title">Editors Choice</h2>
+                        <h2 className="title">Diğer Haberler</h2>
                      </div>
                      <div className="editor-nav">
                         <button onClick={handlePrevClick} type="button" className="slick-prev-btn slick-arrow">

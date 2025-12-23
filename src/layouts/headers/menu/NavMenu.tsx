@@ -40,27 +40,9 @@ const menu_data: MenuItem[] = [
     {
         id: 3,
         has_dropdown: false,
-        title: "Hakkımızda",
+        title: "Hakkında",
         link: "/about",
-    },
-    {
-        id: 4,
-        has_dropdown: false,
-        title: "Sponsorluk",
-        link: "/advertising",
-    },
-    {
-        id: 5,
-        has_dropdown: false,
-        title: "Takımımız",
-        link: "/team",
-    },
-    {
-        id: 6,
-        has_dropdown: false,
-        title: "Yazarlar",
-        link: "/authors",
-    },
+    }
 ];
 
 
