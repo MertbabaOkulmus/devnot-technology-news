@@ -4,6 +4,7 @@ import EditorPost from "./EditorPost"
 import UpcomingEvents from "./UpcomingEvents"
 import HeaderThree from "@/layouts/headers/HeaderThree"
 import { NewsArticle } from "@/services"
+import NewsletterArea from "@/components/common/NewsletterArea"
 
 interface HomeThreeProps {
    featuredArticles?: NewsArticle[]
@@ -20,6 +21,7 @@ const HomeThree = ({ featuredArticles = [], featuredLatest = [], upcomingEvents 
          <main className="fix">
             <UpcomingEvents upcomingEvents={upcomingEvents} />
             <Banner featuredArticles={featuredArticles} />
+            <NewsletterArea />
             {/*<AdBanner />*/}
             <EditorPost featuredLatest={featuredLatest} />
             {/*<TrandingPost />*/}
