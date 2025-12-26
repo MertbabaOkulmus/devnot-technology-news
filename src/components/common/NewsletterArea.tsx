@@ -53,7 +53,7 @@ const NewsletterArea = () => {
         }
 
         .newsletter-wrapper {
-          padding: 60px 0;
+          padding: 0;
           background-color: var(--nl-bg) !important;
           transition: background-color 0.3s ease;
         }
