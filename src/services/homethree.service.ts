@@ -1,4 +1,4 @@
-import { get } from './api';
+import { get, post } from './api';
 
 type User = {
   id: number;
@@ -92,6 +92,10 @@ export const fetchAuthorList = async (): Promise<NewsArticle> => {
 
 export const fetchAuthorDetail = async (id: number): Promise<NewsArticle> => {
   return get<NewsArticle>(`/Author/get/${id}`);
+};
+
+export const postNewsletter = async (data: any): Promise<NewsArticle> => {
+  return post<NewsArticle>(`/Newsletter`, data);
 };
 
 const HomeThreeService = {
