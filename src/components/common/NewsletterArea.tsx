@@ -3,25 +3,25 @@ import React from 'react';
 const newsletters = [
   {
     id: 1,
-    category: "YAZILIM",
-    title: "Yazılım Gündemi",
-    description: "Haftalık teknik derinlikli makaleler ve yazılım dünyasından sıcak gelişmeler.",
+    category: "E-POSTA BÜLTENİ",
+    title: "Yazılımcı Gündemi",
+    description: "Devnot.com ve yazılım dünyasından güncel haberler, makaleler, duyurular",
     theme: "#ef4444", 
     bgLight: "rgba(239, 68, 68, 0.12)"
   },
   {
     id: 2,
-    category: "ETKİNLİK",
-    title: "Konferans & Meetup",
-    description: "Tüm topluluk buluşmaları ve konferans duyuruları ilk size gelsin.",
+    category: "E-POSTA BÜLTENİ",
+    title: "Devnot Meetup & Konferansları",
+    description: "Devnot'un düzenlediği buluşma, etkinlik ve konferans duyuruları",
     theme: "#8b5cf6", 
     bgLight: "rgba(139, 92, 246, 0.12)"
   },
   {
     id: 3,
-    category: "STRATEJİ",
-    title: "Liderler Gündemi",
-    description: "Mühendislik yönetimi ve teknoloji liderliği üzerine özel içerikler.",
+    category: "E-POSTA BÜLTENİ",
+    title: "Liderlik & Yönetim Gündemi",
+    description: "Mühendislik yönetimi ve teknoloji liderliği üzerine özel içerikler",
     theme: "#3b82f6", 
     bgLight: "rgba(59, 130, 246, 0.12)"
   }

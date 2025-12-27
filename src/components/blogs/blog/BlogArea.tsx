@@ -117,7 +117,7 @@ const BlogArea = ({ style, blogs }: StyleType) => {
                         })}
                      </div>
 
-                     {blogs.length === 0 && <p className="text-center mt-4">Henüz bir içerik bulunamadı.</p>}
+                     {blogs.length === 0 && <p className="text-center mt-4">Henüz bir içerik yok :(</p>}
 
                      <div className="pagination-wrap mt-60">
                         <nav aria-label="Page navigation">

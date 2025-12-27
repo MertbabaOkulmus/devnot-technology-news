@@ -73,15 +73,6 @@ const AboutPage = () => {
                     </div>
                   </section>
 
-                  {/* İletişim / CTA Bölümü */}
-                  <div className="about-cta text-center p-5 mt-40" style={{ background: 'linear-gradient(145deg, #f0f0f0, #ffffff)', borderRadius: '25px', border: '1px solid #eee' }}>
-                    <h2 className="mb-20">Topluluğun Bir Parçası Olun</h2>
-                    <p className="mb-35">Siz de teknik yazılarınızla topluluğa katkı sağlamak ister misiniz?</p>
-                    <Link href="/contact" className="btn btn-primary btn-lg" style={{ borderRadius: '50px', padding: '15px 40px', fontWeight: '600' }}>
-                      İletişime Geçin
-                    </Link>
-                  </div>
-
                 </div>
               </div>
             </div>

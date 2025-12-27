@@ -23,15 +23,19 @@ const AdvertisingPage = () => {
 
                                 {/* İstatistikler / Neden Devnot? */}
                                 <div className="row mb-80 text-center">
-                                    <div className="col-md-4 mb-30">
-                                        <h2 className="fw-bold text-primary">50K+</h2>
+                                    <div className="col-md-3 mb-30">
+                                        <h2 className="fw-bold text-primary">20K+</h2>
                                         <p className="fw-medium">Aylık Tekil Ziyaretçi</p>
                                     </div>
-                                    <div className="col-md-4 mb-30">
-                                        <h2 className="fw-bold text-primary">20K+</h2>
+                                    <div className="col-md-3 mb-30">
+                                        <h2 className="fw-bold text-primary">5+</h2>
+                                        <p className="fw-medium">Üst Düzey Konferans</p>
+                                    </div>
+                                    <div className="col-md-3 mb-30">
+                                        <h2 className="fw-bold text-primary">10K+</h2>
                                         <p className="fw-medium">E-Bülten Abonesi</p>
                                     </div>
-                                    <div className="col-md-4 mb-30">
+                                    <div className="col-md-3 mb-30">
                                         <h2 className="fw-bold text-primary">%100</h2>
                                         <p className="fw-medium">Teknoloji Odaklı Kitle</p>
                                     </div>
@@ -76,7 +80,7 @@ const AdvertisingPage = () => {
 
                                 {/* Kurumsal Bilgi */}
                                 <section className="mb-60 p-5" style={{ backgroundColor: '#111', color: '#fff', borderRadius: '20px' }}>
-                                    <h3 className="mb-20 text-white">Neden Bizi Tercih Etmelisiniz?</h3>
+                                    <h3 className="mb-20 text-white">Etkili ve Nitelikli Erişim</h3>
                                     <p className="mb-20" style={{ color: '#ccc', lineHeight: '1.8' }}>
                                         Devnot kitlesi; yazılım mimarları, kıdemli geliştiriciler ve teknoloji karar vericilerinden oluşur.
                                         Reklamlarınız sadece "görüntülenmez", hedeflediğiniz doğru profesyonellere ulaşır.
@@ -88,9 +92,9 @@ const AdvertisingPage = () => {
                                 <div className="text-center mt-60">
                                     <div className="p-5" style={{ border: '2px dashed #007bff', borderRadius: '25px' }}>
                                         <h3 className="mb-15">Medya Kitimizi Talep Edin</h3>
-                                        <p className="mb-35">Detaylı istatistikler ve fiyatlandırma seçenekleri için bizimle iletişime geçin.</p>
+                                        <p className="mb-35">Detaylı istatistikler ve bilgiler için bizimle iletişime geçin.</p>
                                         <Link href="mailto:reklam@devnot.com" className="btn btn-primary btn-lg px-5" style={{ borderRadius: '50px' }}>
-                                            Teklif Alın: reklam@devnot.com
+                                            İşbirliği Teklifleriniz için bilgi@devnot.com
                                         </Link>
                                     </div>
                                 </div>
