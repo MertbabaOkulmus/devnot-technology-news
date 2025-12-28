@@ -33,7 +33,7 @@ const footer_data: DataType[] = [
       ]
    },
    {
-      id: 2,
+      id: 3,
       title: "Etkinlikler",
       class_name: "col-lg-3 col-md-4",
       footer_link: [

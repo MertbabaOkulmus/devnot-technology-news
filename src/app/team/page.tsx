@@ -4,11 +4,13 @@ import { Metadata } from "next";
 import HeaderThree from "@/layouts/headers/HeaderThree";
 import FooterOne from "@/layouts/footers/FooterOne";
 
+import imgUgur from "@/assets/img/team/ugur-umutluoglu.jpg";
 import imgZeynep from "@/assets/img/team/zeynep-yildiz.jpg";
 import imgAnil from "@/assets/img/team/anil-yilmaz.jpg";
 import imgAynur from "@/assets/img/team/aynur-katircioglu.jpg";
 import imgEmine from "@/assets/img/team/emine-cihan.jpg";
 import imgFadil from "@/assets/img/team/fadil-basaran.jpg";
+import imgFurkan from "@/assets/img/team/furkan-yuksel.jpg";
 import imgAhmet from "@/assets/img/team/ahmet-burak-kucuk.jpg";
 import imgMert from "@/assets/img/team/mertbaba-okulmus.jpg";
 import imgSeda from "@/assets/img/team/seda-nur-kilinc.jpg";
@@ -16,6 +18,12 @@ import imgSongul from "@/assets/img/team/songul-ersoy-koc.jpg";
 import imgMelisa from "@/assets/img/team/melisa-nur-kaya.jpg";
 import imgBahattin from "@/assets/img/team/bahattin-koc.jpg";
 import imgBaris from "@/assets/img/team/baris-yilmaz.jpg";
+import imgGamze from "@/assets/img/team/gamze-yapici.jpg";
+import imgDilara from "@/assets/img/team/dilara-tekin.jpg";
+import imgYusuf from "@/assets/img/team/yusuf-yildiz.jpg";
+import imgEda from "@/assets/img/team/eda-kas.jpg";
+import imgDicle from "@/assets/img/team/dicle-demir.jpg";
+import imgYunus from "@/assets/img/team/yunus-sengun.jpg";
 
 export const metadata: Metadata = {
   title: "Ekibimiz | Devnot",
@@ -29,95 +37,156 @@ const TeamPage = () => {
       id: 1,
       name: "Uğur Umutluoğlu",
       role: "Kurucu, Organizatör",
-      avatarUrl: imgAhmet,
+      avatarUrl: imgUgur,
       social: { linkedin: "https://linkedin.com/in/ugurumutluoglu/", twitter: "https://x.com/umutluoglu" }
     },
     {
       id: 2,
       name: "Ahmet Burak Küçük",
-      role: "Yardımcı Organizatör",
+      role: "Üye",
       avatarUrl: imgAhmet,
-      social: { linkedin: "#", twitter: "#" }
+      social: { linkedin: "https://www.linkedin.com/in/abkucuk/", twitter: "#" }
     },
     {
       id: 3,
       name: "Anıl Yılmaz",
-      role: "Yardımcı Organizatör",
+      role: "Üye",
       avatarUrl: imgAnil,
-      social: { linkedin: "#", twitter: "#" }
+      social: { linkedin: "https://www.linkedin.com/in/anilyilmazz/", twitter: "#" }
     },
     {
       id: 4,
-      name: "Mertbaba Okulmuş",
-      role: "Yardımcı Organizatör",
-      avatarUrl: imgMert,
-      social: { linkedin: "#", twitter: "#" }
-    },
-        { 
-      id: 5,
-      name: "Barış Yılmaz",
-      role: "Yardımcı Organizatör",
-      avatarUrl: imgBaris,
-      social: { linkedin: "#", twitter: "#" }
-    } ,
-    {
-      id: 6,
-      name: "Zeynep Yıldız", 
-      role: "Yardımcı Organizatör",
-      avatarUrl: imgZeynep,
-      social: { linkedin: "#", twitter: "#" }
-    },
-    {
-      id: 7,
       name: "Aynur Katırcıoğlu",  
-      role: "Yardımcı Organizatör",
+      role: "Üye",
       avatarUrl: imgAynur,
-      social: { linkedin: "#", twitter: "#" }
+      social: { linkedin: "https://www.linkedin.com/in/aynrkatircioglu/", twitter: "#" }
+    },
+    { 
+      id: 5,
+      name: "Barış Albayrak",
+      role: "Üye",
+      avatarUrl: imgBaris,
+      social: { linkedin: "https://www.linkedin.com/in/baris-albayrak/", twitter: "#" }
     },
     {
-      id: 8,  
+      id: 6,  
       name: "Emine Cihan",
-      role: "Yardımcı Organizatör",
+      role: "Üye",
       avatarUrl: imgEmine,  
-      social: { linkedin: "#", twitter: "#" }
+      social: { linkedin: "https://www.linkedin.com/in/emine-cihan-62541869/", twitter: "#" }
+    },
+    {
+      id: 7,  
+      name: "Furkan Yüksel",
+      role: "Üye",
+      avatarUrl: imgFurkan,  
+      social: { linkedin: "https://www.linkedin.com/in/furkan-y%C3%BCksel-7aa891154/", twitter: "#" }
+    },
+    { 
+      id: 8,
+      name: "Melisa Nur Kaya",  
+      role: "Üye & Sunucu",
+      avatarUrl: imgMelisa,
+      social: { linkedin: "https://www.linkedin.com/in/melisanurkaya/", twitter: "#" }
     },
     {
       id: 9,
+      name: "Mertbaba Okulmuş",
+      role: "Üye & Web Developer",
+      avatarUrl: imgMert,
+      social: { linkedin: "https://www.linkedin.com/in/mertbabaokulmus/", twitter: "#" }
+    },
+    { 
+      id: 10,
+      name: "Gamze Yapıcı",
+      role: "Üye",
+      avatarUrl: imgGamze,
+      social: { linkedin: "https://www.linkedin.com/in/gamzeyapici/", twitter: "#" }
+    },
+    { 
+      id: 11,
+      name: "Bahattin Koç",
+      role: "Üye",
+      avatarUrl: imgBahattin,
+      social: { linkedin: "https://www.linkedin.com/in/uikit/", twitter: "#" }
+    },
+    {
+      id: 12,
       name: "Fadıl Başaran",
-      role: "Yardımcı Organizatör",
+      role: "Üye",
       avatarUrl: imgFadil,
-      social: { linkedin: "#", twitter: "#" }
+      social: { linkedin: "https://www.linkedin.com/in/fadilbasaran/", twitter: "#" }
     }, 
     {
-      id: 10,
+      id: 13,
       name: "Seda Nur Kılınç",  
-      role: "Yardımcı Organizatör",
+      role: "Üye",
       avatarUrl: imgSeda,
+      social: { linkedin: "https://www.linkedin.com/in/seda-nur-kilinc/", twitter: "#" }
+    },
+    {
+      id: 14,
+      name: "Songül Ersoy Koç",  
+      role: "Üye",
+      avatarUrl: imgSongul,
+      social: { linkedin: "https://www.linkedin.com/in/songulersoy/", twitter: "#" }
+    },
+    {
+      id: 15,
+      name: "Zeynep Yıldız", 
+      role: "Üye",
+      avatarUrl: imgZeynep,
+      social: { linkedin: "https://www.linkedin.com/in/zeynep-yildiz/", twitter: "#" }
+    },
+    {
+      id: 16,
+      name: "Dilara Tekin", 
+      role: "Üye",
+      avatarUrl: imgDilara,
+      social: { linkedin: "https://www.linkedin.com/in/dilaratekin/", twitter: "#" }
+    },
+    {
+      id: 17,
+      name: "Eda Kaş", 
+      role: "Üye",
+      avatarUrl: imgEda,
       social: { linkedin: "#", twitter: "#" }
     },
     {
-      id: 11,
-      name: "Songül Ersoy Koç",  
-      role: "Yardımcı Organizatör",
-      avatarUrl: imgSongul,
-      social: { linkedin: "#", twitter: "#" }
+      id: 18,
+      name: "Dicle Demir", 
+      role: "Üye",
+      avatarUrl: imgDicle,
+      social: { linkedin: "https://www.linkedin.com/in/dicle-demir/", twitter: "#" }
     },
-    { 
-      id: 12,
-      name: "Melisa Nur Kaya",  
-      role: "Yardımcı Organizatör",
-      avatarUrl: imgMelisa,
-      social: { linkedin: "#", twitter: "#" }
+    {
+      id: 19,
+      name: "Yunus Şengün", 
+      role: "Üye",
+      avatarUrl: imgYunus,
+      social: { linkedin: "https://www.linkedin.com/in/yunussengun/", twitter: "#" }
     },
-    { 
-      id: 13,
-      name: "Bahattin Koç",
-      role: "Yardımcı Organizatör",
-      avatarUrl: imgBahattin,
-      social: { linkedin: "#", twitter: "#" }
-    },
+    {
+      id: 20,
+      name: "Yusuf Yıldız", 
+      role: "Üye",
+      avatarUrl: imgYusuf,
+      social: { linkedin: "https://www.linkedin.com/in/yusuf-yldz/", twitter: "#" }
+    }
 
   ];
+
+
+  const sortedTeamMembers = [...teamMembers].sort((a, b) => {
+    // 1. Kural: id'si 1 olan eleman her zaman en üstte kalmalı
+    if (a.id === 1) return -1;
+    if (b.id === 1) return 1;
+
+    // 2. Kural: Diğer elemanları isimlerine göre (Türkçe karakter duyarlı) sırala
+    return a.name.localeCompare(b.name, 'tr', { sensitivity: 'base' });
+  });
+
+
 
   const defaultAvatar = "/assets/img/images/author_img.png";
 
@@ -147,7 +216,7 @@ const TeamPage = () => {
         <section className="pb-100">
           <div className="container">
             <div className="row justify-content-center g-4">
-              {teamMembers.map((member) => (
+              {sortedTeamMembers.map((member) => (
                 <div key={member.id} className="col-xl-3 col-lg-4 col-md-6">
                   <div className="team-card p-4 h-100 text-center" style={{
                     border: '1px solid #f0f0f0',
@@ -186,9 +255,6 @@ const TeamPage = () => {
                     <div className="d-flex justify-content-center gap-3 mt-3 pt-3 border-top">
                       <Link href={member.social.linkedin} target="_blank" className="social-link">
                         <i className="fab fa-linkedin-in"></i>
-                      </Link>
-                      <Link href={member.social.twitter} target="_blank" className="social-link">
-                        <i className="fab fa-twitter"></i>
                       </Link>
                     </div>
                   </div>
