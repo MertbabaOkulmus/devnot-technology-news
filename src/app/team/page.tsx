@@ -4,7 +4,18 @@ import { Metadata } from "next";
 import HeaderThree from "@/layouts/headers/HeaderThree";
 import FooterOne from "@/layouts/footers/FooterOne";
 
-import imgUgur from "@/assets/img/team/ugur-umutluoglu.jpg";
+import imgZeynep from "@/assets/img/team/zeynep-yildiz.jpg";
+import imgAnil from "@/assets/img/team/anil-yilmaz.jpg";
+import imgAynur from "@/assets/img/team/aynur-katircioglu.jpg";
+import imgEmine from "@/assets/img/team/emine-cihan.jpg";
+import imgFadil from "@/assets/img/team/fadil-basaran.jpg";
+import imgAhmet from "@/assets/img/team/ahmet-burak-kucuk.jpg";
+import imgMert from "@/assets/img/team/mertbaba-okulmus.jpg";
+import imgSeda from "@/assets/img/team/seda-nur-kilinc.jpg";
+import imgSongul from "@/assets/img/team/songul-ersoy-koc.jpg";
+import imgMelisa from "@/assets/img/team/melisa-nur-kaya.jpg";
+import imgBahattin from "@/assets/img/team/bahattin-koc.jpg";
+import imgBaris from "@/assets/img/team/baris-yilmaz.jpg";
 
 export const metadata: Metadata = {
   title: "Ekibimiz | Devnot",
@@ -18,23 +29,94 @@ const TeamPage = () => {
       id: 1,
       name: "Uğur Umutluoğlu",
       role: "Kurucu, Organizatör",
-      avatarUrl: imgUgur,
+      avatarUrl: imgAhmet,
       social: { linkedin: "https://linkedin.com/in/ugurumutluoglu/", twitter: "https://x.com/umutluoglu" }
     },
     {
       id: 2,
       name: "Ahmet Burak Küçük",
       role: "Yardımcı Organizatör",
-      avatarUrl: "/assets/img/team/ahmet-burak-kucuk.jpg",
+      avatarUrl: imgAhmet,
       social: { linkedin: "#", twitter: "#" }
     },
     {
       id: 3,
       name: "Anıl Yılmaz",
       role: "Yardımcı Organizatör",
-      avatarUrl: "/assets/img/team/anil-yilmaz.jpg",
+      avatarUrl: imgAnil,
       social: { linkedin: "#", twitter: "#" }
-    }
+    },
+    {
+      id: 4,
+      name: "Mertbaba Okulmuş",
+      role: "Yardımcı Organizatör",
+      avatarUrl: imgMert,
+      social: { linkedin: "#", twitter: "#" }
+    },
+        { 
+      id: 5,
+      name: "Barış Yılmaz",
+      role: "Yardımcı Organizatör",
+      avatarUrl: imgBaris,
+      social: { linkedin: "#", twitter: "#" }
+    } ,
+    {
+      id: 6,
+      name: "Zeynep Yıldız", 
+      role: "Yardımcı Organizatör",
+      avatarUrl: imgZeynep,
+      social: { linkedin: "#", twitter: "#" }
+    },
+    {
+      id: 7,
+      name: "Aynur Katırcıoğlu",  
+      role: "Yardımcı Organizatör",
+      avatarUrl: imgAynur,
+      social: { linkedin: "#", twitter: "#" }
+    },
+    {
+      id: 8,  
+      name: "Emine Cihan",
+      role: "Yardımcı Organizatör",
+      avatarUrl: imgEmine,  
+      social: { linkedin: "#", twitter: "#" }
+    },
+    {
+      id: 9,
+      name: "Fadıl Başaran",
+      role: "Yardımcı Organizatör",
+      avatarUrl: imgFadil,
+      social: { linkedin: "#", twitter: "#" }
+    }, 
+    {
+      id: 10,
+      name: "Seda Nur Kılınç",  
+      role: "Yardımcı Organizatör",
+      avatarUrl: imgSeda,
+      social: { linkedin: "#", twitter: "#" }
+    },
+    {
+      id: 11,
+      name: "Songül Ersoy Koç",  
+      role: "Yardımcı Organizatör",
+      avatarUrl: imgSongul,
+      social: { linkedin: "#", twitter: "#" }
+    },
+    { 
+      id: 12,
+      name: "Melisa Nur Kaya",  
+      role: "Yardımcı Organizatör",
+      avatarUrl: imgMelisa,
+      social: { linkedin: "#", twitter: "#" }
+    },
+    { 
+      id: 13,
+      name: "Bahattin Koç",
+      role: "Yardımcı Organizatör",
+      avatarUrl: imgBahattin,
+      social: { linkedin: "#", twitter: "#" }
+    },
+
   ];
 
   const defaultAvatar = "/assets/img/images/author_img.png";
@@ -45,7 +127,7 @@ const TeamPage = () => {
 
       {/* flex: '1 0 auto' ile ana içeriği footer'dan ayırıyoruz */}
       <main style={{ backgroundColor: '#ffffff', flex: '1 0 auto' }}>
-        
+
         {/* --- MİNİMAL BAŞLIK ALANI --- */}
         <section className="pt-80 pb-60">
           <div className="container text-center">
@@ -67,27 +149,27 @@ const TeamPage = () => {
             <div className="row justify-content-center g-4">
               {teamMembers.map((member) => (
                 <div key={member.id} className="col-xl-3 col-lg-4 col-md-6">
-                  <div className="team-card p-4 h-100 text-center" style={{ 
-                      border: '1px solid #f0f0f0', 
-                      borderRadius: '24px', 
-                      backgroundColor: '#fff',
-                      transition: 'all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)'
+                  <div className="team-card p-4 h-100 text-center" style={{
+                    border: '1px solid #f0f0f0',
+                    borderRadius: '24px',
+                    backgroundColor: '#fff',
+                    transition: 'all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)'
                   }}>
                     {/* Avatar (Squircle & Tilt Effect) */}
                     <div className="mx-auto mb-4 position-relative" style={{ width: '140px', height: '140px' }}>
-                      <div style={{ 
-                          width: '100%', 
-                          height: '100%', 
-                          borderRadius: '40px', 
-                          overflow: 'hidden',
-                          transform: 'rotate(-3deg)', 
-                          border: '4px solid #f8f9fa'
+                      <div style={{
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: '40px',
+                        overflow: 'hidden',
+                        transform: 'rotate(-3deg)',
+                        border: '4px solid #f8f9fa'
                       }}>
-                        <Image 
-                          src={member.avatarUrl || defaultAvatar} 
-                          alt={member.name} 
+                        <Image
+                          src={member.avatarUrl || defaultAvatar}
+                          alt={member.name}
                           fill
-                          style={{ objectFit: 'cover', transform: 'rotate(3deg) scale(1.1)' }} 
+                          style={{ objectFit: 'cover', transform: 'rotate(3deg) scale(1.1)' }}
                         />
                       </div>
                     </div>
