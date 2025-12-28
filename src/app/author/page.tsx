@@ -198,7 +198,7 @@ const AuthorPage = async ({ searchParams }: AuthorPageProps) => {
                                      </h2>
                                      <div className="mt-auto pt-3 border-top w-100">
                                         <Link href={`/blog/${item.slug}`} className="fw-bold text-primary text-decoration-none" style={{ fontSize: '0.9rem' }}>
-                                           Makaleyi Oku <i className="fas fa-arrow-right ms-1"></i>
+                                           Haberi Oku <i className="fas fa-arrow-right ms-1"></i>
                                         </Link>
                                      </div>
                                   </div>

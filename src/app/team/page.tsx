@@ -4,6 +4,8 @@ import { Metadata } from "next";
 import HeaderThree from "@/layouts/headers/HeaderThree";
 import FooterOne from "@/layouts/footers/FooterOne";
 
+import imgUgur from "@/assets/img/team/ugur-umutluoglu.jpg";
+
 export const metadata: Metadata = {
   title: "Ekibimiz | Devnot",
   description: "Devnot'un arkasındaki tutkulu ekip ile tanışın.",
@@ -15,22 +17,22 @@ const TeamPage = () => {
     {
       id: 1,
       name: "Uğur Umutluoğlu",
-      role: "Kurucu & Yayın Yönetmeni",
-      avatarUrl: null,
+      role: "Kurucu, Organizatör",
+      avatarUrl: imgUgur,
       social: { linkedin: "https://linkedin.com/in/ugurumutluoglu/", twitter: "https://x.com/umutluoglu" }
     },
     {
       id: 2,
-      name: "Serra Çergel",
-      role: "Editör",
-      avatarUrl: null,
+      name: "Ahmet Burak Küçük",
+      role: "Yardımcı Organizatör",
+      avatarUrl: "/assets/img/team/ahmet-burak-kucuk.jpg",
       social: { linkedin: "#", twitter: "#" }
     },
     {
       id: 3,
-      name: "Zeynep Yerçel",
-      role: "İçerik Editörü",
-      avatarUrl: null,
+      name: "Anıl Yılmaz",
+      role: "Yardımcı Organizatör",
+      avatarUrl: "/assets/img/team/anil-yilmaz.jpg",
       social: { linkedin: "#", twitter: "#" }
     }
   ];
@@ -51,7 +53,7 @@ const TeamPage = () => {
               Biz Kimiz?
             </span>
             <h1 className="fw-bold text-dark mb-3" style={{ fontSize: '3.5rem', letterSpacing: '-1.5px' }}>
-              Ekibimizle Tanışın
+              Organizasyon Ekibi
             </h1>
             <p className="text-muted mx-auto" style={{ fontSize: '1.1rem', maxWidth: '700px', lineHeight: '1.6' }}>
               Devnot, Türkiye yazılım ekosistemini ileriye taşımak için gönüllü ve profesyonel bir ekibin omuzlarında yükseliyor.
