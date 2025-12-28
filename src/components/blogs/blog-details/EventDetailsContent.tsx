@@ -56,8 +56,6 @@ const EventDetailsContent = ({ featuredEventDetail }: EventDetailsContentProps) 
     const item = featuredEventDetail;
     const eventType = item.eventType?.name || "Etkinlik";
     const eventDate = formatPublishedDate(item.date);
-    // Gelen data'da imageUrl null, bu yüzden varsayılanı kullanacak
-    const mainImage = item.imageUrl || blogThumb_1; 
 
     // Not: Etkinlik verisinde yazar, yorum sayısı ve etiketler bulunmadığı için kaldırılmıştır/statik bırakılmıştır.
 
@@ -84,17 +82,19 @@ const EventDetailsContent = ({ featuredEventDetail }: EventDetailsContentProps) 
                 </div>
 
                 {/* Ana Resim */}
-                <div className="blog-details-thumb">
-                    <Image
-                        // ImageUrl statik resim objesi veya dinamik string olabilir
-                        src={mainImage}
-                        alt={item.title}
-                        width={850}
-                        height={500}
-                        priority
-                        style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
-                    />
-                </div>
+                {item.imageUrl !== null ?
+                    <div className="blog-details-thumb">
+                        <Image
+                            // ImageUrl statik resim objesi veya dinamik string olabilir
+                            src={item.imageUrl}
+                            alt={item.title}
+                            width={850}
+                            height={300}
+                            priority
+                            style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                        />
+                    </div> : <br />
+                }
 
                 {/* === ANA İÇERİK (HTML Injection) === */}
                 {/* Description alanı HTML içerdiği için dangerouslySetInnerHTML kullanıyoruz */}
@@ -107,14 +107,14 @@ const EventDetailsContent = ({ featuredEventDetail }: EventDetailsContentProps) 
                 <div className="blog-details-bottom mt-5">
                     <div className="row align-items-center">
                         <div className="col-lg-6">
-                                <div className="post-tags">
-                                    <h5 className="title">Mekan:</h5>
-                                    <p className="mb-0">{item.location}</p>
-                                </div>
-                                <div className="post-tags">
-                                    <h5 className="title">Tarih:</h5>
-                                    <p className="mb-0">{eventDate}</p>
-                                </div>
+                            <div className="post-tags">
+                                <h5 className="title">Mekan:</h5>
+                                <p className="mb-0">{item.location}</p>
+                            </div>
+                            <div className="post-tags">
+                                <h5 className="title">Tarih:</h5>
+                                <p className="mb-0">{eventDate}</p>
+                            </div>
                         </div>
                     </div>
                 </div>

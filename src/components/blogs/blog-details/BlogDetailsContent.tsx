@@ -18,6 +18,7 @@ interface ArticleDetail {
     summary: string | null;
     publishedAt: string;
     viewCount: number;
+    imageUrl: string | null;
     user: {
         id: number;
         name: string;
@@ -59,7 +60,6 @@ const BlogDetailsContent = ({ featuredArticleDetail }: BlogDetailsContentProps) 
     const authorName = item.user?.name || "Admin";
     const categoryName = item.category?.name || "Genel";
     const publishedDate = formatPublishedDate(item.publishedAt);
-    const mainImage = item.imageUrl || blogThumb_1; 
     const summaryText = item.summary || item.content.substring(0, 150) + '...'; // Özet yoksa içeriğin başını kullan
 
     // Not: Yorum sayısı ve okuma süresi verinizde bulunmadığı için statik/tahmini bırakılmıştır.
@@ -87,18 +87,18 @@ const BlogDetailsContent = ({ featuredArticleDetail }: BlogDetailsContentProps) 
                 </div>
 
                 {/* Ana Resim */}
-                <div className="blog-details-thumb">
+               {item.imageUrl !== null ? <div className="blog-details-thumb">
                     <Image 
-                        src={mainImage} 
+                        src={item.imageUrl} 
                         alt={item.title} 
                         // Resim dinamik URL veya statik import objesi olabilir
                         // Next.js Image için varsayılan boyutları kullanın
                         width={850} 
-                        height={500} 
+                        height={300} 
                         priority 
                         style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
                     />
-                </div>
+                </div>: <br />}
 
                 {/* Özet/Giriş Paragrafı (Eski kodun ilk paragrafına karşılık) */}
                 {item.summary && <p className="first-info">{item.summary}</p>}

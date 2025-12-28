@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { postNewsletter } from '@/services';
 import { toast } from 'react-toastify';
+import { Modal } from 'react-responsive-modal';
+import 'react-responsive-modal/styles.css';
 
 const newsletters = [
   {
@@ -36,6 +38,8 @@ const newsletters = [
 const NewsletterArea = () => {
   const [emailValues, setEmailValues] = useState<{ [key: number]: string }>({});
   const [loadingId, setLoadingId] = useState<number | null>(null);
+  
+  const [confirmItem, setConfirmItem] = useState<typeof newsletters[0] | null>(null);
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -46,7 +50,7 @@ const NewsletterArea = () => {
     setEmailValues(prev => ({ ...prev, [id]: value }));
   };
 
-  const handleSubscribe = async (item: typeof newsletters[0]) => {
+  const handlePreSubscribe = (item: typeof newsletters[0]) => {
     const email = emailValues[item.id];
 
     if (!email || !email.trim()) {
@@ -59,6 +63,23 @@ const NewsletterArea = () => {
       return;
     }
 
+    setConfirmItem(item);
+  };
+
+  const handleCancel = () => {
+    if (confirmItem) {
+      setEmailValues(prev => ({ ...prev, [confirmItem.id]: '' }));
+    }
+    setConfirmItem(null);
+  };
+
+  const handleConfirmSubscribe = async () => {
+    if (!confirmItem) return;
+    
+    const item = confirmItem;
+    const email = emailValues[item.id];
+    
+    setConfirmItem(null);
     setLoadingId(item.id);
 
     try {
@@ -82,7 +103,7 @@ const NewsletterArea = () => {
 
   const handleKeyDown = (e: React.KeyboardEvent, item: typeof newsletters[0]) => {
     if (e.key === 'Enter') {
-      handleSubscribe(item);
+      handlePreSubscribe(item);
     }
   };
 
@@ -130,7 +151,7 @@ const NewsletterArea = () => {
                     <button
                       className="btn-custom"
                       style={{ backgroundColor: item.theme, opacity: loadingId === item.id ? 0.7 : 1 }}
-                      onClick={() => handleSubscribe(item)}
+                      onClick={() => handlePreSubscribe(item)}
                       disabled={loadingId === item.id}
                     >
                       {loadingId === item.id ? (
@@ -151,6 +172,42 @@ const NewsletterArea = () => {
           </div>
         </div>
       </section>
+
+      <Modal 
+        open={!!confirmItem} 
+        onClose={handleCancel}
+        center
+        classNames={{
+          modal: 'custom-modal',
+          closeButton: 'custom-modal-close'
+        }}
+      >
+        <div className="modal-content-wrapper">
+            <h4 className="modal-title">Abonelik Onayı</h4>
+            <p className="modal-text">
+              <span className="fw-bold">{confirmItem ? emailValues[confirmItem.id] : ''}</span> adresiyle 
+              <br />
+              <span style={{color: confirmItem?.theme, fontWeight: 'bold'}}> {confirmItem?.title} </span> 
+              bültenine abone olmak istiyor musunuz?
+            </p>
+            
+            <div className="modal-actions">
+                <button 
+                  className="btn btn-light btn-sm px-4" 
+                  onClick={handleCancel}
+                >
+                  Vazgeç
+                </button>
+                <button 
+                  className="btn btn-primary btn-sm px-4 text-white"
+                  style={{ backgroundColor: confirmItem?.theme, borderColor: confirmItem?.theme }}
+                  onClick={handleConfirmSubscribe}
+                >
+                  Onayla
+                </button>
+            </div>
+        </div>
+      </Modal>
 
       <style dangerouslySetInnerHTML={{
         __html: `
@@ -252,6 +309,82 @@ const NewsletterArea = () => {
         }
         .btn-custom:disabled {
             cursor: not-allowed;
+        }
+
+        /* Toastify Customization */
+        .Toastify__toast-container {
+          z-index: 999999 !important;
+        }
+        .Toastify__toast {
+          background-color: #2c3e50 !important;
+          color: #ffffff !important;
+          border-radius: 8px !important;
+        }
+        .Toastify__close-button {
+          color: #ffffff !important;
+          opacity: 0.8;
+        }
+        .Toastify__progress-bar {
+          background: rgba(255,255,255,0.7) !important;
+        }
+
+        /* Modal Customization */
+        .custom-modal {
+          background-color: var(--nl-card) !important;
+          color: var(--nl-title) !important;
+          border-radius: 16px !important;
+          padding: 30px !important;
+          border: 1px solid var(--nl-border);
+          max-width: 450px !important;
+          width: 100%;
+        }
+        
+        .custom-modal-close {
+           fill: var(--nl-text) !important;
+        }
+        .custom-modal-close:hover {
+           fill: var(--nl-title) !important;
+        }
+
+        .modal-content-wrapper {
+           text-align: center;
+        }
+        
+        .modal-title {
+           font-size: 20px;
+           font-weight: 700;
+           margin-bottom: 15px;
+           color: var(--nl-title);
+        }
+        
+        .modal-text {
+           font-size: 15px;
+           color: var(--nl-text);
+           line-height: 1.6;
+           margin-bottom: 25px;
+        }
+        
+        .modal-actions {
+           display: flex;
+           justify-content: center;
+           gap: 15px;
+        }
+
+        /* İSTEK 1: Mobil İçin Responsive Modal Ayarları */
+        @media (max-width: 576px) {
+           .custom-modal {
+              padding: 20px !important; /* Mobilde daha az boşluk */
+              width: 90% !important;   /* Ekranın %90'ını kapla */
+              margin: 0 auto !important;
+              border-radius: 12px !important;
+           }
+           .modal-title {
+              font-size: 18px;
+           }
+           .modal-text {
+              font-size: 13.5px;
+              margin-bottom: 20px;
+           }
         }
       `}} />
     </>
