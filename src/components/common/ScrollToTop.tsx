@@ -1,44 +1,38 @@
-"use client"
+"use client";
 import UseSticky from "@/hooks/UseSticky";
 import { useState, useEffect } from "react";
 
 const ScrollToTop = () => {
-   const { sticky }: { sticky: boolean } = UseSticky();
+  const { sticky }: { sticky: boolean } = UseSticky();
+  const [showScroll, setShowScroll] = useState(false);
 
-   const [showScroll, setShowScroll] = useState(false);
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-   const checkScrollTop = () => {
-      if (!showScroll && window.pageYOffset > 400) {
-         setShowScroll(true);
-      } else if (showScroll && window.pageYOffset <= 400) {
-         setShowScroll(false);
-      }
-   };
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScroll((prev) => {
+        if (!prev && window.pageYOffset > 400) return true;
+        if (prev && window.pageYOffset <= 400) return false;
+        return prev;
+      });
+    };
 
-   const scrollTop = () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-   };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-   useEffect(() => {
-      const checkScrollTop = () => {
-         if (!showScroll && window.pageYOffset > 400) {
-            setShowScroll(true);
-         } else if (showScroll && window.pageYOffset <= 400) {
-            setShowScroll(false);
-         }
-      };
-
-      window.addEventListener("scroll", checkScrollTop);
-      return () => window.removeEventListener("scroll", checkScrollTop);
-   }, [checkScrollTop]);
-
-   return (
-      <>
-         <button onClick={scrollTop} className={`scroll-top scroll-to-target ${sticky ? "open" : ""}`}>
-            <i className="fas fa-angle-up"></i>
-         </button>
-      </>
-   )
-}
+  return (
+    <>
+      <button
+        onClick={scrollTop}
+        className={`scroll-top scroll-to-target ${sticky ? "open" : ""}`}
+      >
+        <i className="fas fa-angle-up"></i>
+      </button>
+    </>
+  );
+};
 
 export default ScrollToTop;

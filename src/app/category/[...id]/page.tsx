@@ -1,7 +1,7 @@
 // page.tsx (veya index.tsx)
 import BlogTwo from "@/components/blogs/blog-two";
 import Wrapper from "@/layouts/Wrapper";
-import { fetchArticleCategorySlug } from '@/services/homethree.service';
+import { fetchArticleCategorySlug } from "@/services/homethree.service";
 import { Metadata } from "next";
 
 // Dinamik veya Statik Metadata
@@ -11,15 +11,16 @@ export const metadata: Metadata = {
 };
 
 type Props = {
-   params: { id: string[] };
+  params: Promise<{ id: string[] }>;
 };
 
-
 export default async function Page({ params }: Props) {
-  const { id } = params;
-   const eventId = id[0];
-  const upcomingEvents = await fetchArticleCategorySlug(eventId);
-  console.log('first', upcomingEvents)
+  const p = await params;
+  const { id } = p;
+  const eventId = id[0];
+
+  const upcomingEvents: any = await fetchArticleCategorySlug(eventId);
+  console.log("first", upcomingEvents);
 
   return (
     <Wrapper>

@@ -11,7 +11,7 @@ interface HomeThreeProps {
    featuredLatest?: NewsArticle[]
    loading?: boolean
    error?: string | null
-   upcomingEvents?: NewsArticle[]
+   upcomingEvents?: any
 }
 
 const HomeThree = ({ featuredArticles = [], featuredLatest = [], upcomingEvents = [] }: HomeThreeProps) => {
