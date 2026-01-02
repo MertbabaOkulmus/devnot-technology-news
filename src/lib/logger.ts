@@ -21,7 +21,9 @@ let cachedServerLogger: Logger | null = null;
 
 function safeStringify(obj: any) {
   try {
-    return JSON.stringify(obj, (_k, v) => (typeof v === "bigint" ? v.toString() : v));
+    return JSON.stringify(obj, (_k, v) =>
+      typeof v === "bigint" ? v.toString() : v
+    );
   } catch {
     return "[unserializable]";
   }
@@ -30,8 +32,6 @@ function safeStringify(obj: any) {
 function getServerLogger(): Logger {
   if (cachedServerLogger) return cachedServerLogger;
 
-  // ✅ Webpack görmesin diye eval require
-  // eslint-disable-next-line @typescript-eslint/no-implied-eval
   const req = eval("require") as NodeRequire;
 
   const winston = req("winston") as typeof import("winston");
@@ -64,7 +64,9 @@ function getServerLogger(): Logger {
 
   // Dev'de server console'a da bas
   if (process.env.NODE_ENV !== "production") {
-    logger.add(new winston.transports.Console({ format: winston.format.simple() }));
+    logger.add(
+      new winston.transports.Console({ format: winston.format.simple() })
+    );
   }
 
   cachedServerLogger = {
