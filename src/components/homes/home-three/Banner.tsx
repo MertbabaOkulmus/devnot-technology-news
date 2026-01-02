@@ -83,7 +83,7 @@ const Banner = ({ featuredArticles = [] }: { featuredArticles?: NewsArticle[] })
                      {bigPost && (
                         <div key={bigPost.id} className="banner-post-two big-post">
                            <div className="banner-post-thumb-two">
-                              <Link href={`/blog/${bigPost.slug}`}>
+                              <Link href={`/haber/${bigPost.slug}`}>
                                  <Image
                                     src={bigPost.imageUrl || bannerThumb_1}
                                     alt={bigPost.title}
@@ -94,9 +94,9 @@ const Banner = ({ featuredArticles = [] }: { featuredArticles?: NewsArticle[] })
                               </Link>
                            </div>
                            <div className="banner-post-content-two">
-                              <Link href="/blog" className="post-tag">{bigPost.tag}</Link>
+                              <Link href="/haber" className="post-tag">{bigPost.tag}</Link>
                               <h2 className="post-title bold-underline">
-                                 <Link href={`/blog/${bigPost.slug}`}>{bigPost.title}</Link>
+                                 <Link href={`/haber/${bigPost.slug}`}>{bigPost.title}</Link>
                               </h2>
                               <div className="blog-post-meta white-blog-meta">
                                  <ul className="list-wrap">
@@ -121,7 +121,7 @@ const Banner = ({ featuredArticles = [] }: { featuredArticles?: NewsArticle[] })
                      {smallPosts.map((item) => (
                         <div key={item.id} className="banner-post-two small-post">
                            <div className="banner-post-thumb-two">
-                              <Link href={`/blog/${item.slug}`}>
+                              <Link href={`/haber/${item.slug}`}>
                                  <Image
                                     src={item.imageUrl || bannerThumb_1}
                                     alt={item.title}
@@ -133,7 +133,7 @@ const Banner = ({ featuredArticles = [] }: { featuredArticles?: NewsArticle[] })
                            <div className="banner-post-content-two">
                               <Link href="/blog" className="post-tag">{item.tag}</Link>
                               <h2 className="post-title">
-                                 <Link href={`/blog/${item.slug}`}>{item.title}</Link>
+                                 <Link href={`/haber/${item.slug}`}>{item.title}</Link>
                               </h2>
                               <div className="blog-post-meta white-blog-meta">
                                  <ul className="list-wrap">

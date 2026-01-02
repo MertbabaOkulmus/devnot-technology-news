@@ -46,7 +46,7 @@ const BlogArea = ({ style, blogs }: StyleType) => {
                         {currentItems.map((item) => {
                            const imageUrl = item.imageUrl || placeholder;
                            // Dinamik Link: Eğer location varsa etkinliktir, yoksa haberdir (veya tip kontrolü)
-                           const detailPath = item.location ? `/events/${item.slug}` : `/blog/${item.slug}`;
+                           const detailPath = item.location ? `/events/${item.slug}` : `/haber/${item.slug}`;
 
                            return (
                               <div key={item.id} className="weekly-post-item weekly-post-four">

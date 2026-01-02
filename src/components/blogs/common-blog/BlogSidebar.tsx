@@ -69,7 +69,7 @@ const BlogSidebar = () => {
                         {/* Sadece ilk haberde görsel gösterilsin istersen veya hepsinde varsa gösterilsin: */}
                         {article.imageUrl && (
                            <div className="hot-post-thumb">
-                              <Link href={`/blog/${article.slug}`}>
+                              <Link href={`/haber/${article.slug}`}>
                                  <Image
                                     src={article.imageUrl || sidebarThumb}
                                     alt={article.title}
@@ -85,7 +85,7 @@ const BlogSidebar = () => {
                               {article.category?.name}
                            </Link>
                            <h4 className="post-title">
-                              <Link href={`/blog/${article.slug}`}>{article.title}</Link>
+                              <Link href={`/haber/${article.slug}`}>{article.title}</Link>
                            </h4>
                            <div className="blog-post-meta">
                               <ul className="list-wrap">

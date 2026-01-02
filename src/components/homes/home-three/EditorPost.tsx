@@ -99,7 +99,7 @@ const EditorPost = ({ featuredLatest = [] }: { featuredLatest?: NewsArticle[] })
                                  // Resim Boyutu: 160px x 160px Kare
                                  style={{ width: '160px', height: '160px', flexShrink: 0 }}
                               >
-                                 <Link href={`/blog/${item.slug}`} >
+                                 <Link href={`/haber/${item.slug}`} >
                                      <Image 
                                          src={item.thumb} 
                                          alt={item.title} 
@@ -130,7 +130,7 @@ const EditorPost = ({ featuredLatest = [] }: { featuredLatest?: NewsArticle[] })
                                  {/* 2. BAŞLIK (Ortada - Kesme Uygulandı) */}
                                  <h2 className="post-title" style={{ margin: '5px 0' }}>
                                      <Link 
-                                        href={`/blog/${item.slug}`}
+                                        href={`/haber/${item.slug}`}
                                         // Uzun başlıklar için kesme (ellipsis) stili
                                         style={{ 
                                             display: '-webkit-box',

@@ -222,20 +222,20 @@ const AuthorPage = async ({ searchParams }: AuthorPageProps) => {
                           }}
                         >
                           <div className="position-relative" style={{ height: "240px", width: "100%" }}>
-                            <Link href={`/blog/${item.slug}`}>
+                            <Link href={`/haber/${item.slug}`}>
                               <Image src={postImage} alt={item.title} fill style={{ objectFit: "cover" }} />
                             </Link>
                           </div>
 
                           <div className="p-4 d-flex flex-column flex-grow-1">
                             <h2 className="mb-3" style={{ fontSize: "1.25rem", fontWeight: "700", lineHeight: "1.4" }}>
-                              <Link href={`/blog/${item.slug}`} className="text-dark text-decoration-none hover-primary">
+                              <Link href={`/haber/${item.slug}`} className="text-dark text-decoration-none hover-primary">
                                 {item.title}
                               </Link>
                             </h2>
                             <div className="mt-auto pt-3 border-top w-100">
                               <Link
-                                href={`/blog/${item.slug}`}
+                                href={`/haber/${item.slug}`}
                                 className="fw-bold text-primary text-decoration-none"
                                 style={{ fontSize: "0.9rem" }}
                               >
