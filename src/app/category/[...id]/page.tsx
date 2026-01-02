@@ -1,4 +1,5 @@
-// page.tsx (veya index.tsx)
+export const dynamic = "force-dynamic";
+
 import BlogTwo from "@/components/blogs/blog-two";
 import Wrapper from "@/layouts/Wrapper";
 import { fetchArticleCategorySlug } from "@/services/homethree.service";

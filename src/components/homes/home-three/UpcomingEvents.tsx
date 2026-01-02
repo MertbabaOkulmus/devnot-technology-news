@@ -90,7 +90,7 @@ const UpcomingEvents = ({ upcomingEvents = [] }: UpcomingEventsProps) => {
     const mappedData = upcomingEvents.map(mapEventToBannerItem);
 
     return (
-        <section className="banner-post-area-four pb-50 mt-35">
+        <section className="banner-post-area-four pb-10 mt-35">
             <div className="container">
                 <div className="upcoming-events-wrap">
                     {mappedData.length > 0 ? (

@@ -22,6 +22,10 @@ instance.interceptors.request.use(
 
     // Bundan sonrası için headers'ı gevşek tipte kullanıyoruz
     const headers = config.headers as any;
+    // Cache kontrolü 
+    headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0';
+    headers['Pragma'] = 'no-cache';
+    headers['Expires'] = '0';
 
     // Ortak Content-Type
     if (!headers['Content-Type']) {
