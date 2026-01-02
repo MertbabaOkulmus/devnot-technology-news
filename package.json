@@ -27,6 +27,7 @@
     "sass": "^1.89.2",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.2.10",
+    "winston": "^3.19.0",
     "yet-another-react-lightbox": "^3.25.0"
   },
   "devDependencies": {

@@ -3,6 +3,7 @@ import axios, {
   AxiosRequestConfig,
   AxiosResponse,
 } from 'axios';
+import logger from '@/lib/logger';
 
 const baseURL =
   process.env.NEXT_PUBLIC_API_BASE_URL || 'https://api.devnot.com/api';
@@ -12,6 +13,17 @@ const instance: AxiosInstance = axios.create({
   withCredentials: false,
 });
 
+function truncate(input: any, max = 1500) {
+  if (input == null) return input;
+  let s = '';
+  try {
+    s = typeof input === 'string' ? input : JSON.stringify(input);
+  } catch {
+    s = String(input);
+  }
+  return s.length > max ? s.slice(0, max) + '…(truncated)' : s;
+}
+
 // Request interceptor: auth token + SSR'de Referer/Origin
 instance.interceptors.request.use(
   (config) => {
@@ -20,9 +32,13 @@ instance.interceptors.request.use(
       config.headers = {} as any;
     }
 
+    // SSR için request başlangıç zamanını tut
+    (config as any).metadata = { startTime: Date.now() };
+
     // Bundan sonrası için headers'ı gevşek tipte kullanıyoruz
     const headers = config.headers as any;
-    // Cache kontrolü 
+
+    // Cache kontrolü
     headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0';
     headers['Pragma'] = 'no-cache';
     headers['Expires'] = '0';
@@ -57,6 +73,12 @@ instance.interceptors.request.use(
       if (!headers['Accept']) {
         headers['Accept'] = 'application/json, text/plain, */*';
       }
+
+      // SSR request log
+      logger.info('SSR API REQUEST', {
+        method: (config.method || 'GET').toUpperCase(),
+        url: config.url,
+      });
     }
 
     return config;
@@ -66,9 +88,39 @@ instance.interceptors.request.use(
 
 // Response interceptor: hata formatını merkezileştirme
 instance.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    if (typeof window === 'undefined') {
+      const start = (response.config as any)?.metadata?.startTime;
+      const ms = start ? Date.now() - start : undefined;
+
+      logger.info('SSR API RESPONSE', {
+        method: (response.config.method || 'GET').toUpperCase(),
+        url: response.config.url,
+        status: response.status,
+        ms,
+      });
+    }
+
+    return response;
+  },
   (error) => {
     const resp = error?.response;
+
+    if (typeof window === 'undefined') {
+      const cfg = resp?.config || error?.config;
+      const start = cfg?.metadata?.startTime;
+      const ms = start ? Date.now() - start : undefined;
+
+      logger.error('SSR API ERROR', {
+        method: (cfg?.method || 'GET').toUpperCase(),
+        url: cfg?.url,
+        status: resp?.status,
+        ms,
+        data: truncate(resp?.data, 1500),
+        message: error?.message,
+      });
+    }
+
     if (resp && resp.data) {
       return Promise.reject(resp.data);
     }
