@@ -24,6 +24,7 @@ import imgYusuf from "@/assets/img/team/yusuf-yildiz.jpg";
 import imgEda from "@/assets/img/team/eda-kas.jpg";
 import imgDicle from "@/assets/img/team/dicle-demir.jpg";
 import imgYunus from "@/assets/img/team/yunus-sengun.jpg";
+import imgBetul from "@/assets/img/team/betul-sengun.jpg";
 
 export const metadata: Metadata = {
   title: "Ekibimiz | Devnot",
@@ -172,8 +173,14 @@ const TeamPage = () => {
       role: "Üye",
       avatarUrl: imgYusuf,
       social: { linkedin: "https://www.linkedin.com/in/yusuf-yldz/", twitter: "#" }
+    },
+    {
+      id: 21,
+      name: "Betül Şengün", 
+      role: "Üye, Sosyal Medya Sorumlusu",
+      avatarUrl: imgBetul,
+      social: { linkedin: "https://www.linkedin.com/in/betlkasmcan/", twitter: "#" }
     }
-
   ];
 
 
