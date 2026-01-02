@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { notFound } from "next/navigation";
 import BlogDetailsArea from "@/components/blogs/blog-details/BlogDetailsArea";
 import Wrapper from "@/layouts/Wrapper";

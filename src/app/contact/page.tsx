@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import Contact from "@/components/blogs/inner-pages/contact";
 import Wrapper from "@/layouts/Wrapper";
 
