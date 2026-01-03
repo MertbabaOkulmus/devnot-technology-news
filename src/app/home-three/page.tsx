@@ -36,7 +36,6 @@ const HomePage = () => {
 
   return (
     <Wrapper>
-      mertbaba
       <HomeThree featuredArticles={featuredArticles} featuredLatest={featuredLatest} upcomingEvents={upcomingEvents} loading={loading} error={error} />
     </Wrapper>
   );

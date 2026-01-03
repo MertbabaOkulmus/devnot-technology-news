@@ -19,7 +19,6 @@ const HomeThree = ({ featuredArticles = [], featuredLatest = [], upcomingEvents 
       <>
          <HeaderThree />
          <main className="fix">
-            mertbaba
             <UpcomingEvents upcomingEvents={upcomingEvents} />
             <Banner featuredArticles={featuredArticles} />
             <NewsletterArea />
