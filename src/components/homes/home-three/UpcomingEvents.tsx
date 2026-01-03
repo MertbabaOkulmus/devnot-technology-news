@@ -92,6 +92,7 @@ const UpcomingEvents = ({ upcomingEvents = [] }: UpcomingEventsProps) => {
     return (
         <section className="banner-post-area-four pb-10 mt-35">
             <div className="container">
+                
                 <div className="upcoming-events-wrap">
                     {mappedData.length > 0 ? (
                         <Slider {...setting} ref={sliderRef} className="row banner-post-active events-slider-with-gap">
