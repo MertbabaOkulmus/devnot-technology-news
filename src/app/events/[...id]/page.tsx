@@ -8,26 +8,22 @@ import HeaderThree from "@/layouts/headers/HeaderThree";
 import { fetchEventSlug, NewsArticle } from "@/services";
 import type { Metadata } from "next";
 
-type Props = {
-  params: { id?: string[] };
-};
-
 type EventWithImage = NewsArticle & { image?: string | null };
 
-// 1) Dinamik SEO Ayarları (generateMetadata)
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+type PageParams = {
+  id?: string[];
+};
+
+export async function generateMetadata(
+  { params }: { params: PageParams }
+): Promise<Metadata> {
   const eventId = params?.id?.[0];
 
-  if (!eventId) {
-    return { title: "Etkinlik Bulunamadı | Devnot" };
-  }
+  if (!eventId) return { title: "Etkinlik Bulunamadı | Devnot" };
 
   try {
     const eventData = (await fetchEventSlug(eventId)) as unknown as EventWithImage;
-
-    if (!eventData) {
-      return { title: "Etkinlik Bulunamadı | Devnot" };
-    }
+    if (!eventData) return { title: "Etkinlik Bulunamadı | Devnot" };
 
     return {
       title: `${eventData.title} | Devnot`,
@@ -39,25 +35,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     };
   } catch {
-    // API 404/500/throw durumunda SSR 500 vermesin, metadata fallback dönsün
     return { title: "Etkinlik Bulunamadı | Devnot" };
   }
 }
 
-// 2) Sayfa Bileşeni (Server Component)
-export default async function Page({ params }: Props) {
+export default async function Page({ params }: { params: PageParams }) {
   const eventId = params?.id?.[0];
-
-  if (!eventId) {
-    notFound();
-  }
+  if (!eventId) notFound();
 
   try {
     const featuredEventDetail = (await fetchEventSlug(eventId)) as unknown as EventWithImage;
-
-    if (!featuredEventDetail) {
-      notFound();
-    }
+    if (!featuredEventDetail) notFound();
 
     return (
       <Wrapper>
@@ -73,7 +61,6 @@ export default async function Page({ params }: Props) {
       </Wrapper>
     );
   } catch {
-    // fetchEventSlug throw ederse 500 yerine 404
     notFound();
   }
 }

@@ -8,26 +8,24 @@ import { fetchArticleSlug } from "@/services";
 import HeaderThree from "@/layouts/headers/HeaderThree";
 import type { Metadata } from "next";
 
-type Props = {
-  params: { id?: string[] };
+type PageParams = {
+  id?: string[];
 };
 
 /**
  * SEO için Meta Verilerini Oluşturan Fonksiyon
  */
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: { params: PageParams }
+): Promise<Metadata> {
   const blogId = params?.id?.[0];
 
-  if (!blogId) {
-    return { title: "Makale Bulunamadı | Devnot" };
-  }
+  if (!blogId) return { title: "Makale Bulunamadı | Devnot" };
 
   try {
     const articleData = await fetchArticleSlug(blogId);
 
-    if (!articleData) {
-      return { title: "Makale Bulunamadı | Devnot" };
-    }
+    if (!articleData) return { title: "Makale Bulunamadı | Devnot" };
 
     return {
       title: `${articleData.title} | Devnot`,
@@ -38,7 +36,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     };
   } catch {
-    // fetchArticleSlug 404/500/throw durumunda SSR 500 olmasın
     return { title: "Makale Bulunamadı | Devnot" };
   }
 }
@@ -46,19 +43,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 /**
  * Ana Sayfa Bileşeni (Server Component)
  */
-export default async function Page({ params }: Props) {
+export default async function Page({ params }: { params: PageParams }) {
   const blogId = params?.id?.[0];
-
-  if (!blogId) {
-    notFound();
-  }
+  if (!blogId) notFound();
 
   try {
     const featuredArticleDetail = await fetchArticleSlug(blogId);
-
-    if (!featuredArticleDetail) {
-      notFound();
-    }
+    if (!featuredArticleDetail) notFound();
 
     return (
       <Wrapper>
@@ -74,7 +65,6 @@ export default async function Page({ params }: Props) {
       </Wrapper>
     );
   } catch {
-    // fetchArticleSlug throw ederse 500 yerine 404
     notFound();
   }
 }
