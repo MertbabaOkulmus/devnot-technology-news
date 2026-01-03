@@ -8,21 +8,20 @@ import HeaderThree from "@/layouts/headers/HeaderThree";
 import { fetchEventSlug, NewsArticle } from "@/services";
 import type { Metadata } from "next";
 
+type PageParams = { id?: string[] };
+type Props = { params: Promise<PageParams> };
+
 type EventWithImage = NewsArticle & { image?: string | null };
 
-type PageParams = {
-  id?: string[];
-};
-
-export async function generateMetadata(
-  { params }: { params: PageParams }
-): Promise<Metadata> {
-  const eventId = params?.id?.[0];
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const p = await params;
+  const eventId = p?.id?.[0];
 
   if (!eventId) return { title: "Etkinlik Bulunamadı | Devnot" };
 
   try {
     const eventData = (await fetchEventSlug(eventId)) as unknown as EventWithImage;
+
     if (!eventData) return { title: "Etkinlik Bulunamadı | Devnot" };
 
     return {
@@ -39,12 +38,15 @@ export async function generateMetadata(
   }
 }
 
-export default async function Page({ params }: { params: PageParams }) {
-  const eventId = params?.id?.[0];
+export default async function Page({ params }: Props) {
+  const p = await params;
+  const eventId = p?.id?.[0];
+
   if (!eventId) notFound();
 
   try {
     const featuredEventDetail = (await fetchEventSlug(eventId)) as unknown as EventWithImage;
+
     if (!featuredEventDetail) notFound();
 
     return (

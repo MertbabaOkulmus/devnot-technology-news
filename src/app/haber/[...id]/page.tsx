@@ -8,24 +8,26 @@ import { fetchArticleSlug } from "@/services";
 import HeaderThree from "@/layouts/headers/HeaderThree";
 import type { Metadata } from "next";
 
-type PageParams = {
-  id?: string[];
-};
+type PageParams = { id?: string[] };
+type Props = { params: Promise<PageParams> };
 
 /**
  * SEO için Meta Verilerini Oluşturan Fonksiyon
  */
-export async function generateMetadata(
-  { params }: { params: PageParams }
-): Promise<Metadata> {
-  const blogId = params?.id?.[0];
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const p = await params;
+  const blogId = p?.id?.[0];
 
-  if (!blogId) return { title: "Makale Bulunamadı | Devnot" };
+  if (!blogId) {
+    return { title: "Makale Bulunamadı | Devnot" };
+  }
 
   try {
     const articleData = await fetchArticleSlug(blogId);
 
-    if (!articleData) return { title: "Makale Bulunamadı | Devnot" };
+    if (!articleData) {
+      return { title: "Makale Bulunamadı | Devnot" };
+    }
 
     return {
       title: `${articleData.title} | Devnot`,
@@ -36,6 +38,7 @@ export async function generateMetadata(
       },
     };
   } catch {
+    // fetchArticleSlug 404/500/throw durumunda SSR 500 olmasın
     return { title: "Makale Bulunamadı | Devnot" };
   }
 }
@@ -43,13 +46,22 @@ export async function generateMetadata(
 /**
  * Ana Sayfa Bileşeni (Server Component)
  */
-export default async function Page({ params }: { params: PageParams }) {
-  const blogId = params?.id?.[0];
-  if (!blogId) notFound();
+export default async function Page({ params }: Props) {
+  const p = await params;
+  const blogId = p?.id?.[0];
+
+  if (!blogId) {
+    notFound();
+  }
 
   try {
+    // Veriyi doğrudan sunucuda çekiyoruz
     const featuredArticleDetail = await fetchArticleSlug(blogId);
-    if (!featuredArticleDetail) notFound();
+
+    // Veri yoksa 404
+    if (!featuredArticleDetail) {
+      notFound();
+    }
 
     return (
       <Wrapper>
@@ -65,6 +77,7 @@ export default async function Page({ params }: { params: PageParams }) {
       </Wrapper>
     );
   } catch {
+    // fetchArticleSlug throw ederse 500 yerine 404
     notFound();
   }
 }
