@@ -30,8 +30,6 @@ function safeStringify(obj: any) {
 function getServerLogger(): Logger {
   if (cachedServerLogger) return cachedServerLogger;
 
-  // ✅ Webpack görmesin diye eval require
-  // eslint-disable-next-line @typescript-eslint/no-implied-eval
   const req = eval("require") as NodeRequire;
 
   const winston = req("winston") as typeof import("winston");
