@@ -131,7 +131,7 @@ const Banner = ({ featuredArticles = [] }: { featuredArticles?: NewsArticle[] })
                               </Link>
                            </div>
                            <div className="banner-post-content-two">
-                              <Link href="/blog" className="post-tag">{item.tag}</Link>
+                              <Link href="/haber" className="post-tag">{item.tag}</Link>
                               <h2 className="post-title">
                                  <Link href={`/haber/${item.slug}`}>{item.title}</Link>
                               </h2>

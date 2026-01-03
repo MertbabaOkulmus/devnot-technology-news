@@ -64,7 +64,7 @@ const OverlayPost = () => {
                               <Link href="/blog-details"><Image src={item.thumb} alt="" /></Link>
                            </div>
                            <div className="overlay-post-content-three">
-                              <a href="/blog" className="post-tag">{item.tag}</a>
+                              <a href="/haber" className="post-tag">{item.tag}</a>
                               <h2 className="post-title bold-underline"><Link href="/blog-details">{item.title}</Link></h2>
                               <div className="blog-post-meta white-blog-meta">
                                  <ul className="list-wrap">

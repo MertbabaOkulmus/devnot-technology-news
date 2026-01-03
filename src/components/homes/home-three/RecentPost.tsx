@@ -15,7 +15,7 @@ const RecentPost = () => {
                         <Link href="/blog-details"><Image src={item.thumb} alt="" /></Link>
                      </div>
                      <div className="overlay-post-content">
-                        <Link href="/blog" className="post-tag">{item.tag}</Link>
+                        <Link href="/haber" className="post-tag">{item.tag}</Link>
                         <h2 className="post-title"><Link href="/blog-details">{item.title}</Link></h2>
                         <div className="blog-post-meta white-blog-meta">
                            <ul className="list-wrap">
@@ -36,7 +36,7 @@ const RecentPost = () => {
                         <Link href="/blog-details"><Image src={item.thumb} alt="" /></Link>
                      </div>
                      <div className="horizontal-post-content">
-                        <Link href="/blog" className="post-tag">{item.tag}</Link>
+                        <Link href="/haber" className="post-tag">{item.tag}</Link>
                         <h2 className="post-title"><Link href="/blog-details">{item.title}</Link></h2>
                         <div className="blog-post-meta">
                            <ul className="list-wrap">

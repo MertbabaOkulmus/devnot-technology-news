@@ -23,10 +23,10 @@ const Category = () => {
                      <div key={item.id} className="col-xl-2 col-lg-3 col-md-4 col-6">
                         <div className="categories-item">
                            <div className="categories-img">
-                              <Link href="/blog"><Image src={item.thumb} alt="" /></Link>
+                              <Link href="/haber"><Image src={item.thumb} alt="" /></Link>
                            </div>
                            <div className="categories-content">
-                              <Link href="/blog">{item.tag}</Link>
+                              <Link href="/haber">{item.tag}</Link>
                            </div>
                         </div>
                      </div>

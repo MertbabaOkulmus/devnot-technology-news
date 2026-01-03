@@ -51,7 +51,7 @@ const MiningSidebar = () => {
                         <Link href="blog-details"><Image src={miningSidebar_1} alt="" /></Link>
                      </div>
                      <div className="hot-post-content">
-                        <Link href="/blog" className="post-tag-two">News</Link>
+                        <Link href="/haber" className="post-tag-two">News</Link>
                         <h4 className="post-title"><Link href="/blog-details">Inspiring Web Design And UX Showcases</Link></h4>
                         <div className="blog-post-meta">
                            <ul className="list-wrap">
@@ -63,7 +63,7 @@ const MiningSidebar = () => {
                   </div>
                   <div className="hot-post-item">
                      <div className="hot-post-content">
-                        <Link href="/blog" className="post-tag-two">Crypto</Link>
+                        <Link href="/haber" className="post-tag-two">Crypto</Link>
                         <h4 className="post-title"><Link href="/blog-details">Getting Internationalization (i18n) Right With Remix And</Link></h4>
                         <div className="blog-post-meta">
                            <ul className="list-wrap">
@@ -75,7 +75,7 @@ const MiningSidebar = () => {
                   </div>
                   <div className="hot-post-item">
                      <div className="hot-post-content">
-                        <Link href="/blog" className="post-tag-two">Economy</Link>
+                        <Link href="/haber" className="post-tag-two">Economy</Link>
                         <h4 className="post-title"><Link href="/blog-details">A Step-By-Step Guide To Building Accessible Carousels</Link></h4>
                         <div className="blog-post-meta">
                            <ul className="list-wrap">

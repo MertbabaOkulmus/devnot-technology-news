@@ -38,7 +38,7 @@ const TopNews = () => {
                                  <a onClick={() => setIsVideoOpen(true)} style={{ cursor: "pointer" }} className="paly-btn popup-video"><i className="fas fa-play"></i></a>
                               </div>
                               <div className="top-news-post-content">
-                                 <Link href="/blog" className="post-tag-four">Sports</Link>
+                                 <Link href="/haber" className="post-tag-four">Sports</Link>
                                  <h2 className="post-title bold-underline"><Link href="/blog-details">How To Protect Your App With Threat Model Based On JSONDiff</Link></h2>
                                  <div className="blog-post-meta">
                                     <ul className="list-wrap">

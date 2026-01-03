@@ -14,7 +14,7 @@ const Banner = () => {
                         <Link href="/blog-details"><Image src={bannerThumb} alt="" /></Link>
                      </div>
                      <div className="banner-post-content-three">
-                        <Link href="/blog" className="post-tag">Culture</Link>
+                        <Link href="/haber" className="post-tag">Culture</Link>
                         <h2 className="post-title bold-underline"><Link href="/blog-details">The Potentially Dangerous Non-Accessibility Of <br /> Cookie Notices</Link></h2>
                         <div className="blog-post-meta white-blog-meta">
                            <ul className="list-wrap">

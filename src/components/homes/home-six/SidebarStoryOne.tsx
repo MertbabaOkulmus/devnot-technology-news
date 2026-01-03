@@ -59,7 +59,7 @@ const StorySidebarOne = () => {
                      <Link href="/blog-details"><Image src={item.thumb} alt="" /></Link>
                   </div>
                   <div className="stories-post-content">
-                     <Link href="/blog" className="post-tag-four">{item.tag}</Link>
+                     <Link href="/haber" className="post-tag-four">{item.tag}</Link>
                      <h5 className="post-title"><Link href="/blog-details">{item.title}</Link></h5>
                      <div className="blog-post-meta">
                         <ul className="list-wrap">

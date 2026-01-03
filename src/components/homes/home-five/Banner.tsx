@@ -53,7 +53,7 @@ const Banner = () => {
                            <Link href="blog-details"><Image src={item.thumb} alt="" /></Link>
                         </div>
                         <div className="banner-post-content-four">
-                           <Link href="/blog" className="post-tag">{item.tag}</Link>
+                           <Link href="/haber" className="post-tag">{item.tag}</Link>
                            <h2 className="post-title bold-underline"><Link href="/blog-details">{item.title}</Link></h2>
                            <div className="blog-post-meta white-blog-meta">
                               <ul className="list-wrap">

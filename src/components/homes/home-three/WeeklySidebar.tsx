@@ -24,7 +24,7 @@ const WeeklySidebar = () => {
                      <Link href="/blog-details"><Image src={thumb_2} alt="" /></Link>
                   </div>
                   <div className="so-post-content">
-                     <Link href="/blog" className="post-tag">Technology</Link>
+                     <Link href="/haber" className="post-tag">Technology</Link>
                      <h4 className="post-title"><Link href="/blog-details">Racing Games Browned ae
                         Cookies Daily Breakfast</Link></h4>
                      <div className="blog-post-meta white-blog-meta">
@@ -42,7 +42,7 @@ const WeeklySidebar = () => {
                         <Link href="/blog-details"><Image src={item.thumb} alt="" /></Link>
                      </div>
                      <div className="content">
-                        <Link href="/blog" className="post-tag-two">Mobile</Link>
+                        <Link href="/haber" className="post-tag-two">Mobile</Link>
                         <h2 className="post-title"><Link href="/blog-details">Effective For Everyday Meetings</Link></h2>
                         <div className="blog-post-meta">
                            <ul className="list-wrap">

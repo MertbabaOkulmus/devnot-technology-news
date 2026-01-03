@@ -20,7 +20,7 @@ const PoliticsPost = () => {
                         <Link href="/"><Image src={politicThumb} alt="" /></Link>
                      </div>
                      <div className="politics-post-content">
-                        <Link href="/blog" className="post-tag-four">Politics</Link>
+                        <Link href="/haber" className="post-tag-four">Politics</Link>
                         <h2 className="post-title"><Link href="/blog-details">Warns Financial Institutions to be on Watch for Russian</Link></h2>
                         <div className="blog-post-meta">
                            <ul className="list-wrap">
@@ -30,7 +30,7 @@ const PoliticsPost = () => {
                         </div>
                         <p>Browned butter browa melly ness crispy edgend software centers puddles of chocolate.</p>
                         <div className="view-all-btn">
-                           <Link href="/blog" className="link-btn">Read More
+                           <Link href="/haber" className="link-btn">Read More
                               <span className="svg-icon">
                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
                                     <path d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z" fill="currentColor" />

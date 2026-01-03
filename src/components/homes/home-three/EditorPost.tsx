@@ -125,7 +125,7 @@ const EditorPost = ({ featuredLatest = [] }: { featuredLatest?: NewsArticle[] })
                                  }}
                               >
                                  {/* 1. ETİKET (Üstte) */}
-                                 <Link href="/blog" className="post-tag-two">{item.tag}</Link>
+                                 <Link href="/haber" className="post-tag-two">{item.tag}</Link>
                                  
                                  {/* 2. BAŞLIK (Ortada - Kesme Uygulandı) */}
                                  <h2 className="post-title" style={{ margin: '5px 0' }}>

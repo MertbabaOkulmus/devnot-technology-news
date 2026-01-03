@@ -25,7 +25,7 @@ const WeeklySidebar = () => {
                         <Link href="/blog-details"><Image src={weeklyThumb_1} alt="" /></Link>
                      </div>
                      <div className="hot-post-content">
-                        <Link href="/blog" className="post-tag-two">Fighter</Link>
+                        <Link href="/haber" className="post-tag-two">Fighter</Link>
                         <h4 className="post-title"><Link href="/blog-details">Racing Games Browned Buttadert Cookies Daily Breakfast</Link></h4>
                         <div className="blog-post-meta">
                            <ul className="list-wrap">
@@ -37,7 +37,7 @@ const WeeklySidebar = () => {
                   </div>
                   <div className="hot-post-item">
                      <div className="hot-post-content">
-                        <Link href="/blog" className="post-tag-two">Action</Link>
+                        <Link href="/haber" className="post-tag-two">Action</Link>
                         <h4 className="post-title"><Link href="/blog-details">The Anatomy Of Themed Design System Components</Link></h4>
                         <div className="blog-post-meta">
                            <ul className="list-wrap">
@@ -49,7 +49,7 @@ const WeeklySidebar = () => {
                   </div>
                   <div className="hot-post-item">
                      <div className="hot-post-content">
-                        <Link href="/blog" className="post-tag-two">Story</Link>
+                        <Link href="/haber" className="post-tag-two">Story</Link>
                         <h4 className="post-title"><Link href="/blog-details">Taking The Stress Out Of Design System Management</Link></h4>
                         <div className="blog-post-meta">
                            <ul className="list-wrap">

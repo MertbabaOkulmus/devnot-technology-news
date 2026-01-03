@@ -38,7 +38,7 @@ const TopNewsSidebar = () => {
                         <Link href="/blog-details"><Image src={thumb_1} alt="" /></Link>
                      </div>
                      <div className="hot-post-content">
-                        <Link href="/blog" className="post-tag-four">Audit</Link>
+                        <Link href="/haber" className="post-tag-four">Audit</Link>
                         <h4 className="post-title"><Link href="/blog-details">Take a Look Back at the Moseret Gala Red Carpet Ever</Link></h4>
                         <div className="blog-post-meta">
                            <ul className="list-wrap">
@@ -49,7 +49,7 @@ const TopNewsSidebar = () => {
                   </div>
                   <div className="hot-post-item hot-post-item-two">
                      <div className="hot-post-content">
-                        <Link href="/blog" className="post-tag-four">Marketing</Link>
+                        <Link href="/haber" className="post-tag-four">Marketing</Link>
                         <h4 className="post-title"><Link href="/blog-details">Take a Look Back at the Moseret Gala Red Carpet Ever</Link></h4>
                         <div className="blog-post-meta">
                            <ul className="list-wrap">
@@ -60,7 +60,7 @@ const TopNewsSidebar = () => {
                   </div>
                   <div className="hot-post-item hot-post-item-two">
                      <div className="hot-post-content">
-                        <Link href="/blog" className="post-tag-four">Marketing</Link>
+                        <Link href="/haber" className="post-tag-four">Marketing</Link>
                         <h4 className="post-title"><Link href="/blog-details">Take a Look Back at the Moseret Gala Red Carpet Ever</Link></h4>
                         <div className="blog-post-meta">
                            <ul className="list-wrap">

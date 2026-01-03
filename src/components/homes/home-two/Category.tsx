@@ -28,12 +28,12 @@ const Category = () => {
                      <div key={item.id} className="col-lg-2 col-md-4 col-6">
                         <div className="categories-item-two">
                            <div className="categories-img-two">
-                              <Link href="/blog">
+                              <Link href="/haber">
                                  <Image src={item.thumb} alt="" />
                               </Link>
                            </div>
                            <div className="categories-content-two">
-                              <Link href="/blog" className="post-tag">{item.tag}</Link>
+                              <Link href="/haber" className="post-tag">{item.tag}</Link>
                            </div>
                         </div>
                      </div>

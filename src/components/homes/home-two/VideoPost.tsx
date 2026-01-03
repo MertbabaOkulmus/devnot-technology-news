@@ -29,7 +29,7 @@ const VideoPost = () => {
                            <div className="section-title-line-three"></div>
                         </div>
                         <div className="view-all-btn view-all-btn-two">
-                           <Link href="/blog" className="link-btn">View All
+                           <Link href="/haber" className="link-btn">View All
                               <span className="svg-icon">
                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
                                     <path d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z" fill="currentColor" />
@@ -51,7 +51,7 @@ const VideoPost = () => {
                               <a style={{ cursor: "pointer" }} onClick={() => setIsVideoOpen(true)} className="play-btn popup-video"><i className="fas fa-play"></i></a>
                            </div>
                            <div className="video-post-content">
-                              <Link href="/blog" className="post-tag post-tag-three">{item.tag}</Link>
+                              <Link href="/haber" className="post-tag post-tag-three">{item.tag}</Link>
                               <h2 className="post-title bold-underline"><Link href="/blog-details">{item.title}</Link></h2>
                               <div className="blog-post-meta white-blog-meta">
                                  <ul className="list-wrap">
@@ -73,7 +73,7 @@ const VideoPost = () => {
                                  <a onClick={() => setIsVideoOpen(true)} style={{cursor:"pointer"}} className="play-btn popup-video"><i className="fas fa-play"></i></a>
                               </div>
                               <div className="video-post-content">
-                                 <Link href="/blog" className="post-tag post-tag-three">{item.tag}</Link>
+                                 <Link href="/haber" className="post-tag post-tag-three">{item.tag}</Link>
                                  <h2 className="post-title"><Link href="/blog-details">{item.title}</Link></h2>
                                  <div className="blog-post-meta white-blog-meta">
                                     <ul className="list-wrap">

@@ -59,7 +59,7 @@ const menu_data: MenuItem[] = [
       title: "Categories",
       link: "#",
       sub_menus: [
-         { link: "/blog", title: "Blog Default", mega_dropdown: false,  },
+         { link: "/haber", title: "Blog Default", mega_dropdown: false,  },
          { link: "/blog-2", title: "Blog Layout 02", mega_dropdown: false,  },
          { link: "/blog-3", title: "Blog Layout 03", mega_dropdown: false,  },
       ],

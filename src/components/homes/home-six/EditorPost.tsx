@@ -98,7 +98,7 @@ const EditorPost = () => {
                               {item.video && <a onClick={() => setIsVideoOpen(true)} style={{ cursor: "pointer" }} className="paly-btn popup-video"><i className="fas fa-play"></i></a>}
                            </div>
                            <div className="editor-post-content-three">
-                              <Link href="/blog" className="post-tag-four">{item.tag}</Link>
+                              <Link href="/haber" className="post-tag-four">{item.tag}</Link>
                               <h2 className="post-title"><Link href="/blog-details">{item.title}</Link></h2>
                               <div className="blog-post-meta">
                                  <ul className="list-wrap">

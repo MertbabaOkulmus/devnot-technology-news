@@ -14,7 +14,7 @@ const Banner = () => {
                         <Link href="/"><Image src={blogThumb_1} alt="" /></Link>
                      </div>
                      <div className="banner-post-content">
-                        <Link href="/blog" className="post-tag">Fighter</Link>
+                        <Link href="/haber" className="post-tag">Fighter</Link>
                         <h2 className="post-title"><Link href="/blog-details">Mobile Apple Planning Big Mac Redesign <br /> ander Nigh HalfMacShare</Link></h2>
                         <div className="blog-post-meta white-blog-meta">
                            <ul className="list-wrap">
@@ -33,7 +33,7 @@ const Banner = () => {
                         <Link href="/blog-details"><Image src={blogThumb_2} alt="" /></Link>
                      </div>
                      <div className="banner-post-content">
-                        <Link href="/blog" className="post-tag">Action</Link>
+                        <Link href="/haber" className="post-tag">Action</Link>
                         <h2 className="post-title"><Link href="/blog-details">How To Build A Magazine Layout With <br /> CSS Grid Areas</Link></h2>
                         <div className="blog-post-meta white-blog-meta">
                            <ul className="list-wrap">

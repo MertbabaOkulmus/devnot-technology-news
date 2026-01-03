@@ -24,7 +24,7 @@ const Banner = () => {
                                  <Link href="/blog-details"><Image src={bannerThumb_1} alt="" /></Link>
                               </div>
                               <div className="banner-post-content-six">
-                                 <Link href="/blog" className="post-tag-two">Politics</Link>
+                                 <Link href="/haber" className="post-tag-two">Politics</Link>
                                  <h2 className="post-title bold-underline"><Link href="/blog-details">Beyond Algorithms Skills Of Designers That AI Can’t Replicate</Link>
                                  </h2>
                                  <div className="blog-post-meta">
@@ -46,7 +46,7 @@ const Banner = () => {
                                     <Link href="/blog-details"><Image src={bannerThumb_2} alt="" /></Link>
                                  </div>
                                  <div className="banner-post-content-five">
-                                    <Link href="/blog" className="post-tag-four">Business</Link>
+                                    <Link href="/haber" className="post-tag-four">Business</Link>
                                     <h2 className="post-title"><Link href="/blog-details">A Pragmatist’s Guide To Theire Lean User Research</Link>
                                     </h2>
                                     <div className="blog-post-meta">
@@ -62,7 +62,7 @@ const Banner = () => {
                                     <Link href="/blog-details"><Image src={bannerThumb_3} alt="" /></Link>
                                  </div>
                                  <div className="banner-post-content-five">
-                                    <Link href="/blog" className="post-tag-four">Tech</Link>
+                                    <Link href="/haber" className="post-tag-four">Tech</Link>
                                     <h2 className="post-title"><Link href="/blog-details">Five Data-Loading Patterns To Boost Web Performance</Link>
                                     </h2>
                                     <div className="blog-post-meta">

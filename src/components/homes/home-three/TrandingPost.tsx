@@ -28,7 +28,7 @@ const TrandingPost = () => {
                                        <Link href="/blog-details"><Image src={item.thumb} alt="" /></Link>
                                     </div>
                                     <div className="trending-post-content">
-                                       <Link href="/blog" className="post-tag">{item.tag}</Link>
+                                       <Link href="/haber" className="post-tag">{item.tag}</Link>
                                        <h2 className="post-title bold-underline"><Link href="/blog-details">{item.title}</Link></h2>
                                        <div className="blog-post-meta">
                                           <ul className="list-wrap">
@@ -58,7 +58,7 @@ const TrandingPost = () => {
                                  <div className="trending-post-two">
                                     <div className="trending-post-thumb-two">
                                        <Link href="/blog-details"><Image src={item.thumb} alt="" /></Link>
-                                       <Link href="/blog" className="post-tag">{item.tag}</Link>
+                                       <Link href="/haber" className="post-tag">{item.tag}</Link>
                                     </div>
                                     <div className="trending-post-content-two">
                                        <h2 className="post-title"><Link href="/blog-details">{item.title}</Link></h2>

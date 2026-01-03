@@ -11,7 +11,7 @@ const HeaderTopOne = () => {
                         <li><Link href="/contact">Forum</Link></li>
                         <li><Link href="/about">About</Link></li>
                         <li><Link href="/contact">Faq’s</Link></li>
-                        <li><Link href="/blog">All Recipes</Link></li>
+                        <li><Link href="/haber">All Recipes</Link></li>
                      </ul>
                   </div>
                </div>

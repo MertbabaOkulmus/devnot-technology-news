@@ -14,7 +14,7 @@ const WeeklyPost = () => {
                      <div className="weekly-post-three">
                         <div className="weekly-post-thumb">
                            <Link href="/blog-details"><Image src={item.thumb} alt="" /></Link>
-                           <Link href="/blog" className="post-tag">{item.tag}</Link>
+                           <Link href="/haber" className="post-tag">{item.tag}</Link>
                         </div>
                         <div className="weekly-post-content">
                            <h2 className="post-title"><Link href="/blog-details">{item.title}</Link></h2>

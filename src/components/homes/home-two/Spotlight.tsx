@@ -34,7 +34,7 @@ const Spotlight = () => {
                                        <Link href="/blog-details"><Image src={item.thumb} alt="" /></Link>
                                     </div>
                                     <div className="spotlight-post-content">
-                                       <Link href="/blog" className="post-tag-two">{item.tag}</Link>
+                                       <Link href="/haber" className="post-tag-two">{item.tag}</Link>
                                        <h2 className="post-title bold-underline"><Link href="/blog-details">{item.title}</Link></h2>
                                        <div className="blog-post-meta">
                                           <ul className="list-wrap">
@@ -55,7 +55,7 @@ const Spotlight = () => {
                                        <Link href="/blog-details"><Image src={item.thumb} alt="" /></Link>
                                     </div>
                                     <div className="spotlight-post-content">
-                                       <Link href="/blog" className="post-tag-two">{item.tag}</Link>
+                                       <Link href="/haber" className="post-tag-two">{item.tag}</Link>
                                        <h2 className="post-title"><Link href="/blog-details">{item.title}</Link></h2>
                                        <div className="blog-post-meta">
                                           <ul className="list-wrap">
