@@ -64,7 +64,7 @@ const EventDetailsContent = ({ featuredEventDetail }: EventDetailsContentProps) 
             <div className="blog-details-content">
                 <div className="blog-details-content-top">
                     {/* Etkinlik Türü Etiketi (Kategori yerine) */}
-                    <Link href="/events" className="post-tag">{eventType}</Link>
+                    <div className="post-tag">{eventType}</div>
                     {/* Başlık */}
                     <h2 className="title">{item.title}</h2>
                     <div className="bd-content-inner">

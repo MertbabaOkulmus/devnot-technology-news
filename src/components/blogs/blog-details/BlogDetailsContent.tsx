@@ -69,7 +69,7 @@ const BlogDetailsContent = ({ featuredArticleDetail }: BlogDetailsContentProps) 
             <div className="blog-details-content">
                 <div className="blog-details-content-top">
                     {/* Kategori Etiketi */}
-                    <Link href="/haber" className="post-tag">{categoryName}</Link>
+                    <div className="post-tag">{categoryName}</div>
                     {/* Başlık */}
                     <h2 className="title">{item.title}</h2>
                     <div className="bd-content-inner">
