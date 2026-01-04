@@ -50,10 +50,10 @@ const formatPublishedDate = (dateString: string) => {
 const BlogDetailsContent = ({ featuredArticleDetail }: BlogDetailsContentProps) => {
 
     const [isVideoOpen, setIsVideoOpen] = useState(false);
-    
+
     // Veri kontrolü
     if (!featuredArticleDetail) {
-        return <div>Makale detayı bulunamadı.</div>; 
+        return <div>Makale detayı bulunamadı.</div>;
     }
 
     const item = featuredArticleDetail;
@@ -76,7 +76,7 @@ const BlogDetailsContent = ({ featuredArticleDetail }: BlogDetailsContentProps) 
                         <div className="blog-post-meta">
                             <ul className="list-wrap">
                                 {/* Yazar Adı */}
-                               
+
                                 {/* Yayın Tarihi */}
                                 <li><i className="flaticon-calendar"></i>{publishedDate}</li>
                                 <Link href={`/author?id=${item.user.id}`}><li><i className="flaticon-user"></i>{authorName}</li></Link>
@@ -87,27 +87,27 @@ const BlogDetailsContent = ({ featuredArticleDetail }: BlogDetailsContentProps) 
                 </div>
 
                 {/* Ana Resim */}
-               {item.imageUrl !== null ? <div className="blog-details-thumb">
-                    <Image 
-                        src={item.imageUrl} 
-                        alt={item.title} 
+                {item.imageUrl !== null ? <div className="blog-details-thumb">
+                    <Image
+                        src={item.imageUrl}
+                        alt={item.title}
                         // Resim dinamik URL veya statik import objesi olabilir
                         // Next.js Image için varsayılan boyutları kullanın
-                        width={850} 
-                        height={300} 
-                        priority 
+                        width={850}
+                        height={300}
+                        priority
                         style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
                     />
-                </div>: <br />}
+                </div> : <br />}
 
                 {/* Özet/Giriş Paragrafı (Eski kodun ilk paragrafına karşılık) */}
                 {item.summary && <p className="first-info">{item.summary}</p>}
 
                 {/* === ANA İÇERİK (HTML Injection) === */}
                 {/* DİKKAT: Content alanı HTML içerdiği için dangerouslySetInnerHTML kullanmak ZORUNLUDUR. */}
-                <div 
-                    className="blog-main-content" 
-                    dangerouslySetInnerHTML={{ __html: item.content }} 
+                <div
+                    className="blog-main-content"
+                    dangerouslySetInnerHTML={{ __html: item.content }}
                 />
                 {/* Not: Orijinal HTML yapınızda bulunan <blockquote>, .blog-details-inner, .blog-details-video 
                      gibi elemanlar, content stringi içinde gelmediği için burada otomatik olarak görünmeyecektir.
@@ -115,20 +115,20 @@ const BlogDetailsContent = ({ featuredArticleDetail }: BlogDetailsContentProps) 
                      Şimdilik statik olan bu bölümleri, içeriğin dinamikliği bozulmasın diye kaldırıyorum.
                      Ancak tasarımda o alanların kaybolmaması için, alt yapıyı koruyarak bir yorum satırı ekliyorum.
                 */}
-                
+
                 {/* --- STATİK/EK İÇERİK BÖLÜMLERİ (Örnek Tasarımda vardı, veri gelmiyor) --- */}
                 {/* <p>Statik metin 1</p> */}
                 {/* <blockquote>...</blockquote> */}
-                
-               
-               {/* <div className="blog-details-video">
+
+
+                {/* <div className="blog-details-video">
                   <Image src={blogThumb_3} alt="" />
                   <a style={{ cursor: "pointer" }} onClick={() => setIsVideoOpen(true)} className="paly-btn popup-video"><i className="fas fa-play"></i></a>
                </div> */}
-               {/* --- STATİK/EK İÇERİK BÖLÜMLERİ SONU --- */}
+                {/* --- STATİK/EK İÇERİK BÖLÜMLERİ SONU --- */}
 
 
-               {item.articleTags.length>0 && <div className="blog-details-bottom">
+                {item.articleTags.length > 0 && <div className="blog-details-bottom">
                     <div className="row align-items-center">
                         <div className="col-lg-6">
                             <div className="post-tags">
@@ -137,7 +137,11 @@ const BlogDetailsContent = ({ featuredArticleDetail }: BlogDetailsContentProps) 
                                 <ul className="list-wrap">
                                     {item.articleTags?.map((articleTag, index) => (
                                         <li key={index}>
-                                            <Link href={`#`}>{articleTag.tag.name}</Link>
+                                            <Link
+                                                href={`#`}
+                                                onClick={(e) => e.preventDefault()}
+                                                style={{ pointerEvents: "none", cursor: "default" }}
+                                            >{articleTag.tag.name}</Link>
                                         </li>
                                     ))}
                                 </ul>
