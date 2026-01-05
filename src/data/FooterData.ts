@@ -26,7 +26,7 @@ const footer_data: DataType[] = [
       class_name: "col-lg-3 col-md-4",
       footer_link: [
          { link: "https://kommunity.com/devnot/", title: "Kommunity" },
-         { link: "linkedin.com/company/devnotcom/", title: "Linkedin" },
+         { link: "https://linkedin.com/company/devnotcom/", title: "Linkedin" },
          { link: "https://x.com/devnot_", title: "Twitter" },
          { link: "https://www.instagram.com/devnot_com/", title: "Instagram" },
          { link: "https://www.youtube.com/c/DevnotTV", title: "Youtube" },
