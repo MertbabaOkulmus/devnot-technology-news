@@ -86,14 +86,14 @@ const TeamPage = () => {
     { 
       id: 8,
       name: "Melisa Nur Kaya",  
-      role: "Üye & Sunucu",
+      role: "Üye, Sunucu",
       avatarUrl: imgMelisa,
       social: { linkedin: "https://www.linkedin.com/in/melisanurkaya/", twitter: "#" }
     },
     {
       id: 9,
       name: "Mertbaba Okulmuş",
-      role: "Üye & Web Developer",
+      role: "Üye, Web Developer",
       avatarUrl: imgMert,
       social: { linkedin: "https://www.linkedin.com/in/mertbabaokulmus/", twitter: "#" }
     },
