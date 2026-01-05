@@ -2,6 +2,7 @@ interface DataType {
    id: number;
    title: string;
    class_name: string;
+   target?: string;
    footer_link: {
       link: string;
       title: string;
@@ -24,6 +25,7 @@ const footer_data: DataType[] = [
       id: 2,
       title: "Sosyal Medya",
       class_name: "col-lg-3 col-md-4",
+      target: "_blank",
       footer_link: [
          { link: "https://kommunity.com/devnot/", title: "Kommunity" },
          { link: "https://linkedin.com/company/devnotcom/", title: "Linkedin" },
@@ -36,6 +38,7 @@ const footer_data: DataType[] = [
       id: 3,
       title: "Etkinlikler",
       class_name: "col-lg-3 col-md-4",
+      target: "_blank",
       footer_link: [
          { link: "https://summit.devnot.com", title: "Developer Summit" },
          { link: "https://techleaders.devnot.com", title: "Tech Leaders Summit" },

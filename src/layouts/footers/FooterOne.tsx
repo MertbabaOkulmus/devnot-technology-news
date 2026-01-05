@@ -34,7 +34,7 @@ const FooterOne = ({ style, style_2 }: StyleType) => {
                               <div className="footer-link-wrap">
                                  <ul className="list-wrap">
                                     {item.footer_link.map((link, i) => (
-                                       <li key={i}><Link href={link.link}>{link.title}</Link></li>
+                                       <li key={i}><Link target={item.target} href={link.link}>{link.title}</Link></li>
                                     ))}
                                  </ul>
                               </div>
