@@ -38,7 +38,7 @@ const HomePage = () => {
         setError(err instanceof Error ? err.message : "Failed to load articles");
       } finally {
         if (!isMounted) return;
-        setLoading(false); // <<< en kritik satır buydu
+        setLoading(false);
       }
     };
 
