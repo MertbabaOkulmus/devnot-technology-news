@@ -14,7 +14,7 @@ const AdvertisingPage = () => {
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <HeaderThree />
 
-      <main style={{ backgroundColor: "#fcfcfc", flex: "1 0 auto" }}>
+      <main style={{ backgroundColor: "var(--adv-bg)", flex: "1 0 auto" }}>
         {/* Ana İçerik */}
         <section className="advertising-details pt-100 pb-100">
           <div className="container">
@@ -24,25 +24,35 @@ const AdvertisingPage = () => {
                 <div className="row mb-80 text-center">
                   <div className="col-md-3 mb-30">
                     <h2 className="fw-bold text-primary">20K+</h2>
-                    <p className="fw-medium">Aylık Tekil Ziyaretçi</p>
+                    <p className="fw-medium" style={{ color: "var(--adv-text)" }}>
+                      Aylık Tekil Ziyaretçi
+                    </p>
                   </div>
                   <div className="col-md-3 mb-30">
                     <h2 className="fw-bold text-primary">5+</h2>
-                    <p className="fw-medium">Üst Düzey Konferans</p>
+                    <p className="fw-medium" style={{ color: "var(--adv-text)" }}>
+                      Üst Düzey Konferans
+                    </p>
                   </div>
                   <div className="col-md-3 mb-30">
                     <h2 className="fw-bold text-primary">10K+</h2>
-                    <p className="fw-medium">E-Bülten Abonesi</p>
+                    <p className="fw-medium" style={{ color: "var(--adv-text)" }}>
+                      E-Bülten Abonesi
+                    </p>
                   </div>
                   <div className="col-md-3 mb-30">
                     <h2 className="fw-bold text-primary">%100</h2>
-                    <p className="fw-medium">Teknoloji Odaklı Kitle</p>
+                    <p className="fw-medium" style={{ color: "var(--adv-text)" }}>
+                      Teknoloji Odaklı Kitle
+                    </p>
                   </div>
                 </div>
 
                 {/* İş Birliği Modelleri */}
                 <section className="mb-80">
-                  <h2 className="mb-40 fw-bold text-center">İş Birliği Modellerimiz</h2>
+                  <h2 className="mb-40 fw-bold text-center" style={{ color: "var(--adv-title)" }}>
+                    İş Birliği Modellerimiz
+                  </h2>
                   <div className="row">
                     {[
                       {
@@ -70,16 +80,19 @@ const AdvertisingPage = () => {
                         <div
                           className="p-4 h-100"
                           style={{
-                            border: "1px solid #eee",
+                            border: "1px solid var(--adv-card-border)",
                             borderRadius: "15px",
                             transition: "all 0.3s ease",
+                            backgroundColor: "var(--adv-card-bg)",
                           }}
                         >
                           <div style={{ fontSize: "32px" }} className="mb-3">
                             {model.icon}
                           </div>
-                          <h4 className="fw-bold mb-2">{model.title}</h4>
-                          <p className="mb-0" style={{ color: "#666" }}>
+                          <h4 className="fw-bold mb-2" style={{ color: "var(--adv-title)" }}>
+                            {model.title}
+                          </h4>
+                          <p className="mb-0" style={{ color: "var(--adv-muted)" }}>
                             {model.desc}
                           </p>
                         </div>
@@ -91,14 +104,18 @@ const AdvertisingPage = () => {
                 {/* Kurumsal Bilgi */}
                 <section
                   className="mb-60 p-5"
-                  style={{ backgroundColor: "#111", color: "#fff", borderRadius: "20px" }}
+                  style={{
+                    backgroundColor: "var(--adv-dark-bg)",
+                    color: "var(--adv-dark-title)",
+                    borderRadius: "20px",
+                    border: "1px solid var(--adv-dark-border)",
+                  }}
                 >
                   <h3 className="mb-20 text-white">Etkili ve Nitelikli Erişim</h3>
-                  <p className="mb-20" style={{ color: "#ccc", lineHeight: "1.8" }}>
-                    Devnot kitlesi; yazılım mimarları, kıdemli geliştiriciler ve teknoloji
-                    karar vericilerinden oluşur. Reklamlarınız sadece
-                    &nbsp;&quot;görüntülenmez&quot;, hedeflediğiniz doğru profesyonellere
-                    ulaşır. Sektörel güvenilirliğimiz, markanızın imajına değer katar.
+                  <p className="mb-20" style={{ color: "var(--adv-dark-text)", lineHeight: "1.8" }}>
+                    Devnot kitlesi; yazılım mimarları, kıdemli geliştiriciler ve teknoloji karar vericilerinden oluşur.
+                    Reklamlarınız sadece &nbsp;&quot;görüntülenmez&quot;, hedeflediğiniz doğru profesyonellere ulaşır.
+                    Sektörel güvenilirliğimiz, markanızın imajına değer katar.
                   </p>
                 </section>
 
@@ -106,10 +123,16 @@ const AdvertisingPage = () => {
                 <div className="text-center mt-60">
                   <div
                     className="p-5"
-                    style={{ border: "2px dashed #007bff", borderRadius: "25px" }}
+                    style={{
+                      border: "2px dashed var(--adv-dashed)",
+                      borderRadius: "25px",
+                      backgroundColor: "var(--adv-cta-bg)",
+                    }}
                   >
-                    <h3 className="mb-15">Medya Kitimizi Talep Edin</h3>
-                    <p className="mb-35">
+                    <h3 className="mb-15" style={{ color: "var(--adv-title)" }}>
+                      Medya Kitimizi Talep Edin
+                    </h3>
+                    <p className="mb-35" style={{ color: "var(--adv-text)" }}>
                       Detaylı istatistikler ve bilgiler için bizimle iletişime geçin.
                     </p>
                     <Link
@@ -121,11 +144,11 @@ const AdvertisingPage = () => {
                         display: "inline-flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        whiteSpace: "normal", // tek satır zorlamasın
+                        whiteSpace: "normal",
                         textAlign: "center",
                         lineHeight: 1.25,
-                        wordBreak: "break-word", // çok uzun kelime/mail olursa kır
-                        paddingLeft: 24, // px-5 yerine kontrollü
+                        wordBreak: "break-word",
+                        paddingLeft: 24,
                         paddingRight: 24,
                       }}
                     >
@@ -137,6 +160,50 @@ const AdvertisingPage = () => {
             </div>
           </div>
         </section>
+
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              :root {
+                --adv-bg: #fcfcfc;
+
+                --adv-title: #1a1a1a;
+                --adv-text: #1a1a1a;
+                --adv-muted: #666666;
+
+                --adv-card-bg: transparent;
+                --adv-card-border: #eeeeee;
+
+                --adv-dark-bg: #111111;
+                --adv-dark-border: transparent;
+                --adv-dark-title: #ffffff;
+                --adv-dark-text: #cccccc;
+
+                --adv-dashed: #007bff;
+                --adv-cta-bg: transparent;
+              }
+
+              [tg-theme="dark"] {
+                --adv-bg: #0b0e14;
+
+                --adv-title: #ffffff;
+                --adv-text: #d7d7d7;
+                --adv-muted: #a1a1aa;
+
+                --adv-card-bg: #161b22;
+                --adv-card-border: #30363d;
+
+                --adv-dark-bg: #0d1117;
+                --adv-dark-border: #30363d;
+                --adv-dark-title: #ffffff;
+                --adv-dark-text: #b5b5b5;
+
+                --adv-dashed: #3b82f6;
+                --adv-cta-bg: rgba(255,255,255,0.02);
+              }
+            `,
+          }}
+        />
       </main>
 
       <FooterOne style={false} style_2={true} />

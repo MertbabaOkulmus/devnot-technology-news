@@ -7,7 +7,7 @@ import { fetchAuthorList } from "@/services/homethree.service";
 import HeaderThree from "@/layouts/headers/HeaderThree";
 import FooterOne from "@/layouts/footers/FooterOne";
 
-// Varsayılan Avatar (Projenizdeki path'e göre kontrol edin)
+// Varsayılan Avatar
 import defaultAvatar from "@/assets/img/images/author_img.png";
 
 // --- TİP TANIMLAMALARI ---
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
 };
 
-// Resim URL Çözümleyici (Helper)
+// Resim URL Çözümleyici
 const resolveImageUrl = (path: string | null, base: string = "https://api.devnot.com/uploads/") => {
   if (!path) return null;
   if (path.startsWith("http")) return path;
@@ -45,21 +45,23 @@ const AuthorsPage = async () => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      {/* Header */}
       <HeaderThree />
 
-      {/* Ana İçerik Alanı - Flex grow ile footer'ı aşağı iter */}
-      <main style={{ backgroundColor: "#fcfcfc", flex: "1 0 auto" }}>
-        {/* Yazarlar Grid Bölümü */}
+      <main style={{ backgroundColor: "var(--authors-bg)", flex: "1 0 auto" }}>
         <section className="authors-list-area pt-80 pb-80">
           <div className="container">
-            {/* Başlık ve Bilgi */}
+            {/* Başlık */}
             <div className="row mb-50">
               <div className="col-lg-8">
-                <h1 className="fw-bold mb-2" style={{ fontSize: "36px", color: "#1a1a1a" }}>
+                <h1
+                  className="fw-bold mb-2"
+                  style={{ fontSize: "36px", color: "var(--authors-title)" }}
+                >
                   Yazarlar
                 </h1>
-                <p className="text-muted">Devnot&apos;a değer katan içerik üreticilerimiz.</p>
+                <p style={{ color: "var(--authors-muted)" }}>
+                  Devnot&apos;a değer katan içerik üreticilerimiz.
+                </p>
               </div>
             </div>
 
@@ -72,9 +74,10 @@ const AuthorsPage = async () => {
                     <div key={author.id} className="col">
                       <Link href={`/author?id=${author.id}`} className="text-decoration-none">
                         <div
-                          className="author-card h-100 text-center p-4 bg-white"
+                          className="author-card h-100 text-center p-4"
                           style={{
-                            border: "1px solid #edf2f7",
+                            backgroundColor: "var(--authors-card-bg)",
+                            border: "1px solid var(--authors-card-border)",
                             borderRadius: "16px",
                             transition: "all 0.3s ease",
                             position: "relative",
@@ -89,7 +92,7 @@ const AuthorsPage = async () => {
                               height: "120px",
                               borderRadius: "50%",
                               overflow: "hidden",
-                              border: "3px solid #f8f9fa",
+                              border: "3px solid var(--authors-avatar-border)",
                             }}
                           >
                             <Image
@@ -101,23 +104,31 @@ const AuthorsPage = async () => {
                             />
                           </div>
 
-                          {/* İsim & Bilgi */}
+                          {/* İsim */}
                           <h3
                             className="author-name mb-1"
-                            style={{ fontSize: "20px", fontWeight: "700", color: "#2d3748" }}
+                            style={{
+                              fontSize: "20px",
+                              fontWeight: "700",
+                              color: "var(--authors-name)",
+                            }}
                           >
                             {author.name}
                           </h3>
-                          <span className="d-block text-muted mb-3" style={{ fontSize: "14px" }}>
+
+                          <span
+                            className="d-block mb-3"
+                            style={{ fontSize: "14px", color: "var(--authors-muted)" }}
+                          >
                             Yazar
                           </span>
 
-                          {/* Aksiyon Butonu */}
+                          {/* Aksiyon */}
                           <div className="mt-auto">
                             <span
                               className="btn-text"
                               style={{
-                                color: "#007bff",
+                                color: "var(--authors-link)",
                                 fontWeight: "600",
                                 fontSize: "14px",
                                 display: "inline-flex",
@@ -136,25 +147,27 @@ const AuthorsPage = async () => {
               </div>
             ) : (
               <div className="text-center py-5">
-                <div className="mb-3" style={{ fontSize: "40px", color: "#ccc" }}>
+                <div className="mb-3" style={{ fontSize: "40px", color: "var(--authors-muted)" }}>
                   <i className="far fa-user"></i>
                 </div>
-                <h3 className="text-muted">Yazar listesi şu an yüklenemedi.</h3>
+                <h3 style={{ color: "var(--authors-muted)" }}>
+                  Yazar listesi şu an yüklenemedi.
+                </h3>
               </div>
             )}
 
-            {/* CTA / Katılım Alanı */}
+            {/* CTA */}
             <div className="row justify-content-center mt-100">
               <div className="col-lg-10">
                 <div
                   className="cta-box p-5 text-center text-white"
                   style={{
-                    background: "linear-gradient(90deg, #111111 0%, #333333 100%)",
+                    background: "var(--authors-cta-bg)",
                     borderRadius: "24px",
                   }}
                 >
                   <h2 className="fw-bold mb-3 text-white">Yazar Kadromuza Katılın</h2>
-                  <p className="mb-4" style={{ color: "#ccc", fontSize: "18px" }}>
+                  <p className="mb-4" style={{ color: "var(--authors-cta-text)", fontSize: "18px" }}>
                     Teknik bilgilerinizi paylaşarak Türkiye yazılım ekosistemine katkıda bulunun.
                   </p>
                   <Link
@@ -170,20 +183,56 @@ const AuthorsPage = async () => {
           </div>
         </section>
 
-        {/* Sayfa içi stiller */}
-        <style>{`
-          .author-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
-            border-color: #007bff !important;
-          }
-          .author-card:hover .author-name {
-            color: #007bff !important;
-          }
-        `}</style>
+        {/* Hover + Theme */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              :root {
+                --authors-bg: #fcfcfc;
+                --authors-title: #1a1a1a;
+                --authors-name: #2d3748;
+                --authors-muted: #718096;
+
+                --authors-card-bg: #ffffff;
+                --authors-card-border: #edf2f7;
+                --authors-avatar-border: #f8f9fa;
+
+                --authors-link: #007bff;
+
+                --authors-cta-bg: linear-gradient(90deg, #111111 0%, #333333 100%);
+                --authors-cta-text: #cccccc;
+              }
+
+              [tg-theme="dark"] {
+                --authors-bg: #0b0e14;
+                --authors-title: #ffffff;
+                --authors-name: #ffffff;
+                --authors-muted: #a1a1a1;
+
+                --authors-card-bg: #161b22;
+                --authors-card-border: #30363d;
+                --authors-avatar-border: #30363d;
+
+                --authors-link: #3b82f6;
+
+                --authors-cta-bg: linear-gradient(90deg, #0d1117 0%, #161b22 100%);
+                --authors-cta-text: #b5b5b5;
+              }
+
+              .author-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 15px 35px rgba(0,0,0,0.25) !important;
+                border-color: var(--authors-link) !important;
+              }
+
+              .author-card:hover .author-name {
+                color: var(--authors-link) !important;
+              }
+            `,
+          }}
+        />
       </main>
 
-      {/* Footer - Main flex:1 sayesinde hep en dipte */}
       <FooterOne style={false} style_2={true} />
     </div>
   );

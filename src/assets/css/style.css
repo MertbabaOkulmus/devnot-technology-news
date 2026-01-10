@@ -6570,9 +6570,7 @@ label {
     color: var(--tg-white);
     opacity: .5;
 }
-[tg-theme=dark] .menu-area .logo {
-    display: none !important;
-}
+
 [tg-theme=dark] .menu-area .logo.d-none {
     display: block !important;
 }

@@ -77,7 +77,22 @@ const AuthorPage = async ({ searchParams }: AuthorPageProps) => {
       <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
         <HeaderThree />
         <main style={{ flex: "1 0 auto" }} className="d-flex align-items-center justify-content-center">
-          <div className="text-center py-5">Yazar bulunamadı.</div>
+          <div className="text-center py-5" style={{ color: "var(--author-muted)" }}>
+            Yazar bulunamadı.
+          </div>
+
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+                :root {
+                  --author-muted: #6b7280;
+                }
+                [tg-theme="dark"] {
+                  --author-muted: #d1d5db;
+                }
+              `,
+            }}
+          />
         </main>
         <FooterOne style={false} style_2={true} />
       </div>
@@ -88,18 +103,16 @@ const AuthorPage = async ({ searchParams }: AuthorPageProps) => {
   const avatarSrc = resolveImageUrl(author.avatarUrl) || defaultAvatar;
 
   return (
-    // Sticky Footer için dış kapsayıcı
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <HeaderThree />
 
-      {/* flex: '1 0 auto' sayesinde içerik az olsa bile footer'ı aşağı itecek */}
-      <main style={{ backgroundColor: "#fdfdfd", flex: "1 0 auto" }}>
+      <main style={{ backgroundColor: "var(--author-bg)", flex: "1 0 auto" }}>
         {/* --- ÜST PROFİL BÖLÜMÜ (Hero) --- */}
         <section
           className="author-hero pt-80 pb-60"
           style={{
-            background: "linear-gradient(180deg, #f4f7fa 0%, #ffffff 100%)",
-            borderBottom: "1px solid #edf2f7",
+            background: "var(--author-hero-bg)",
+            borderBottom: "1px solid var(--author-hero-border)",
           }}
         >
           <div className="container">
@@ -111,9 +124,9 @@ const AuthorPage = async ({ searchParams }: AuthorPageProps) => {
                     <div
                       style={{
                         padding: "5px",
-                        backgroundColor: "#fff",
+                        backgroundColor: "var(--author-avatar-shell)",
                         borderRadius: "50%",
-                        boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+                        boxShadow: "var(--author-avatar-shadow)",
                         width: "160px",
                         height: "160px",
                         position: "relative",
@@ -134,10 +147,10 @@ const AuthorPage = async ({ searchParams }: AuthorPageProps) => {
                   <div className="author-info flex-grow-1 mt-2 mt-md-0">
                     <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-2">
                       <div>
-                        <h1 className="fw-bold mb-1" style={{ color: "#1a202c", fontSize: "2.5rem" }}>
+                        <h1 className="fw-bold mb-1" style={{ color: "var(--author-title)", fontSize: "2.5rem" }}>
                           {author.name}
                         </h1>
-                        <p className="mb-0 fw-medium" style={{ color: "#007bff", fontSize: "1.1rem" }}>
+                        <p className="mb-0 fw-medium" style={{ color: "var(--author-accent)", fontSize: "1.1rem" }}>
                           Devnot Yazarı
                         </p>
                       </div>
@@ -145,7 +158,12 @@ const AuthorPage = async ({ searchParams }: AuthorPageProps) => {
 
                     <p
                       className="mt-3 mb-4"
-                      style={{ fontSize: "1.05rem", lineHeight: "1.7", color: "#4a5568", maxWidth: "800px" }}
+                      style={{
+                        fontSize: "1.05rem",
+                        lineHeight: "1.7",
+                        color: "var(--author-text)",
+                        maxWidth: "800px",
+                      }}
                     >
                       {author.bio ||
                         "Teknoloji dünyasındaki gelişmeleri takip eden ve deneyimlerini Devnot okurlarıyla paylaşan değerli yazarımız."}
@@ -153,14 +171,20 @@ const AuthorPage = async ({ searchParams }: AuthorPageProps) => {
 
                     <div
                       className="d-flex flex-column flex-sm-row align-items-center justify-content-between pt-3"
-                      style={{ borderTop: "1px solid #e2e8f0" }}
+                      style={{ borderTop: "1px solid var(--author-divider)" }}
                     >
                       <div className="d-flex gap-4 mb-3 mb-sm-0">
                         <div className="text-center text-sm-start">
-                          <span className="d-block fw-bold text-dark" style={{ fontSize: "1.2rem" }}>
+                          <span
+                            className="d-block fw-bold text-dark"
+                            style={{ fontSize: "1.2rem", color: "var(--author-title)" }}
+                          >
                             {articles.length}
                           </span>
-                          <span className="d-block text-muted" style={{ fontSize: "0.85rem" }}>
+                          <span
+                            className="d-block text-muted"
+                            style={{ fontSize: "0.85rem", color: "var(--author-muted)" }}
+                          >
                             Makale
                           </span>
                         </div>
@@ -173,6 +197,7 @@ const AuthorPage = async ({ searchParams }: AuthorPageProps) => {
                             target="_blank"
                             className="text-secondary hover-primary"
                             aria-label="LinkedIn"
+                            style={{ color: "var(--author-social)" }}
                           >
                             <i className="fab fa-linkedin-in fa-lg"></i>
                           </Link>
@@ -183,6 +208,7 @@ const AuthorPage = async ({ searchParams }: AuthorPageProps) => {
                             target="_blank"
                             className="text-secondary hover-primary"
                             aria-label="Twitter"
+                            style={{ color: "var(--author-social)" }}
                           >
                             <i className="fab fa-twitter fa-lg"></i>
                           </Link>
@@ -190,6 +216,7 @@ const AuthorPage = async ({ searchParams }: AuthorPageProps) => {
                       </div>
                     </div>
                   </div>
+                  {/* /Profil Bilgileri */}
                 </div>
               </div>
             </div>
@@ -201,7 +228,9 @@ const AuthorPage = async ({ searchParams }: AuthorPageProps) => {
           <div className="container">
             <div className="row justify-content-center mb-40">
               <div className="col-lg-10 col-xl-9">
-                <h3 className="fw-bold text-dark mb-0">Son Yayınlananlar</h3>
+                <h3 className="fw-bold text-dark mb-0" style={{ color: "var(--author-title)" }}>
+                  Son Yayınlananlar
+                </h3>
                 <div className="section-title-line mt-20" style={{ maxWidth: "60px" }}></div>
               </div>
             </div>
@@ -216,7 +245,8 @@ const AuthorPage = async ({ searchParams }: AuthorPageProps) => {
                         <article
                           className="h-100 p-0 bg-white shadow-sm"
                           style={{
-                            border: "1px solid #e2e8f0",
+                            backgroundColor: "var(--author-card-bg)",
+                            border: "1px solid var(--author-card-border)",
                             borderRadius: "12px",
                             overflow: "hidden",
                             display: "flex",
@@ -231,11 +261,16 @@ const AuthorPage = async ({ searchParams }: AuthorPageProps) => {
 
                           <div className="p-4 d-flex flex-column flex-grow-1">
                             <h2 className="mb-3" style={{ fontSize: "1.25rem", fontWeight: "700", lineHeight: "1.4" }}>
-                              <Link href={`/haber/${item.slug}`} className="text-dark text-decoration-none hover-primary">
+                              <Link
+                                href={`/haber/${item.slug}`}
+                                className="text-dark text-decoration-none hover-primary"
+                                style={{ color: "var(--author-title)" }}
+                              >
                                 {item.title}
                               </Link>
                             </h2>
-                            <div className="mt-auto pt-3 border-top w-100">
+
+                            <div className="mt-auto pt-3 border-top w-100" style={{ borderColor: "var(--author-card-border)" }}>
                               <Link
                                 href={`/haber/${item.slug}`}
                                 className="fw-bold text-primary text-decoration-none"
@@ -252,12 +287,76 @@ const AuthorPage = async ({ searchParams }: AuthorPageProps) => {
                 </div>
 
                 {articles.length === 0 && (
-                  <div className="text-center py-5 text-muted">Bu yazar henüz bir makale yayınlamamış.</div>
+                  <div className="text-center py-5" style={{ color: "var(--author-muted)" }}>
+                    Bu yazar henüz bir makale yayınlamamış.
+                  </div>
                 )}
               </div>
             </div>
           </div>
         </section>
+
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              :root {
+                --author-bg: #fdfdfd;
+
+                --author-hero-bg: linear-gradient(180deg, #f4f7fa 0%, #ffffff 100%);
+                --author-hero-border: #edf2f7;
+
+                --author-title: #1a202c;
+                --author-text: #4a5568;
+                --author-muted: #6b7280;
+                --author-accent: #007bff;
+
+                --author-divider: #e2e8f0;
+
+                --author-avatar-shell: #ffffff;
+                --author-avatar-shadow: 0 8px 24px rgba(0,0,0,0.08);
+
+                --author-social: #6b7280;
+
+                --author-card-bg: #ffffff;
+                --author-card-border: #e2e8f0;
+              }
+
+              [tg-theme="dark"] {
+                --author-bg: #0b0e14;
+
+                --author-hero-bg: linear-gradient(180deg, #0d1117 0%, #0b0e14 100%);
+                --author-hero-border: #30363d;
+
+                --author-title: #ffffff;
+                --author-text: #e5e7eb;
+                --author-muted: #d1d5db;   /* Makale / text-muted daha açık */
+                --author-accent: #3b82f6;
+
+                --author-divider: #30363d;
+
+                --author-avatar-shell: #161b22;
+                --author-avatar-shadow: 0 10px 28px rgba(0,0,0,0.55);
+
+                --author-social: #e5e7eb;  /* ikonlar daha açık */
+
+                --author-card-bg: #161b22;
+                --author-card-border: #30363d;
+              }
+
+              /* ✅ Bootstrap'in .text-muted ve .text-secondary renkleri !important ile bastırdığı durumlar için
+                 sadece BU sayfa kapsamında dark mod override */
+              [tg-theme="dark"] .author-hero .text-muted,
+              [tg-theme="dark"] .author-articles .text-muted {
+                color: var(--author-muted) !important;
+              }
+
+              [tg-theme="dark"] .author-hero .text-secondary,
+              [tg-theme="dark"] .author-hero .social-links a {
+                color: var(--author-social) !important;
+              }
+            `,
+          }}
+        />
       </main>
 
       <FooterOne style={false} style_2={true} />
