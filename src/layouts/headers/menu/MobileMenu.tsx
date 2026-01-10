@@ -23,22 +23,16 @@ const MobileMenu = ({ mobileMenu, setMobileMenu }: MobileMenuProps) => {
                <div className="nav-logo d-none">
                   <Link href="/"><Image src={logo_2} alt="Logo" /></Link>
                </div>
-               <div className="mobile-search">
-                  <form onSubmit={(e) => e.preventDefault()}>
-                     <input type="text" placeholder="Search here..." />
-                     <button><i className="flaticon-search"></i></button>
-                  </form>
-               </div>
+
                <div className="menu-outer">
                   <NavMenu />
                </div>
                <div className="social-links">
                   <ul className="clearfix list-wrap">
-                     <li><Link href="#"><i className="fab fa-facebook-f"></i></Link></li>
-                     <li><Link href="#"><i className="fab fa-twitter"></i></Link></li>
-                     <li><Link href="#"><i className="fab fa-instagram"></i></Link></li>
-                     <li><Link href="#"><i className="fab fa-linkedin-in"></i></Link></li>
-                     <li><Link href="#"><i className="fab fa-youtube"></i></Link></li>
+                     <li><Link href="https://x.com/devnot_" target="_blank"><i className="fab fa-twitter"></i></Link></li>
+                     <li><Link href="https://www.instagram.com/devnot_com/" target="_blank"><i className="fab fa-instagram"></i></Link></li>
+                     <li><Link href="https://www.linkedin.com/company/devnotcom/" target="_blank"><i className="fab fa-linkedin-in"></i></Link></li>
+                     <li><Link href="https://www.youtube.com/c/DevnotTV" target="_blank"><i className="fab fa-youtube"></i></Link></li>
                   </ul>
                </div>
             </nav>

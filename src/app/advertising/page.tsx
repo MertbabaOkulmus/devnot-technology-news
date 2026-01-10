@@ -115,7 +115,19 @@ const AdvertisingPage = () => {
                     <Link
                       href="mailto:reklam@devnot.com"
                       className="btn btn-primary btn-lg px-5"
-                      style={{ borderRadius: "50px" }}
+                      style={{
+                        borderRadius: "50px",
+                        maxWidth: "100%",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        whiteSpace: "normal", // tek satır zorlamasın
+                        textAlign: "center",
+                        lineHeight: 1.25,
+                        wordBreak: "break-word", // çok uzun kelime/mail olursa kır
+                        paddingLeft: 24, // px-5 yerine kontrollü
+                        paddingRight: 24,
+                      }}
                     >
                       İşbirliği Teklifleriniz için bilgi@devnot.com
                     </Link>

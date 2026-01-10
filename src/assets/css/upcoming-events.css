@@ -36,14 +36,14 @@
   position: relative;
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: none !important; /* gölgeyi kaldır */
+  transition: none; /* hover’da shadow olmayacağı için */
   height: 180px;
   background: #1a1a2e;
 }
 
 .upcoming-events-wrap .banner-post-four:hover {
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  box-shadow: none !important; /* hover gölgesini de kapat */
 }
 
 /* Resim Alanı - Arka Plan Olarak */
@@ -128,15 +128,9 @@
   transition: all 0.3s ease;
 }
 
-.upcoming-events-wrap .banner-post-content-four .post-title a {
-  color: #ffffff;
-  transition: all 0.3s ease;
-}
 
-.upcoming-events-wrap .banner-post-four:hover .banner-post-content-four .post-title a {
-  color: #a78bfa;
-  text-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
-}
+
+
 
 /* Meta Bilgiler */
 .upcoming-events-wrap .blog-post-meta.white-blog-meta {

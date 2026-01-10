@@ -128,7 +128,6 @@ const UpcomingEvents = ({ upcomingEvents = [], isLoading = false }: UpcomingEven
                 <div key={item.id} className="event-slide-item">
                   <div className="banner-post-four">
                     <div className="banner-post-thumb-four">
-                      <Link href={`/events/${item.slug}`}>
                         <Image
                           src={item.thumb}
                           alt={item.title}
@@ -137,12 +136,11 @@ const UpcomingEvents = ({ upcomingEvents = [], isLoading = false }: UpcomingEven
                           priority={item.id === mappedData[0].id}
                           style={{ objectFit: "cover" }}
                         />
-                      </Link>
                     </div>
-                    <div className="banner-post-content-four">
-                      <Link href="/haber" className="post-tag">
+                    <Link href={`/events/${item.slug}`} className="banner-post-content-four">
+                      <div className="post-tag">
                         {item.tag}
-                      </Link>
+                      </div>
                       <h2 className="post-title bold-underline">
                         <Link href={`/events/${item.slug}`}>{item.title}</Link>
                       </h2>
@@ -154,7 +152,7 @@ const UpcomingEvents = ({ upcomingEvents = [], isLoading = false }: UpcomingEven
                           </li>
                         </ul>
                       </div>
-                    </div>
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -189,16 +187,15 @@ const UpcomingEvents = ({ upcomingEvents = [], isLoading = false }: UpcomingEven
         }
 
         /* Kart Tasarımı */
-        .upcoming-events-wrap .banner-post-four {
-          position: relative;
-          border-radius: 12px;
-          overflow: hidden;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-          height: 220px;
-          background: #1a1a2e;
-          transition: all 0.3s ease;
-        }
-
+.upcoming-events-wrap .banner-post-four {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: none !important; /* gölgeyi kaldır */
+  height: 220px;
+  background: #1a1a2e;
+  transition: none; /* istersen kalsın ama gölge yoksa animasyon da gereksiz */
+}
         .upcoming-events-wrap .banner-post-thumb-four {
           position: absolute;
           inset: 0;
