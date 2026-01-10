@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { fetchCategories, Category } from '@/services';
-import cat_img1 from "@/assets/img/images/t_cat_img01.jpg";
-import cat_img2 from "@/assets/img/images/t_cat_img02.jpg";
-import cat_img3 from "@/assets/img/images/t_cat_img03.jpg";
+import cat_img1 from "@/assets/img/images/t_cat_img02.jpg";
+import cat_img2 from "@/assets/img/images/t_cat_img01.jpg";
+import cat_img3 from "@/assets/img/images/t_cat_img05.jpg";
 import cat_img4 from "@/assets/img/images/t_cat_img04.jpg";
+import cat_img5 from "@/assets/img/images/t_cat_img06.jpg";
+import cat_img6 from "@/assets/img/images/t_cat_img07.jpg";
+import cat_img7 from "@/assets/img/images/t_cat_img07.jpg";
 
-const staticImages = [cat_img1.src, cat_img2.src, cat_img3.src, cat_img4.src];
+const staticImages = [cat_img1.src, cat_img2.src, cat_img3.src, cat_img4.src, cat_img5.src, cat_img6.src, cat_img7.src];
 
 const DEFAULT_IMAGE_URL = "/assets/img/images/default-category.jpg";
 
