@@ -23,7 +23,7 @@ const AdvertisingPage = () => {
                 {/* İstatistikler / Neden Devnot? */}
                 <div className="row mb-80 text-center">
                   <div className="col-md-3 mb-30">
-                    <h2 className="fw-bold text-primary">20K+</h2>
+                    <h2 className="fw-bold text-primary">40K+</h2>
                     <p className="fw-medium">Aylık Tekil Ziyaretçi</p>
                   </div>
                   <div className="col-md-3 mb-30">
@@ -51,20 +51,21 @@ const AdvertisingPage = () => {
                         icon: "📝",
                       },
                       {
-                        title: "Newsletter Reklamları",
-                        desc: "Her hafta binlerce yazılımcının gelen kutusuna düşen e-bültenlerimizde yerinizi alın.",
+                        title: "Etkinlik Sponsorluğu",
+                        desc: "Düzenlenen konferans, fiziki veya online etkinliklerde markanızla topluluk önünde olun.",
+                        icon: "🎙️",
+                      },
+                      {
+                        title: "Newsletter/Bülten Reklamları",
+                        desc: "Binlerce yazılımcının gelen kutusuna düşen e-bültenlerimizde yerinizi alın.",
                         icon: "📧",
                       },
                       {
                         title: "Banner & Display",
-                        desc: "Portalımızdaki stratejik noktalarda görsel reklamlarınızla görünürlüğünüzü artırın.",
+                        desc: "Devnot.com'un stratejik noktalarda görsel reklamlarınızla görünürlüğünüzü artırın.",
                         icon: "🖼️",
                       },
-                      {
-                        title: "Etkinlik Sponsorluğu",
-                        desc: "Düzenlediğimiz webinar ve fiziksel etkinliklerde markanızla topluluk önünde olun.",
-                        icon: "🎙️",
-                      },
+                      
                     ].map((model, idx) => (
                       <div key={idx} className="col-md-6 mb-30">
                         <div
@@ -108,7 +109,7 @@ const AdvertisingPage = () => {
                     className="p-5"
                     style={{ border: "2px dashed #007bff", borderRadius: "25px" }}
                   >
-                    <h3 className="mb-15">Medya Kitimizi Talep Edin</h3>
+                    <h3 className="mb-15">Detaylı Bilgi Talep Edin</h3>
                     <p className="mb-35">
                       Detaylı istatistikler ve bilgiler için bizimle iletişime geçin.
                     </p>
@@ -129,7 +130,7 @@ const AdvertisingPage = () => {
                         paddingRight: 24,
                       }}
                     >
-                      İşbirliği Teklifleriniz için bilgi@devnot.com
+                      bilgi@devnot.com adresine e-posta gönderin
                     </Link>
                   </div>
                 </div>

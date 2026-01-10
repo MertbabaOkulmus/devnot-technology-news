@@ -3,9 +3,9 @@ import HeaderThree from "@/layouts/headers/HeaderThree";
 import FooterOne from "@/layouts/footers/FooterOne";
 
 export const metadata: Metadata = {
-  title: "Hakkımızda | Devnot - Yazılımcıların Bilgi Paylaşım Platformu",
+  title: "Hakkında | Devnot - Yazılımcıların Bilgi Paylaşım Platformu",
   description:
-    "Devnot, Türkiye'deki yazılım ekosistemine yön veren, geliştiricilerin teknik yetkinliklerini artıran bağımsız bir yayın platformudur.",
+    "Devnot, Türkiye'deki yazılım ekosistemine yön veren, geliştiricilerin teknik yetkinliklerini artıran bağımsız bir platformudur.",
   openGraph: {
     title: "Devnot Hakkında",
     description: "Yazılım dünyasındaki güncel gelişmeleri ve teknik deneyimleri paylaşıyoruz.",
@@ -69,8 +69,8 @@ const AboutPage = () => {
                       >
                         <h4 className="fw-bold mb-3 text-white">Vizyonumuz</h4>
                         <p style={{ color: "#ccc" }}>
-                          Türkiye&apos;nin yazılım alanındaki en güvenilir referans noktası ve
-                          en büyük bilgi paylaşım üssü olmak.
+                          Türkiye&apos;nin yazılım alanındaki referans noktalarından ve
+                          en güvenilir bilgi paylaşım platformlarından biri olmak.
                         </p>
                       </div>
                     </div>
@@ -81,10 +81,12 @@ const AboutPage = () => {
                     <h3 className="mb-25 fw-bold">Neler Paylaşıyoruz?</h3>
                     <div className="row">
                       {[
-                        "Mimari Tasarımlar ve Design Patterns",
+                        "Güncel Yazılım ve Teknoloji Haberleri",
+                        "Yazılım Mimarisi",
+                        "Modern Yazılım Yaklaşımları ve Araçları",
                         "Yapay Zeka ve Veri Bilimi",
-                        "Backend ve Frontend Teknolojileri",
-                        "DevOps ve Bulut Bilişim Çözümleri",
+                        "Backend, Frontend ve Mobile Teknolojileri",
+                        "DevOps ve Bulut Bilişimi",
                         "Sektörel Haberler ve Etkinlikler",
                         "Kariyer ve Mühendislik Yönetimi",
                       ].map((item, idx) => (

@@ -27,7 +27,7 @@ import imgYunus from "@/assets/img/team/yunus-sengun.jpg";
 import imgBetul from "@/assets/img/team/betul-sengun.jpg";
 
 export const metadata: Metadata = {
-  title: "Ekibimiz | Devnot",
+  title: "Organizasyon Ekibi | Devnot",
   description: "Devnot'un arkasındaki tutkulu ekip ile tanışın.",
 };
 
@@ -207,14 +207,11 @@ const TeamPage = () => {
         {/* --- MİNİMAL BAŞLIK ALANI --- */}
         <section className="pt-80 pb-60">
           <div className="container text-center">
-            <span className="d-block text-primary fw-bold mb-2" style={{ fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase' }}>
-              Biz Kimiz?
-            </span>
             <h1 className="fw-bold text-dark mb-3" style={{ fontSize: '3.5rem', letterSpacing: '-1.5px' }}>
               Organizasyon Ekibi
             </h1>
             <p className="text-muted mx-auto" style={{ fontSize: '1.1rem', maxWidth: '700px', lineHeight: '1.6' }}>
-              Devnot, Türkiye yazılım ekosistemini ileriye taşımak için gönüllü ve profesyonel bir ekibin omuzlarında yükseliyor.
+              Devnot, Türkiye yazılım ekosistemini ileriye taşımak için profesyonel bir ekibin omuzlarında yükseliyor.
             </p>
           </div>
         </section>

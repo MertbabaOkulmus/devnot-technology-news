@@ -19,8 +19,8 @@ interface AuthorItem {
 
 // --- SEO METADATA ---
 export const metadata: Metadata = {
-  title: "Yazarlarımız | Devnot",
-  description: "Devnot platformuna katkı sağlayan, teknoloji dünyasının deneyimli isimleri ve yazarlarımız.",
+  title: "Yazarlar | Devnot",
+  description: "Gündeme ve yazılım geliştirme süreçlerine dair güncel haberler yayınlayan Devnot yazarları",
   openGraph: {
     title: "Devnot Yazarları",
     description: "Sektörün önde gelen yazılımcılarını ve içerik üreticilerini keşfedin.",
@@ -59,7 +59,6 @@ const AuthorsPage = async () => {
                 <h1 className="fw-bold mb-2" style={{ fontSize: "36px", color: "#1a1a1a" }}>
                   Yazarlar
                 </h1>
-                <p className="text-muted">Devnot&apos;a değer katan içerik üreticilerimiz.</p>
               </div>
             </div>
 
