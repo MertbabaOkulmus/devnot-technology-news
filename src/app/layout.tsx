@@ -17,6 +17,28 @@ const manrope = Manrope({
   display: "swap",
 });
 
+// ✅ Sayfa boyanmadan önce temayı ayarla (flash/refresh sorunu biter)
+const themeInitScript = `
+(function () {
+  try {
+    var key = "tg_theme_scheme";
+    var saved = localStorage.getItem(key);
+
+    // Eğer kayıt yoksa sistem temasını kullan ve kaydet
+    if (!saved) {
+      saved = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+      localStorage.setItem(key, saved);
+    }
+
+    // Normalize
+    saved = (saved === "dark") ? "dark" : "light";
+
+    // CSS'in dinlediği attribute
+    document.documentElement.setAttribute("tg-theme", saved);
+  } catch (e) {}
+})();
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -31,11 +53,12 @@ export default function RootLayout({
           content="Yazılım, teknoloji, yapay zeka, programlama, mühendislik, liderlik, girişimcilik, haberler, etkinlikler"
         />
         <link rel="icon" href="/favicon.png" sizes="any" />
+
+        {/* ✅ Tema init: refresh'te dark mode düşmesin */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body
-        suppressHydrationWarning={true}
-        className={`${inter.variable} ${manrope.variable}`}
-      >
+
+      <body suppressHydrationWarning={true} className={`${inter.variable} ${manrope.variable}`}>
         {children}
       </body>
     </html>

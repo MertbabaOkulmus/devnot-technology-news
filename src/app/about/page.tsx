@@ -16,7 +16,8 @@ const AboutPage = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <HeaderThree />
-      <main style={{ backgroundColor: "#fcfcfc", flex: "1 0 auto" }}>
+
+      <main style={{ backgroundColor: "var(--about-bg)", flex: "1 0 auto" }}>
         {/* Ana İçerik Alanı */}
         <section className="about-details-area pt-100 pb-100">
           <div className="container">
@@ -31,16 +32,16 @@ const AboutPage = () => {
                         fontWeight: "700",
                         borderLeft: "5px solid #007bff",
                         paddingLeft: "20px",
+                        color: "var(--about-title)",
                       }}
                     >
                       Devnot Nedir?
                     </h2>
-                    <p style={{ fontSize: "19px", lineHeight: "1.8", color: "#333" }}>
-                      <strong>Devnot</strong>, yazılım geliştirme süreçlerine odaklanan,
-                      güncel teknolojileri ve mühendislik pratiklerini odağına alan
-                      profesyonel bir içerik platformudur. Amacımız, bilginin paylaşılarak
-                      çoğaldığı bir ortamda Türkiye&apos;deki yazılımcıların küresel
-                      standartlarda içeriklere erişmesini sağlamaktır.
+                    <p style={{ fontSize: "19px", lineHeight: "1.8", color: "var(--about-text)" }}>
+                      <strong>Devnot</strong>, yazılım geliştirme süreçlerine odaklanan, güncel teknolojileri ve
+                      mühendislik pratiklerini odağına alan profesyonel bir içerik platformudur. Amacımız, bilginin
+                      paylaşılarak çoğaldığı bir ortamda Türkiye&apos;deki yazılımcıların küresel standartlarda
+                      içeriklere erişmesini sağlamaktır.
                     </p>
                   </section>
 
@@ -50,22 +51,28 @@ const AboutPage = () => {
                       <div
                         className="p-4 h-100"
                         style={{
-                          backgroundColor: "#fff",
-                          border: "1px solid #e1e1e1",
+                          backgroundColor: "var(--about-card-bg)",
+                          border: "1px solid var(--about-card-border)",
                           borderRadius: "15px",
                         }}
                       >
                         <h4 className="fw-bold mb-3 text-primary">Misyonumuz</h4>
-                        <p style={{ color: "#555" }}>
-                          Teknik derinliği olan, doğrulanmış ve pratik değeri yüksek
-                          içeriklerle yazılım topluluğunun gelişimine öncülük etmek.
+                        <p style={{ color: "var(--about-muted)" }}>
+                          Teknik derinliği olan, doğrulanmış ve pratik değeri yüksek içeriklerle yazılım topluluğunun
+                          gelişimine öncülük etmek.
                         </p>
                       </div>
                     </div>
+
                     <div className="col-md-6 mb-20">
                       <div
                         className="p-4 h-100"
-                        style={{ backgroundColor: "#111", color: "#fff", borderRadius: "15px" }}
+                        style={{
+                          backgroundColor: "var(--about-invert-bg)",
+                          color: "var(--about-invert-text)",
+                          borderRadius: "15px",
+                          border: "1px solid var(--about-invert-border)",
+                        }}
                       >
                         <h4 className="fw-bold mb-3 text-white">Vizyonumuz</h4>
                         <p style={{ color: "#ccc" }}>
@@ -78,7 +85,9 @@ const AboutPage = () => {
 
                   {/* Tematik İçerik Alanı */}
                   <section className="content-features mb-60">
-                    <h3 className="mb-25 fw-bold">Neler Paylaşıyoruz?</h3>
+                    <h3 className="mb-25 fw-bold" style={{ color: "var(--about-title)" }}>
+                      Neler Paylaşıyoruz?
+                    </h3>
                     <div className="row">
                       {[
                         "Güncel Yazılım ve Teknoloji Haberleri",
@@ -91,10 +100,12 @@ const AboutPage = () => {
                         "Kariyer ve Mühendislik Yönetimi",
                       ].map((item, idx) => (
                         <div key={idx} className="col-md-6 mb-15 d-flex align-items-start">
-                          <span className="me-3" style={{ color: "#28a745", fontSize: "20px" }}>
+                          <span className="me-3" style={{ color: "var(--about-check)", fontSize: "20px" }}>
                             ✓
                           </span>
-                          <span style={{ fontSize: "16px", fontWeight: "500" }}>{item}</span>
+                          <span style={{ fontSize: "16px", fontWeight: "500", color: "var(--about-title)" }}>
+                            {item}
+                          </span>
                         </div>
                       ))}
                     </div>
@@ -104,7 +115,50 @@ const AboutPage = () => {
             </div>
           </div>
         </section>
+
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              :root {
+                --about-bg: #fcfcfc;
+                --about-title: #1a1a1a;
+                --about-text: #333333;
+                --about-muted: #555555;
+
+                --about-card-bg: #ffffff;
+                --about-card-border: #e1e1e1;
+
+                /* Vizyon kartı (light mode'da zaten koyu) */
+                --about-invert-bg: #111111;
+                --about-invert-text: #ffffff;
+                --about-invert-muted: #cccccc;
+                --about-invert-border: transparent;
+
+                --about-check: #28a745;
+              }
+
+              [tg-theme="dark"] {
+                --about-bg: #0b0e14;
+                --about-title: #ffffff;
+                --about-text: #d7d7d7;
+                --about-muted: #a9a9a9;
+
+                --about-card-bg: #161b22;
+                --about-card-border: #30363d;
+
+                /* Vizyon kartı: dark mode'da da koyu kalabilir ama border ile ayıralım */
+                --about-invert-bg: #0d1117;
+                --about-invert-text: #ffffff;
+                --about-invert-muted: #b5b5b5;
+                --about-invert-border: #30363d;
+
+                --about-check: #3ddc84;
+              }
+            `,
+          }}
+        />
       </main>
+
       <FooterOne style={false} style_2={true} />
     </div>
   );
