@@ -1,0 +1,12 @@
+[
+  {
+    "imageUrl": "/ads/cr_mining_post01.jpg",
+    "url": "https://example.com",
+    "alt": "Sponsor 1"
+  },
+  {
+    "imageUrl": "/ads/cr_mining_post01.jpg",
+    "url": "https://example2.com",
+    "alt": "Sponsor 2"
+  }
+]

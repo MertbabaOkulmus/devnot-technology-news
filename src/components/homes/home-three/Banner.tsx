@@ -1,7 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import bannerThumb_1 from "@/assets/img/blog/t_banner_post01.jpg";
 import { NewsArticle } from "@/services";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
+
+import adBannerData from "@/data/adBanner.json";
 
 // === Yardımcı Fonksiyon ===
 const mapArticleToBannerItem = (article: NewsArticle) => {
@@ -31,18 +39,59 @@ type BannerProps = {
   isLoading?: boolean;
 };
 
+type AdBannerItem = {
+  imageUrl?: string;
+  url?: string;
+  alt?: string;
+};
+
 const Banner = ({ featuredArticles = [], isLoading = false }: BannerProps) => {
   const mappedData = featuredArticles.map(mapArticleToBannerItem);
 
+  const adBanners = (Array.isArray(adBannerData) ? (adBannerData as AdBannerItem[]) : []).filter((x) =>
+    Boolean(x?.imageUrl && x?.url)
+  );
+  const hasAd = adBanners.length > 0;
+
   const bigPost = mappedData.slice(0, 1)[0];
-  const smallPosts = mappedData.slice(1, 4);
+
+  const smallPosts = hasAd ? mappedData.slice(1, 3) : mappedData.slice(1, 4);
+
+  const renderAdSmallPost = () => {
+    if (!hasAd) return null;
+
+    const isMulti = adBanners.length > 1;
+
+    return (
+      <div key="ad-banner" className="banner-post-two small-post">
+        <div className="banner-post-thumb-two">
+          <Swiper
+            modules={[Autoplay]}
+            slidesPerView={1}
+            loop={isMulti}
+            autoplay={isMulti ? { delay: 4000, disableOnInteraction: false } : false}
+            allowTouchMove={isMulti} // tek reklamda swipe kapalı
+          >
+            {adBanners.map((ad, idx) => (
+              <SwiperSlide key={`ad-${idx}`}>
+                <a href={ad.url!} target="_blank" rel="noopener noreferrer">
+                  <Image src={ad.imageUrl!} alt={ad.alt || "Reklam"} width={300} height={200} />
+                </a>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        <div className="banner-post-content-two" />
+      </div>
+    );
+  };
 
   return (
     <section className="banner-post-area-two pb-30">
       <div className="container">
         <div className="banner-post-inner">
           <div className="row">
-            {/* Sol Taraf - Büyük Resim (Col-70) */}
             <div className="col-70">
               {isLoading ? (
                 <div className="banner-post-two big-post skeleton-card" aria-busy="true" aria-label="Yükleniyor">
@@ -110,42 +159,41 @@ const Banner = ({ featuredArticles = [], isLoading = false }: BannerProps) => {
                   ))}
                 </>
               ) : (
-                smallPosts.map((item) => (
-                  <div key={item.id} className="banner-post-two small-post">
-                    <div className="banner-post-thumb-two">
-                      <Link href={`/haber/${item.slug}`}>
-                        <Image
-                          src={item.imageUrl || bannerThumb_1}
-                          alt={item.title}
-                          width={300}
-                          height={200}
-                        />
-                      </Link>
-                    </div>
-                    <div className="banner-post-content-two">
-                      <Link href="/haber" className="post-tag">
-                        {item.tag}
-                      </Link>
-                      <h2 className="post-title">
-                        <Link href={`/haber/${item.slug}`}>{item.title}</Link>
-                      </h2>
-                      <div className="blog-post-meta white-blog-meta">
-                        <ul className="list-wrap">
-                          <li>
-                            <i className="flaticon-calendar"></i>
-                            {item.date}
-                          </li>
-                          <Link href={`/author?id=${item.id}`}>
+                <>
+                  {hasAd && renderAdSmallPost()}
+
+                  {smallPosts.map((item) => (
+                    <div key={item.id} className="banner-post-two small-post">
+                      <div className="banner-post-thumb-two">
+                        <Link href={`/haber/${item.slug}`}>
+                          <Image src={item.imageUrl || bannerThumb_1} alt={item.title} width={300} height={200} />
+                        </Link>
+                      </div>
+                      <div className="banner-post-content-two">
+                        <Link href="/haber" className="post-tag">
+                          {item.tag}
+                        </Link>
+                        <h2 className="post-title">
+                          <Link href={`/haber/${item.slug}`}>{item.title}</Link>
+                        </h2>
+                        <div className="blog-post-meta white-blog-meta">
+                          <ul className="list-wrap">
                             <li>
-                              <i className="flaticon-user"></i>
-                              <>{item.authorName}</>
+                              <i className="flaticon-calendar"></i>
+                              {item.date}
                             </li>
-                          </Link>
-                        </ul>
+                            <Link href={`/author?id=${item.id}`}>
+                              <li>
+                                <i className="flaticon-user"></i>
+                                <>{item.authorName}</>
+                              </li>
+                            </Link>
+                          </ul>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))
+                  ))}
+                </>
               )}
             </div>
           </div>
@@ -183,7 +231,6 @@ const Banner = ({ featuredArticles = [], isLoading = false }: BannerProps) => {
           }
         }
 
-        /* Görsel alanı placeholder */
         .skeleton-media {
           width: 100%;
           height: 100%;
@@ -191,12 +238,10 @@ const Banner = ({ featuredArticles = [], isLoading = false }: BannerProps) => {
           background: rgba(255, 255, 255, 0.08);
         }
 
-        /* Büyük kart görseli yüksek olsun */
         .big-post.skeleton-card .skeleton-media {
           min-height: 500px;
         }
 
-        /* Metin çizgileri */
         .skeleton-line {
           width: 100%;
           border-radius: 10px;
@@ -225,7 +270,6 @@ const Banner = ({ featuredArticles = [], isLoading = false }: BannerProps) => {
           margin-bottom: 0;
         }
 
-        /* Mobilde büyük görsel çok uzamasın */
         @media (max-width: 767px) {
           .big-post.skeleton-card .skeleton-media {
             min-height: 320px;
