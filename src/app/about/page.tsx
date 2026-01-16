@@ -1,14 +1,48 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import HeaderThree from "@/layouts/headers/HeaderThree";
 import FooterOne from "@/layouts/footers/FooterOne";
+
+const PAGE_URL = "https://devnot.com/about"; // TODO: route farklıysa değiştir
+const OG_IMAGE = "https://devnot.com/og/about.png"; // Gerçekten varsa kullan; yoksa images: [] yap
 
 export const metadata: Metadata = {
   title: "Hakkında | Devnot - Yazılımcıların Bilgi Paylaşım Platformu",
   description:
     "Devnot, Türkiye'deki yazılım ekosistemine yön veren, geliştiricilerin teknik yetkinliklerini artıran bağımsız bir platformudur.",
+
+  alternates: {
+    canonical: PAGE_URL,
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
   openGraph: {
     title: "Devnot Hakkında",
     description: "Yazılım dünyasındaki güncel gelişmeleri ve teknik deneyimleri paylaşıyoruz.",
+    url: PAGE_URL,
+    siteName: "Devnot",
+    type: "website",
+    images: OG_IMAGE
+      ? [
+          {
+            url: OG_IMAGE,
+            width: 1200,
+            height: 630,
+            alt: "Devnot Hakkında",
+          },
+        ]
+      : [],
+  },
+
+  twitter: {
+    card: OG_IMAGE ? "summary_large_image" : "summary",
+    title: "Devnot Hakkında",
+    description: "Yazılım dünyasındaki güncel gelişmeleri ve teknik deneyimleri paylaşıyoruz.",
+    images: OG_IMAGE ? [OG_IMAGE] : [],
+    site: "@devnotcom", // TODO: varsa kendi hesabınla değiştir
   },
 };
 
@@ -26,7 +60,7 @@ const AboutPage = () => {
                 <div className="about-content-wrap">
                   {/* Giriş Bölümü */}
                   <section className="about-section mb-60">
-                    <h2
+                    <h1
                       className="mb-30"
                       style={{
                         fontWeight: "700",
@@ -36,7 +70,7 @@ const AboutPage = () => {
                       }}
                     >
                       Devnot Nedir?
-                    </h2>
+                    </h1>
                     <p style={{ fontSize: "19px", lineHeight: "1.8", color: "var(--about-text)" }}>
                       <strong>Devnot</strong>, yazılım geliştirme süreçlerine odaklanan, güncel teknolojileri ve
                       mühendislik pratiklerini odağına alan profesyonel bir içerik platformudur. Amacımız, bilginin
@@ -76,8 +110,8 @@ const AboutPage = () => {
                       >
                         <h4 className="fw-bold mb-3 text-white">Vizyonumuz</h4>
                         <p style={{ color: "#ccc" }}>
-                          Türkiye&apos;nin yazılım alanındaki referans noktalarından ve
-                          en güvenilir bilgi paylaşım platformlarından biri olmak.
+                          Türkiye&apos;nin yazılım alanındaki referans noktalarından ve en güvenilir bilgi paylaşım
+                          platformlarından biri olmak.
                         </p>
                       </div>
                     </div>

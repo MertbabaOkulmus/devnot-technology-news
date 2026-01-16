@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import HeaderThree from "@/layouts/headers/HeaderThree";
 import FooterOne from "@/layouts/footers/FooterOne";
 
@@ -26,9 +26,47 @@ import imgDicle from "@/assets/img/team/dicle-demir.jpg";
 import imgYunus from "@/assets/img/team/yunus-sengun.jpg";
 import imgBetul from "@/assets/img/team/betul-sengun.jpg";
 
+const PAGE_URL = "https://devnot.com/team"; // TODO: route farklıysa değiştir
+const OG_IMAGE: string | null = null; // örn: "https://devnot.com/og/team.png" (gerçekten varsa)
+
 export const metadata: Metadata = {
   title: "Organizasyon Ekibi | Devnot",
   description: "Devnot'un arkasındaki tutkulu ekip ile tanışın.",
+
+  alternates: {
+    canonical: PAGE_URL,
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  openGraph: {
+    title: "Organizasyon Ekibi | Devnot",
+    description: "Devnot'un arkasındaki tutkulu ekip ile tanışın.",
+    url: PAGE_URL,
+    siteName: "Devnot",
+    type: "website",
+    images: OG_IMAGE
+      ? [
+          {
+            url: OG_IMAGE,
+            width: 1200,
+            height: 630,
+            alt: "Organizasyon Ekibi | Devnot",
+          },
+        ]
+      : [],
+  },
+
+  twitter: {
+    card: OG_IMAGE ? "summary_large_image" : "summary",
+    title: "Organizasyon Ekibi | Devnot",
+    description: "Devnot'un arkasındaki tutkulu ekip ile tanışın.",
+    images: OG_IMAGE ? [OG_IMAGE] : [],
+    site: "@devnotcom", // TODO: varsa kendi hesabınla değiştir
+  },
 };
 
 const TeamPage = () => {
@@ -202,12 +240,12 @@ const TeamPage = () => {
         {/* --- MİNİMAL BAŞLIK ALANI --- */}
         <section className="pt-80 pb-60">
           <div className="container text-center">
-
-            <h1 className="fw-bold text-dark mb-3" style={{ fontSize: '3.5rem', letterSpacing: '-1.5px' }}>
+            <h1 className="fw-bold text-dark mb-3" style={{ fontSize: "3.5rem", letterSpacing: "-1.5px" }}>
               Organizasyon Ekibi
             </h1>
-            <p className="text-muted mx-auto" style={{ fontSize: '1.1rem', maxWidth: '700px', lineHeight: '1.6' }}>
-              Devnot, Türkiye yazılım ekosistemini ileriye taşımak için gönüllü ve profesyonel bir ekibin omuzlarında yükseliyor.
+            <p className="text-muted mx-auto" style={{ fontSize: "1.1rem", maxWidth: "700px", lineHeight: "1.6" }}>
+              Devnot, Türkiye yazılım ekosistemini ileriye taşımak için gönüllü ve profesyonel bir ekibin omuzlarında
+              yükseliyor.
             </p>
           </div>
         </section>

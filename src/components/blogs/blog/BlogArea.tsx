@@ -70,11 +70,6 @@ const BlogArea = ({ style, blogs }: StyleType) => {
                                              {item.category.name}
                                           </span>
                                        )}
-                                       {item.isActive !== undefined && item.location && (
-                                          <span className="post-tag" style={{ backgroundColor: item.isActive ? '#10b981' : '#64748b', color: '#fff' }}>
-                                             {item.isActive ? "Yaklaşan" : "Geçmiş"}
-                                          </span>
-                                       )}
                                     </div>
 
                                     <h2 className="post-title">

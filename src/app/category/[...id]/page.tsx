@@ -33,29 +33,62 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const url = `https://devnot.com/haber/${slug}`;
+  const fallbackTitle = slugToTitle(slug);
+
   try {
     const data: any = await fetchArticleCategorySlug(slug);
 
-    // API kategori adı döndürüyorsa onu kullan
     const categoryTitle =
       data?.category?.title ||
       data?.category?.name ||
-      slugToTitle(slug);
+      fallbackTitle;
+
+    const title = `${categoryTitle} Kategorisi | Devnot`;
+    const description = `${categoryTitle} kategorisindeki en güncel yazılar ve haberler.`;
+
+    const image =
+      data?.category?.imageUrl ||
+      "https://devnot.com/og/default-category.png";
 
     return {
-      title: `${categoryTitle} Kategorisi | Devnot`,
-      description: `${categoryTitle} kategorisindeki en güncel yazılar ve haberler.`,
+      title,
+      description,
+
+      alternates: {
+        canonical: url,
+      },
+
       openGraph: {
-        title: `${categoryTitle} | Devnot`,
-        description: `${categoryTitle} kategorisindeki içerikleri keşfedin.`,
+        title,
+        description,
+        url,
+        siteName: "Devnot",
+        type: "website",
+        images: [
+          {
+            url: image,
+            width: 1200,
+            height: 630,
+            alt: categoryTitle,
+          },
+        ],
+      },
+
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: [image],
       },
     };
   } catch (error) {
-    const fallbackTitle = slugToTitle(slug);
-
     return {
       title: `${fallbackTitle} Kategorisi | Devnot`,
       description: `${fallbackTitle} kategorisindeki içerikler.`,
+      alternates: {
+        canonical: url,
+      },
     };
   }
 }
