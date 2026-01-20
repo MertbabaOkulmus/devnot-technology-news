@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 
 import Image from "next/image";
 import Link from "next/link";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { fetchAuthorDetail } from "@/services/homethree.service";
 import FooterOne from "@/layouts/footers/FooterOne";
 import HeaderThree from "@/layouts/headers/HeaderThree";
@@ -44,19 +44,90 @@ const resolveImageUrl = (path: string | null, base: string = "https://api.devnot
   return `${base}${path}`;
 };
 
+const stripHtml = (text: string) =>
+  text
+    .replace(/<[^>]*>?/gm, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+const truncate = (text: string, max: number) => {
+  const t = stripHtml(text || "");
+  if (t.length <= max) return t;
+  return `${t.slice(0, max - 1).trimEnd()}…`;
+};
+
 // --- SEO AYARLARI ---
 export async function generateMetadata({ searchParams }: AuthorPageProps): Promise<Metadata> {
   const sp = await searchParams;
   const id = sp.id ? Number(sp.id) : 1;
 
+  // canonical URL (query paramlı sayfa)
+  const url = `https://devnot.com/author?id=${id}`;
+
   try {
     const data = (await fetchAuthorDetail(id)) as unknown as AuthorDetailResponse;
+
+    const authorName = data?.author?.name || "Yazar";
+    const rawBio =
+      data?.author?.bio ||
+      `${authorName} tarafından kaleme alınan teknoloji makaleleri.`;
+
+    const description = truncate(rawBio, 170);
+
+    const avatar = resolveImageUrl(data?.author?.avatarUrl) || undefined;
+
+    const title = `${authorName} - Yazar Profili | Devnot`;
+
     return {
-      title: `${data.author.name} - Yazar Profili | Devnot`,
-      description: data.author.bio || `${data.author.name} tarafından kaleme alınan teknoloji makaleleri.`,
+      title,
+      description,
+
+      alternates: {
+        canonical: url,
+      },
+
+      robots: {
+        index: true,
+        follow: true,
+      },
+
+      openGraph: {
+        title,
+        description,
+        url,
+        siteName: "Devnot",
+        type: "profile",
+        images: avatar
+          ? [
+              {
+                url: avatar,
+                width: 1200,
+                height: 630,
+                alt: authorName,
+              },
+            ]
+          : [],
+      },
+
+      twitter: {
+        card: avatar ? "summary_large_image" : "summary",
+        title,
+        description,
+        images: avatar ? [avatar] : [],
+        site: "@devnotcom", // TODO: varsa kendi hesabınla değiştir
+      },
     };
   } catch (error) {
-    return { title: "Yazar Profili | Devnot" };
+    return {
+      title: "Yazar Profili | Devnot",
+      alternates: {
+        canonical: url,
+      },
+      robots: {
+        index: true,
+        follow: true,
+      },
+    };
   }
 }
 
@@ -270,7 +341,10 @@ const AuthorPage = async ({ searchParams }: AuthorPageProps) => {
                               </Link>
                             </h2>
 
-                            <div className="mt-auto pt-3 border-top w-100" style={{ borderColor: "var(--author-card-border)" }}>
+                            <div
+                              className="mt-auto pt-3 border-top w-100"
+                              style={{ borderColor: "var(--author-card-border)" }}
+                            >
                               <Link
                                 href={`/haber/${item.slug}`}
                                 className="fw-bold text-primary text-decoration-none"

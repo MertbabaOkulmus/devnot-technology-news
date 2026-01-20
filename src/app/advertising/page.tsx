@@ -1,12 +1,52 @@
 import Link from "next/link";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import HeaderThree from "@/layouts/headers/HeaderThree";
 import FooterOne from "@/layouts/footers/FooterOne";
+
+const PAGE_URL = "https://devnot.com/advertising"; // TODO: route farklıysa değiştir
+const OG_IMAGE = "https://devnot.com/og/advertising.png"; // gerçekten varsa kullan; yoksa images: [] yap
 
 export const metadata: Metadata = {
   title: "Reklam ve Sponsorluk | Devnot",
   description:
     "Devnot platformunda markanızı binlerce yazılımcı ve teknoloji profesyoneli ile buluşturun. Sponsorluk modellerimiz hakkında bilgi alın.",
+
+  alternates: {
+    canonical: PAGE_URL,
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  openGraph: {
+    title: "Reklam ve Sponsorluk | Devnot",
+    description:
+      "Devnot platformunda markanızı binlerce yazılımcı ve teknoloji profesyoneli ile buluşturun. Sponsorluk modellerimiz hakkında bilgi alın.",
+    url: PAGE_URL,
+    siteName: "Devnot",
+    type: "website",
+    images: OG_IMAGE
+      ? [
+          {
+            url: OG_IMAGE,
+            width: 1200,
+            height: 630,
+            alt: "Devnot Reklam ve Sponsorluk",
+          },
+        ]
+      : [],
+  },
+
+  twitter: {
+    card: OG_IMAGE ? "summary_large_image" : "summary",
+    title: "Reklam ve Sponsorluk | Devnot",
+    description:
+      "Devnot platformunda markanızı binlerce yazılımcı ve teknoloji profesyoneli ile buluşturun. Sponsorluk modellerimiz hakkında bilgi alın.",
+    images: OG_IMAGE ? [OG_IMAGE] : [],
+    site: "@devnotcom", // TODO: varsa kendi hesabınla değiştir
+  },
 };
 
 const AdvertisingPage = () => {
@@ -23,7 +63,7 @@ const AdvertisingPage = () => {
                 {/* İstatistikler / Neden Devnot? */}
                 <div className="row mb-80 text-center">
                   <div className="col-md-3 mb-30">
-                    <h2 className="fw-bold text-primary">40K+</h2>
+                    <h1 className="fw-bold text-primary">40K+</h1>
                     <p className="fw-medium" style={{ color: "var(--adv-text)" }}>
                       Aylık Tekil Ziyaretçi
                     </p>
@@ -75,7 +115,6 @@ const AdvertisingPage = () => {
                         desc: "Devnot.com'un stratejik noktalarda görsel reklamlarınızla görünürlüğünüzü artırın.",
                         icon: "🖼️",
                       },
-                      
                     ].map((model, idx) => (
                       <div key={idx} className="col-md-6 mb-30">
                         <div
@@ -131,9 +170,7 @@ const AdvertisingPage = () => {
                     }}
                   >
                     <h3 className="mb-15">Detaylı Bilgi Talep Edin</h3>
-                    <p className="mb-35">
-                      Detaylı istatistikler ve bilgiler için bizimle iletişime geçin.
-                    </p>
+                    <p className="mb-35">Detaylı istatistikler ve bilgiler için bizimle iletişime geçin.</p>
                     <Link
                       href="mailto:reklam@devnot.com"
                       className="btn btn-primary btn-lg px-5"

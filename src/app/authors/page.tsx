@@ -2,13 +2,16 @@ export const dynamic = "force-dynamic";
 
 import Image from "next/image";
 import Link from "next/link";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { fetchAuthorList } from "@/services/homethree.service";
 import HeaderThree from "@/layouts/headers/HeaderThree";
 import FooterOne from "@/layouts/footers/FooterOne";
 
 // Varsayılan Avatar
 import defaultAvatar from "@/assets/img/images/author_img.png";
+
+const PAGE_URL = "https://devnot.com/authors"; // TODO: route farklıysa değiştir
+const OG_IMAGE: string | null = null; // örn: "https://devnot.com/og/authors.png" (gerçekten varsa)
 
 // --- TİP TANIMLAMALARI ---
 interface AuthorItem {
@@ -21,9 +24,40 @@ interface AuthorItem {
 export const metadata: Metadata = {
   title: "Yazarlar | Devnot",
   description: "Gündeme ve yazılım geliştirme süreçlerine dair güncel haberler yayınlayan Devnot yazarları",
+
+  alternates: {
+    canonical: PAGE_URL,
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
   openGraph: {
     title: "Devnot Yazarları",
     description: "Sektörün önde gelen yazılımcılarını ve içerik üreticilerini keşfedin.",
+    url: PAGE_URL,
+    siteName: "Devnot",
+    type: "website",
+    images: OG_IMAGE
+      ? [
+          {
+            url: OG_IMAGE,
+            width: 1200,
+            height: 630,
+            alt: "Devnot Yazarları",
+          },
+        ]
+      : [],
+  },
+
+  twitter: {
+    card: OG_IMAGE ? "summary_large_image" : "summary",
+    title: "Devnot Yazarları",
+    description: "Sektörün önde gelen yazılımcılarını ve içerik üreticilerini keşfedin.",
+    images: OG_IMAGE ? [OG_IMAGE] : [],
+    site: "@devnotcom", // TODO: varsa kendi hesabınla değiştir
   },
 };
 
@@ -53,10 +87,7 @@ const AuthorsPage = async () => {
             {/* Başlık */}
             <div className="row mb-50">
               <div className="col-lg-8">
-                <h1
-                  className="fw-bold mb-2"
-                  style={{ fontSize: "36px", color: "var(--authors-title)" }}
-                >
+                <h1 className="fw-bold mb-2" style={{ fontSize: "36px", color: "var(--authors-title)" }}>
                   Yazarlar
                 </h1>
                 <p className="text-muted"></p>
@@ -114,10 +145,7 @@ const AuthorsPage = async () => {
                             {author.name}
                           </h3>
 
-                          <span
-                            className="d-block mb-3"
-                            style={{ fontSize: "14px", color: "var(--authors-muted)" }}
-                          >
+                          <span className="d-block mb-3" style={{ fontSize: "14px", color: "var(--authors-muted)" }}>
                             Yazar
                           </span>
 
@@ -148,9 +176,7 @@ const AuthorsPage = async () => {
                 <div className="mb-3" style={{ fontSize: "40px", color: "var(--authors-muted)" }}>
                   <i className="far fa-user"></i>
                 </div>
-                <h3 style={{ color: "var(--authors-muted)" }}>
-                  Yazar listesi şu an yüklenemedi.
-                </h3>
+                <h3 style={{ color: "var(--authors-muted)" }}>Yazar listesi şu an yüklenemedi.</h3>
               </div>
             )}
 

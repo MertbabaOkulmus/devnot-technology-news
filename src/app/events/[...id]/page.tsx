@@ -19,18 +19,51 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!eventId) return { title: "Etkinlik Bulunamadı | Devnot" };
 
+  const url = `https://devnot.com/events/${eventId}`;
+
   try {
     const eventData = (await fetchEventSlug(eventId)) as unknown as EventWithImage;
 
     if (!eventData) return { title: "Etkinlik Bulunamadı | Devnot" };
 
+    const title = `${eventData.title} | Devnot`;
+
+    const description =
+      eventData.summary ||
+      `${eventData.title} hakkında detaylı bilgi.`;
+
+    const image =
+      eventData.image || "https://devnot.com/og/default-event.png";
+
     return {
-      title: `${eventData.title} | Devnot`,
-      description: eventData.summary || `${eventData.title} hakkında detaylı bilgi.`,
+      title,
+      description,
+
+      alternates: {
+        canonical: url,
+      },
+
       openGraph: {
         title: eventData.title,
-        description: eventData.summary ?? undefined,
-        images: eventData.image ? [{ url: eventData.image }] : [],
+        description,
+        url,
+        siteName: "Devnot",
+        type: "website",
+        images: [
+          {
+            url: image,
+            width: 1200,
+            height: 630,
+            alt: eventData.title,
+          },
+        ],
+      },
+
+      twitter: {
+        card: "summary_large_image",
+        title: eventData.title,
+        description,
+        images: [image],
       },
     };
   } catch {

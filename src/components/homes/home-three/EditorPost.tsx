@@ -180,6 +180,7 @@ const EditorPost = ({ featuredLatest = [], isLoading = false }: EditorPostProps)
                         <Link
                           href={`/haber/${item.slug}`}
                           style={{
+                            paddingRight: "16px",
                             display: "-webkit-box",
                             WebkitBoxOrient: "vertical",
                             WebkitLineClamp: 3,

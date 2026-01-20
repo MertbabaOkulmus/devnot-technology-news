@@ -22,23 +22,57 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Makale Bulunamadı | Devnot" };
   }
 
+  const url = `https://devnot.com/haber/${blogId}`;
+
   try {
-    const articleData = await fetchArticleSlug(blogId);
+    const articleData: any = await fetchArticleSlug(blogId);
 
     if (!articleData) {
       return { title: "Makale Bulunamadı | Devnot" };
     }
 
+    const title = `${articleData.title} | Devnot`;
+
+    const description =
+      articleData.summary ||
+      articleData.content?.replace(/<[^>]*>?/gm, "").slice(0, 160) ||
+      "Makale detayı ve içerik.";
+
+    const image =
+      articleData.imageUrl || "https://devnot.com/og/default-article.png";
+
     return {
-      title: `${articleData.title} | Devnot`,
-      description: articleData.summary || "Makale detayı ve içerik.",
+      title,
+      description,
+
+      alternates: {
+        canonical: url,
+      },
+
       openGraph: {
         title: articleData.title,
-        images: articleData.imageUrl ? [articleData.imageUrl] : [],
+        description,
+        url,
+        siteName: "Devnot",
+        type: "article",
+        images: [
+          {
+            url: image,
+            width: 1200,
+            height: 630,
+            alt: articleData.title,
+          },
+        ],
+      },
+
+      twitter: {
+        card: "summary_large_image",
+        title: articleData.title,
+        description,
+        images: [image],
       },
     };
   } catch {
-    // fetchArticleSlug 404/500/throw durumunda SSR 500 olmasın
     return { title: "Makale Bulunamadı | Devnot" };
   }
 }
