@@ -1,12 +1,7 @@
 [
   {
-    "imageUrl": "/ads/cr_mining_post01.jpg",
-    "url": "https://example.com",
-    "alt": "Sponsor 1"
-  },
-  {
-    "imageUrl": "/ads/cr_mining_post01.jpg",
-    "url": "https://example2.com",
-    "alt": "Sponsor 2"
+    "imageUrl": "/ads/kodspark-akademi.png",
+    "url": "https://kodspark.com",
+    "alt": "Reklam - Kodspark Yazılım Eğitimleri"
   }
 ]

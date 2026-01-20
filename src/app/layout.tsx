@@ -1,5 +1,6 @@
 import "../styles/index.css";
 import { Inter, Manrope } from "next/font/google";
+import Script from "next/script";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -60,6 +61,20 @@ export default function RootLayout({
 
       <body suppressHydrationWarning={true} className={`${inter.variable} ${manrope.variable}`}>
         {children}
+
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-211MX2697M"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-211MX2697M');
+          `}
+        </Script>
       </body>
     </html>
   );
