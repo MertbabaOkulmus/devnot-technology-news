@@ -2,7 +2,7 @@ import Error from "@/components/error/Index";
 import Wrapper from "@/layouts/Wrapper";
 
 export const metadata = {
-   title: "404 error || Zaira - News Magazine React Next Js Template",
+   title: "404 error || Devnot",
 };
 const index = () => {
    return (
