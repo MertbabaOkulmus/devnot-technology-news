@@ -31,6 +31,7 @@ const mapArticleToBannerItem = (article: NewsArticle) => {
     date: formattedDate,
     slug: article.slug,
     authorName: article.user?.name || "Admin",
+    userId: article?.user?.id || 0,
   };
 };
 
@@ -129,7 +130,7 @@ const Banner = ({ featuredArticles = [], isLoading = false }: BannerProps) => {
                             <i className="flaticon-calendar"></i>
                             {bigPost.date}
                           </li>
-                          <Link href={`/author?id=${bigPost.id}`}>
+                          <Link href={`/author?id=${bigPost.userId}`}>
                             <li>
                               <i className="flaticon-user"></i>
                               <>{bigPost.authorName}</>
@@ -182,7 +183,7 @@ const Banner = ({ featuredArticles = [], isLoading = false }: BannerProps) => {
                               <i className="flaticon-calendar"></i>
                               {item.date}
                             </li>
-                            <Link href={`/author?id=${item.id}`}>
+                            <Link href={`/author?id=${item.userId}`}>
                               <li>
                                 <i className="flaticon-user"></i>
                                 <>{item.authorName}</>
