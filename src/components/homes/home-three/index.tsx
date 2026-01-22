@@ -25,7 +25,6 @@ const HomeThree = ({
     <>
       <HeaderThree />
       <main className="fix">
-        {/* İstersen error UI ekleyebilirsin (şimdilik tasarımı bozmamak için sadece gösteriyorum) */}
         {error ? (
           <p className="text-center pt-30 pb-30">{error}</p>
         ) : (

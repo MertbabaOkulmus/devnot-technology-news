@@ -38,7 +38,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   try {
     const data: any = await fetchArticleCategorySlug(slug);
-
     const categoryTitle =
       data?.category?.title ||
       data?.category?.name ||

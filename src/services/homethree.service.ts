@@ -50,10 +50,6 @@ export type NewsArticle = {
   imageUrl: string;
 };
 
-/**
- * Service for the `home-three` page.
- * Keep page-specific fetch logic and DTOs here. Endpoints are called via the centralized `api` wrapper.
- */
 export const fetchFeaturedArticles = async (): Promise<NewsArticle[]> => {
   return get<NewsArticle[]>('/Article/featured?n=4');
 };

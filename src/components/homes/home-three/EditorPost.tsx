@@ -1,31 +1,10 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import Slider from "react-slick";
-import React, { useMemo, useRef } from "react";
+import React, { useMemo } from "react";
 import { NewsArticle } from "@/services";
 
-// Varsayılan resim import'u
 import defaultEditorThumb from "@/assets/img/blog/t_banner_post01.jpg";
-
-const setting = {
-  infinite: true,
-  speed: 1000,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  centerMode: true,
-  centerPadding: "0",
-  dots: false,
-  arrows: false,
-  autoplay: false,
-  autoplaySpeed: 3000,
-  responsive: [
-    { breakpoint: 1200, settings: { slidesToShow: 2, slidesToScroll: 1, infinite: true } },
-    { breakpoint: 992, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-    { breakpoint: 767, settings: { slidesToShow: 2, slidesToScroll: 1, arrows: false } },
-    { breakpoint: 575, settings: { slidesToShow: 1, slidesToScroll: 1, arrows: false } },
-  ],
-};
 
 const mapArticleToEditorItem = (article: NewsArticle) => {
   const dateOptions: Intl.DateTimeFormatOptions = {
@@ -55,18 +34,10 @@ type EditorPostProps = {
 };
 
 const SKELETON_COUNT = 6;
+const MAX_ITEMS = 6;
 
 const EditorPost = ({ featuredLatest = [], isLoading = false }: EditorPostProps) => {
-  const sliderRef = useRef<Slider | null>(null);
-
-  const mappedData = useMemo(() => featuredLatest.map(mapArticleToEditorItem), [featuredLatest]);
-
-  const handlePrevClick = () => {
-    if (sliderRef.current) sliderRef.current.slickPrev();
-  };
-  const handleNextClick = () => {
-    if (sliderRef.current) sliderRef.current.slickNext();
-  };
+  const mappedData = useMemo(() => featuredLatest.map(mapArticleToEditorItem).slice(0, MAX_ITEMS), [featuredLatest]);
 
   const showSkeleton = isLoading;
   const showEmpty = !isLoading && mappedData.length === 0;
@@ -74,144 +45,122 @@ const EditorPost = ({ featuredLatest = [], isLoading = false }: EditorPostProps)
   return (
     <section className="editor-post-area pt-50 pb-40">
       <div className="container">
-        {/* Başlık ve Navigasyon Bölümü */}
         <div className="row">
           <div className="col-lg-12">
             <div className="section-title-wrap mb-30">
               <div className="section-title">
                 <h2 className="title">Diğer Haberler</h2>
               </div>
-              <div className="editor-nav">
-                <button onClick={handlePrevClick} type="button" className="slick-prev-btn slick-arrow" disabled={showSkeleton}>
-                  <i className="fas fa-arrow-left"></i>
-                </button>
-                <button onClick={handleNextClick} type="button" className="slick-next-btn slick-arrow" disabled={showSkeleton}>
-                  <i className="fas fa-arrow-right"></i>
-                </button>
-              </div>
               <div className="section-title-line"></div>
             </div>
           </div>
         </div>
 
-        <div className="editor-post-wrap">
+        <div className="row editor-post-wrap">
           {showSkeleton ? (
-            <Slider {...setting} ref={sliderRef} className="row editor-post-active">
-              {Array.from({ length: SKELETON_COUNT }).map((_, idx) => (
-                <div key={`sk-${idx}`} className="col-lg-4">
+            Array.from({ length: SKELETON_COUNT }).map((_, idx) => (
+              <div key={`sk-${idx}`} className="col-lg-4 col-md-6">
+                <div
+                  className="editor-post-item custom-editor-card skeleton-card"
+                  style={{ width: "100%", height: "160px", display: "flex", alignItems: "center", marginBottom: "20px" }}
+                  aria-busy="true"
+                  aria-label="Yükleniyor"
+                >
                   <div
-                    className="editor-post-item custom-editor-card skeleton-card"
-                    style={{ width: "410px", height: "160px", display: "flex", alignItems: "center", margin: "0 10px" }}
-                    aria-busy="true"
-                    aria-label="Yükleniyor"
-                  >
-                    {/* Resim skeleton */}
-                    <div
-                      className="editor-post-thumb custom-editor-thumb skeleton-media"
-                      style={{ width: "160px", height: "160px", flexShrink: 0 }}
-                    />
+                    className="editor-post-thumb custom-editor-thumb skeleton-media"
+                    style={{ width: "160px", height: "160px", flexShrink: 0 }}
+                  />
 
-                    {/* İçerik skeleton */}
-                    <div
-                      className="editor-post-content custom-editor-content"
-                      style={{
-                        flexGrow: 1,
-                        height: "100%",
-                        padding: "10px 15px",
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "space-between",
-                        textAlign: "left",
-                      }}
-                    >
-                      <div className="skeleton-line skeleton-tag" />
-                      <div className="skeleton-block">
-                        <div className="skeleton-line skeleton-title-1" />
-                        <div className="skeleton-line skeleton-title-2" />
-                        <div className="skeleton-line skeleton-title-3" />
-                      </div>
-                      <div className="skeleton-line skeleton-date" />
+                  <div
+                    className="editor-post-content custom-editor-content"
+                    style={{
+                      flexGrow: 1,
+                      height: "100%",
+                      padding: "10px 15px",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                      textAlign: "left",
+                    }}
+                  >
+                    <div className="skeleton-line skeleton-tag" />
+                    <div className="skeleton-block">
+                      <div className="skeleton-line skeleton-title-1" />
+                      <div className="skeleton-line skeleton-title-2" />
+                      <div className="skeleton-line skeleton-title-3" />
                     </div>
+                    <div className="skeleton-line skeleton-date" />
                   </div>
                 </div>
-              ))}
-            </Slider>
+              </div>
+            ))
           ) : showEmpty ? (
-            <p className="text-center pt-50 pb-50">Düzenleyenlerin Seçimi makalesi bulunmamaktadır.</p>
+            <div className="col-12">
+              <p className="text-center pt-50 pb-50">Diğer haberler bulunmamaktadır.</p>
+            </div>
           ) : (
-            <Slider {...setting} ref={sliderRef} className="row editor-post-active">
-              {mappedData.map((item) => (
-                <div key={item.id} className="col-lg-4">
+            mappedData.map((item) => (
+              <div key={item.id} className="col-lg-4 col-md-6">
+                <div
+                  className="editor-post-item custom-editor-card"
+                  style={{ width: "100%", height: "160px", display: "flex", alignItems: "center", marginBottom: "20px" }}
+                >
+                  <div className="editor-post-thumb custom-editor-thumb" style={{ width: "160px", height: "160px", flexShrink: 0 }}>
+                    <Link href={`/haber/${item.slug}`}>
+                      <Image src={item.thumb} alt={item.title} width={160} height={160} style={{ objectFit: "cover" }} />
+                    </Link>
+                  </div>
+
                   <div
-                    className="editor-post-item custom-editor-card"
-                    style={{ width: "410px", height: "160px", display: "flex", alignItems: "center", margin: "0 10px" }}
+                    className="editor-post-content custom-editor-content"
+                    style={{
+                      flexGrow: 1,
+                      height: "100%",
+                      padding: "10px 15px",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                      textAlign: "left",
+                    }}
                   >
-                    {/* RESİM KISMI */}
-                    <div className="editor-post-thumb custom-editor-thumb" style={{ width: "160px", height: "160px", flexShrink: 0 }}>
-                      <Link href={`/haber/${item.slug}`}>
-                        <Image
-                          src={item.thumb}
-                          alt={item.title}
-                          width={160}
-                          height={160}
-                          style={{ objectFit: "cover" }}
-                        />
+                    <Link href="/haber" className="post-tag-two">
+                      {item.tag}
+                    </Link>
+
+                    <h2 className="post-title" style={{ margin: "5px 0" }}>
+                      <Link
+                        href={`/haber/${item.slug}`}
+                        style={{
+                          paddingRight: "16px",
+                          display: "-webkit-box",
+                          WebkitBoxOrient: "vertical",
+                          WebkitLineClamp: 3,
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          lineHeight: "1.2em",
+                          maxHeight: "3.6em",
+                        }}
+                      >
+                        {item.title}
                       </Link>
-                    </div>
+                    </h2>
 
-                    {/* İÇERİK/YAZI KISMI */}
-                    <div
-                      className="editor-post-content custom-editor-content"
-                      style={{
-                        flexGrow: 1,
-                        height: "100%",
-                        padding: "10px 15px",
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "space-between",
-                        textAlign: "left",
-                      }}
-                    >
-                      <Link href="/haber" className="post-tag-two">
-                        {item.tag}
-                      </Link>
-
-                      <h2 className="post-title" style={{ margin: "5px 0" }}>
-                        <Link
-                          href={`/haber/${item.slug}`}
-                          style={{
-                            paddingRight: "16px",
-                            display: "-webkit-box",
-                            WebkitBoxOrient: "vertical",
-                            WebkitLineClamp: 3,
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            lineHeight: "1.2em",
-                            maxHeight: "3.6em",
-                          }}
-                        >
-                          {item.title}
-                        </Link>
-                      </h2>
-
-                      <div className="blog-post-meta">
-                        <ul className="list-wrap">
-                          <li>
-                            <i className="flaticon-calendar"></i>
-                            {item.date}
-                          </li>
-                        </ul>
-                      </div>
+                    <div className="blog-post-meta">
+                      <ul className="list-wrap">
+                        <li>
+                          <i className="flaticon-calendar"></i>
+                          {item.date}
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
-              ))}
-            </Slider>
+              </div>
+            ))
           )}
         </div>
       </div>
 
-      {/* Skeleton CSS */}
       <style jsx global>{`
         .skeleton-card {
           position: relative;
@@ -234,8 +183,12 @@ const EditorPost = ({ featuredLatest = [], isLoading = false }: EditorPostProps)
         }
 
         @keyframes skeleton-shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
         }
 
         .skeleton-media {
@@ -257,9 +210,21 @@ const EditorPost = ({ featuredLatest = [], isLoading = false }: EditorPostProps)
           width: 100%;
         }
 
-        .skeleton-title-1 { height: 14px; width: 92%; margin-top: 6px; }
-        .skeleton-title-2 { height: 14px; width: 88%; margin-top: 8px; }
-        .skeleton-title-3 { height: 14px; width: 70%; margin-top: 8px; }
+        .skeleton-title-1 {
+          height: 14px;
+          width: 92%;
+          margin-top: 6px;
+        }
+        .skeleton-title-2 {
+          height: 14px;
+          width: 88%;
+          margin-top: 8px;
+        }
+        .skeleton-title-3 {
+          height: 14px;
+          width: 70%;
+          margin-top: 8px;
+        }
 
         .skeleton-date {
           width: 55%;

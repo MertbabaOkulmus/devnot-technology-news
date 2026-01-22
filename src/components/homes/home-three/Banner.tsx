@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import bannerThumb_1 from "@/assets/img/blog/t_banner_post01.jpg";
@@ -9,9 +10,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
-import adBannerData from "@/data/adBanner.json";
-
-// === Yardımcı Fonksiyon ===
 const mapArticleToBannerItem = (article: NewsArticle) => {
   const dateOptions: Intl.DateTimeFormatOptions = {
     year: "numeric",
@@ -49,14 +47,27 @@ type AdBannerItem = {
 const Banner = ({ featuredArticles = [], isLoading = false }: BannerProps) => {
   const mappedData = featuredArticles.map(mapArticleToBannerItem);
 
-  const adBanners = (Array.isArray(adBannerData) ? (adBannerData as AdBannerItem[]) : []).filter((x) =>
+  const [adBannerList, setAdBannerList] = useState<AdBannerItem[]>([]);
+
+  useEffect(() => {
+    fetch("/ads/adBanner.json")
+      .then((res) => res.json())
+      .then(setAdBannerList)
+      .catch(() => setAdBannerList([]));
+  }, []);
+
+  const adBanners = (Array.isArray(adBannerList) ? (adBannerList as AdBannerItem[]) : []).filter((x) =>
     Boolean(x?.imageUrl && x?.url)
   );
   const hasAd = adBanners.length > 0;
 
-  const bigPost = mappedData.slice(0, 1)[0];
+  const bigPost = mappedData[0];
 
-  const smallPosts = hasAd ? mappedData.slice(1, 3) : mappedData.slice(1, 4);
+  const rightNewsCount = hasAd ? 2 : 3;
+  const rightPosts = mappedData.slice(1, 1 + rightNewsCount);
+
+  const bottomStartIndex = 1 + rightNewsCount;
+  const bottomPosts = mappedData.slice(bottomStartIndex, bottomStartIndex + 3);
 
   const renderAdSmallPost = () => {
     if (!hasAd) return null;
@@ -71,7 +82,7 @@ const Banner = ({ featuredArticles = [], isLoading = false }: BannerProps) => {
             slidesPerView={1}
             loop={isMulti}
             autoplay={isMulti ? { delay: 4000, disableOnInteraction: false } : false}
-            allowTouchMove={isMulti} // tek reklamda swipe kapalı
+            allowTouchMove={isMulti}
           >
             {adBanners.map((ad, idx) => (
               <SwiperSlide key={`ad-${idx}`}>
@@ -87,6 +98,38 @@ const Banner = ({ featuredArticles = [], isLoading = false }: BannerProps) => {
       </div>
     );
   };
+
+  const renderSmallCard = (item: ReturnType<typeof mapArticleToBannerItem>) => (
+    <div key={item.id} className="banner-post-two small-post">
+      <div className="banner-post-thumb-two">
+        <Link href={`/haber/${item.slug}`}>
+          <Image src={item.imageUrl || bannerThumb_1} alt={item.title} width={300} height={200} />
+        </Link>
+      </div>
+      <div className="banner-post-content-two">
+        <Link href="/haber" className="post-tag">
+          {item.tag}
+        </Link>
+        <h2 className="post-title">
+          <Link href={`/haber/${item.slug}`}>{item.title}</Link>
+        </h2>
+        <div className="blog-post-meta white-blog-meta">
+          <ul className="list-wrap">
+            <li>
+              <i className="flaticon-calendar"></i>
+              {item.date}
+            </li>
+            <Link href={`/author?id=${item.userId}`}>
+              <li>
+                <i className="flaticon-user"></i>
+                <>{item.authorName}</>
+              </li>
+            </Link>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <section className="banner-post-area-two pb-30">
@@ -144,12 +187,11 @@ const Banner = ({ featuredArticles = [], isLoading = false }: BannerProps) => {
               )}
             </div>
 
-            {/* Sağ Taraf - Küçük Resimler (Col-30) */}
             <div className="col-30">
               {isLoading ? (
                 <>
                   {Array.from({ length: 3 }).map((_, idx) => (
-                    <div key={`sk-${idx}`} className="banner-post-two small-post skeleton-card" aria-busy="true">
+                    <div key={`sk-right-${idx}`} className="banner-post-two small-post skeleton-card" aria-busy="true">
                       <div className="banner-post-thumb-two skeleton-media" />
                       <div className="banner-post-content-two">
                         <div className="skeleton-line skeleton-tag" />
@@ -162,46 +204,37 @@ const Banner = ({ featuredArticles = [], isLoading = false }: BannerProps) => {
               ) : (
                 <>
                   {hasAd && renderAdSmallPost()}
-
-                  {smallPosts.map((item) => (
-                    <div key={item.id} className="banner-post-two small-post">
-                      <div className="banner-post-thumb-two">
-                        <Link href={`/haber/${item.slug}`}>
-                          <Image src={item.imageUrl || bannerThumb_1} alt={item.title} width={300} height={200} />
-                        </Link>
-                      </div>
-                      <div className="banner-post-content-two">
-                        <Link href="/haber" className="post-tag">
-                          {item.tag}
-                        </Link>
-                        <h2 className="post-title">
-                          <Link href={`/haber/${item.slug}`}>{item.title}</Link>
-                        </h2>
-                        <div className="blog-post-meta white-blog-meta">
-                          <ul className="list-wrap">
-                            <li>
-                              <i className="flaticon-calendar"></i>
-                              {item.date}
-                            </li>
-                            <Link href={`/author?id=${item.userId}`}>
-                              <li>
-                                <i className="flaticon-user"></i>
-                                <>{item.authorName}</>
-                              </li>
-                            </Link>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                  {rightPosts.map(renderSmallCard)}
                 </>
               )}
             </div>
           </div>
+
+          <div className="row">
+            {isLoading ? (
+              Array.from({ length: 3 }).map((_, idx) => (
+                <div key={`sk-bottom-${idx}`} className="col-lg-4 col-md-6">
+                  <div className="banner-post-two small-post skeleton-card" aria-busy="true">
+                    <div className="banner-post-thumb-two skeleton-media" />
+                    <div className="banner-post-content-two">
+                      <div className="skeleton-line skeleton-tag" />
+                      <div className="skeleton-line skeleton-title-sm" />
+                      <div className="skeleton-line skeleton-meta" />
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              bottomPosts.map((item) => (
+                <div key={item.id} className="col-lg-4 col-md-6">
+                  {renderSmallCard(item)}
+                </div>
+              ))
+            )}
+          </div>
         </div>
       </div>
 
-      {/* Skeleton CSS (tasarımı bozmadan, sadece yüklenirken görünür) */}
       <style jsx global>{`
         .skeleton-card {
           position: relative;
