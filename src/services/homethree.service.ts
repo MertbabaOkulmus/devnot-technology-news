@@ -51,7 +51,7 @@ export type NewsArticle = {
 };
 
 export const fetchFeaturedArticles = async (): Promise<NewsArticle[]> => {
-  return get<NewsArticle[]>('/Article/featured?n=4');
+  return get<NewsArticle[]>('/Article/featured?n=7');
 };
 
 export const fetchCategories = async (): Promise<Category[]> => {
